@@ -26,7 +26,7 @@
     "babel-eslint": "^10.1.0",
     "chokidar": "^3.5.1",
     "eslint": "^7.23.0",
-    "eslint-plugin-vue": "^7.0.0",
+    "eslint-plugin-vue": "^7.8.0",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
     "vue-cli-plugin-lang-router": "~1.2.2"
