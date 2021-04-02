@@ -1,0 +1,63 @@
+{
+  "name": "Quiz Expert",
+  "locale": {
+    "code": "pl",
+    "language": "Polski"
+  },
+  "pages": {
+    "home": {
+      "navigation": {
+        "open": "Otwórz menu",
+        "close": "Zamknij menu",
+        "sign-in": "Zaloguj się",
+        "sign-up": "Zarejestruj się",
+        "question": "Nie masz konta?"
+      },
+      "introduction": {
+        "tittle": "Zagraj w quiz ze znajomymi!",
+        "description": "Wybierz kategorię, tryb gry, a następnie pokaż, co potrafisz"
+      },
+      "game-modes": {
+        "invitation": {
+          "tittle": "Format gry ze znajomym",
+          "description": "Wybierz kategorię a następnie wyślij wyzwanie znajomemu. "
+        },
+        "random": {
+          "tittle": "Dobieranie przeciwnika",
+          "description": "System dobiera przeciwnika do gracza z kolejki adekwatnej do kategorii."
+        },
+        "single": {
+          "tittle": "Format gry indywidualnej",
+          "description": "Gracz może zagrać w quiz w pojedynke. Nie musi zapraszać znajomych ani czekać w kolejce na dobranie losowego przeciwnika."
+        },
+        "correspondence": {
+          "tittle": "Format gry korespondencyjny",
+          "description": "Połączenie zasad gry ze znajomym z grą indywidualną. Gracz zaprasza znajomego do gry i rozgrywa quiz tak jakby grał samemu."
+        }
+      },
+      "footer": {
+        "community": {
+          "tittle": "Społeczność",
+          "github": "GitHub",
+          "facebook": "Facebook"
+        },
+        "technologies": {
+          "tittle": "Technologie",
+          "v3": "Vue 3",
+          "tailwindcss": "Tailwindcss"
+        },
+        "tools": {
+          "tittle": "Narzędzia",
+          "docker": "Docker",
+          "eslint": "ESLint",
+          "github": "GitHub"
+        },
+        "links": {
+          "tittle": "Linki",
+          "mobile": "Aplikacja Mobilna",
+          "pc": "Aplikacja Desktopowa"
+        }
+      }
+    }
+  }
+}
