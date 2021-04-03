@@ -3,10 +3,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
         <div class="flex justify-start lg:w-0 lg:flex-1">
-          <a class=" no-underline hover:no-underline text-2xl lg:text-4xl" href="#">
+          <localized-link to="/" class="no-underline hover:no-underline text-2xl lg:text-4xl">
             <span class="sr-only text-gray-900">{{ $t('name') }}</span>
             {{ $t('name') }}
-          </a>
+          </localized-link>
         </div>
         <div class="-mr-2 -my-2 md:hidden">
           <button
@@ -34,22 +34,22 @@
           </button>
         </div>
         <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          <a href="#">
+          <localized-link to="/auth/login">
             <button
               type="button"
               class="focus:outline-none text-yellow-600 py-3 px-6 rounded-md hover:text-yellow-800"
             >
               {{ $t('pages.home.navigation.sign-in') }}
             </button>
-          </a>
-          <a href="#">
+          </localized-link>
+          <localized-link to="/auth/register">
             <button
               type="button"
               class="focus:outline-none text-white py-3 px-6 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
             >
               {{ $t('pages.home.navigation.sign-up') }}
             </button>
-          </a>
+          </localized-link>
         </div>
       </div>
     </div>
@@ -100,19 +100,19 @@
           </div>
           <div class="py-6 px-5 space-y-6">
             <div>
-              <a href="#">
+              <localized-link to="/auth/login">
                 <button
                   type="button"
                   class="w-full focus:outline-none text-white py-3 px-6 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
                 >
                   {{ $t('pages.home.navigation.sign-in') }}
                 </button>
-              </a>
+              </localized-link>
               <p class="mt-6 text-center text-base font-medium text-gray-500">
                 {{ $t('pages.home.navigation.question') }}
-                <a href="#" class="text-yellow-600 hover:text-yellow-800">
+                <localized-link to="/auth/register" class="text-yellow-600 hover:text-yellow-800">
                   {{ $t('pages.home.navigation.sign-up') }}
-                </a>
+                </localized-link>
               </p>
             </div>
           </div>

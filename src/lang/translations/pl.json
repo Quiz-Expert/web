@@ -58,6 +58,22 @@
           "pc": "Aplikacja Desktopowa"
         }
       }
+    },
+    "login": {
+      "tittle": "Zaloguj się do swojego konta",
+      "email": {
+        "label": "Adres E-mail",
+        "description": "Wprowadź adres e-mail"
+      },
+      "password": {
+        "label": "Hasło",
+        "description": "Wprowadź hasło"
+      },
+      "remember-me": "Zapamiętaj mnie",
+      "forgot-password": "Nie pamiętasz hasła?",
+      "sign-in": "Zaloguj się",
+      "back-to-homepage": "Powrót",
+      "back-to-register": "Nie masz konta?"
     }
   }
 }
