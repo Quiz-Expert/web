@@ -2,9 +2,11 @@
   <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-xs md:max-w-sm w-full space-y-6">
       <div>
-        <localized-link to="/">
-          <img class="mx-auto h-32 w-auto" src="@/assets/images/logo/icon.png">
-        </localized-link>
+        <div class="flex justify-center">
+          <localized-link to="/">
+            <img class="mx-auto h-32 w-auto" src="@/assets/images/logo/icon.png">
+          </localized-link>
+        </div>
         <h2 class="mt-6 text-center text-2xl sm:text-3xl font-extrabold text-gray-900">
           {{ $t('pages.login.tittle') }}
         </h2>
