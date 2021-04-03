@@ -12,56 +12,64 @@
         </h2>
       </div>
       <form action="#" method="POST">
-        <div class="shadow-2xl overflow-hidden rounded-md border-b-2 border-t-2 border-yellow-500 ">
+        <div class="shadow-2xl overflow-hidden rounded-md border-b-2 border-t-2 border-yellow-500">
           <div class="px-4 py-5 sm:p-6">
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 md:col-span-3">
-                <label for="nick" class="block text-sm font-medium text-gray-700">{{ $t('pages.register.nick.label') }}</label>
+                <label for="nick" class="block text-sm font-medium text-gray-700">
+                  {{ $t('pages.register.nick.label') }}
+                </label>
                 <input
                   id="nick"
                   type="text"
                   name="nick"
                   autocomplete="given-name"
                   required
-                  class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  class="mt-1 focus:ring-green-500 focus:border-green-500 placeholder-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   :placeholder="$t('pages.register.nick.description')"
                 >
               </div>
 
               <div class="col-span-6 md:col-span-3">
-                <label for="email_address" class="block text-sm font-medium text-gray-700">{{ $t('pages.register.email.label') }}</label>
+                <label for="email_address" class="block text-sm font-medium text-gray-700">
+                  {{ $t('pages.register.email.label') }}
+                </label>
                 <input
                   id="email_address"
                   type="email"
                   name="email_address"
                   autocomplete="email"
                   required
-                  class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  class="mt-1 focus:ring-green-500 focus:border-green-500 placeholder-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   :placeholder="$t('pages.register.email.description')"
                 >
               </div>
               <div class="col-span-6 md:col-span-3">
-                <label for="password" class="block text-sm font-medium text-gray-700">{{ $t('pages.register.password.label') }}</label>
+                <label for="password" class="block text-sm font-medium text-gray-700">
+                  {{ $t('pages.register.password.label') }}
+                </label>
                 <input
                   id="password"
                   type="password"
                   name="password"
                   autocomplete="email"
                   required
-                  class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  class="mt-1 focus:ring-green-500 focus:border-green-500 placeholder-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   :placeholder="$t('pages.register.password.description')"
                 >
               </div>
 
               <div class="col-span-6 md:col-span-3">
-                <label for="password_confirm" class="block text-sm font-medium text-gray-700">{{ $t('pages.register.password-confirm.label') }}</label>
+                <label for="password_confirm" class="block text-sm font-medium text-gray-700">
+                  {{ $t('pages.register.password-confirm.label') }}
+                </label>
                 <input
                   id="password_confirm"
                   type="password"
                   name="password_confirm"
                   autocomplete="email"
                   required
-                  class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  class="mt-1 focus:ring-green-500 focus:border-green-500 placeholder-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   :placeholder="$t('pages.register.password-confirm.description')"
                 >
               </div>
@@ -69,7 +77,10 @@
           </div>
 
           <div class="grid grid-cols-6 gap-6 px-4 py-3 bg-gray-50 sm:px-6">
-            <button type="submit" class="col-start-4 col-end-7 inline-flex justify-center py-3 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+            <button
+              type="submit"
+              class="col-start-4 col-end-7 py-3 border shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            >
               {{ $t('pages.register.sign-up') }}
             </button>
           </div>
