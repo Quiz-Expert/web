@@ -58,6 +58,44 @@
           "pc": "Aplikacja Desktopowa"
         }
       }
+    },
+    "login": {
+      "tittle": "Zaloguj się do swojego konta",
+      "email": {
+        "label": "Adres E-mail",
+        "description": "Wprowadź adres e-mail"
+      },
+      "password": {
+        "label": "Hasło",
+        "description": "Wprowadź hasło"
+      },
+      "remember-me": "Zapamiętaj mnie",
+      "forgot-password": "Nie pamiętasz hasła?",
+      "sign-in": "Zaloguj się",
+      "back-to-homepage": "Strona główna",
+      "back-to-register": "Nie masz konta?"
+    },
+    "register": {
+      "tittle": "Wprowadź swoje dane, aby się zarejestrować",
+      "nick": {
+        "label": "Nazwa użytkownika",
+        "description": "Wprowadż nazwę użytkownika"
+      },
+      "email": {
+        "label": "Adres E-mail",
+        "description": "Wprowadź adres e-mail"
+      },
+      "password": {
+        "label": "Hasło",
+        "description": "Wprowadź hasło"
+      },
+      "password-confirm": {
+        "label": "Potwierdź hasło",
+        "description": "Wprowadż ponownie hasło"
+      },
+      "sign-up": "Zarejestruj się",
+      "back-to-homepage": "Strona główna",
+      "back-to-login": "Posiadasz już konto?"
     }
   }
 }
