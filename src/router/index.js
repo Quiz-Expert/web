@@ -6,17 +6,22 @@ const routes = [
   {
     path: '/',
     name: 'Homepage',
-    component: () => import("../views/Homepage"),
+    component: () => import("../views/Home/Homepage"),
   },
   {
     path: '/auth/login',
     name: 'LoginPage',
-    component: () => import("../views/LoginPage")
+    component: () => import("../views/Auth/LoginPage")
   },
   {
     path: '/auth/register',
     name: 'RegisterPage',
-    component: () => import("../views/RegisterPage")
+    component: () => import("../views/Auth/RegisterPage")
+  },
+  {
+    path: '/user/home',
+    name: 'User',
+    component: () => import("../views/UserInterface/Homepage")
   }
 ]
 

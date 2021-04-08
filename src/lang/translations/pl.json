@@ -97,5 +97,15 @@
       "back-to-homepage": "Strona główna",
       "back-to-login": "Posiadasz już konto?"
     }
+  },
+  "user-nav": {
+    "main-page": "Strona Główna",
+    "invitation": "Zaproszenia",
+    "friends": "Znajomi",
+    "profile": "Profil",
+    "notifications": "Powiadomienia",
+    "open-user-menu":"Otwórz menu użytkownika",
+    "settings": "Ustawienia",
+    "sing-out": "Wyloguj się"
   }
 }
