@@ -96,16 +96,21 @@
       "sign-up": "Zarejestruj się",
       "back-to-homepage": "Strona główna",
       "back-to-login": "Posiadasz już konto?"
+    },
+    "user": {
+      "navigation": {
+        "categories": "Kategorie",
+        "invitations": "Zaproszenia",
+        "friends": "Znajomi",
+        "profile": "Profil",
+        "notifications": "Powiadomienia",
+        "open-user-menu": "Otwórz menu użytkownika",
+        "settings": "Ustawienia",
+        "sing-out": "Wyloguj się"
+      },
+      "select-categories": {
+        "tittle": "Wybierz Kategorie"
+      }
     }
-  },
-  "user-nav": {
-    "main-page": "Strona Główna",
-    "invitation": "Zaproszenia",
-    "friends": "Znajomi",
-    "profile": "Profil",
-    "notifications": "Powiadomienia",
-    "open-user-menu":"Otwórz menu użytkownika",
-    "settings": "Ustawienia",
-    "sing-out": "Wyloguj się"
   }
 }

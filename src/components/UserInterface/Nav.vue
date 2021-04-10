@@ -4,57 +4,58 @@
       <div class="flex items-center justify-between h-16 md:h-20 lg:h-24">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <img class="h-8 w-8" src="@/assets/images/logo/icon.png" alt="Workflow">
+            <img class="h-8 w-8" src="@/assets/images/logo/icon.png" :alt="$t('name')">
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">{{
-                $t('user-nav.main-page')
-              }}</a>
-
-              <a
-                href="#"
+              <localized-link
+                to="/user/categories"
+                class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                v-text="$t('pages.user.navigation.categories')"
+              />
+              <localized-link
+                to="/user/invitations"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >{{ $t('user-nav.invitation') }}
-              </a>
-
-              <a
-                href="#"
+                v-text="$t('pages.user.navigation.invitations')"
+              />
+              <localized-link
+                to="/user/friends"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >{{ $t('user-nav.friends') }}
-              </a>
-
-              <a
-                href="#"
+                v-text="$t('pages.user.navigation.friends')"
+              />
+              <localized-link
+                to="/user/profile"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >{{ $t('user-nav.profile') }}
-              </a>
+                v-text="$t('pages.user.navigation.profile')"
+              />
             </div>
           </div>
         </div>
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
-            <button
-              type="button"
-              class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-yellow-500"
-            >
-              <span class="sr-only">{{ $t('user-nav.notifications') }}</span>
-              <svg
-                class="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
+            <localized-link to="/user/notifications">
+              <button
+                type="button"
+                class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-yellow-500"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                />
-              </svg>
-            </button>
+                <span class="sr-only">{{ $t('pages.user.navigation.notifications') }}</span>
+                <svg
+                  class="h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                  />
+                </svg>
+              </button>
+            </localized-link>
 
             <div class="ml-3 relative">
               <div>
@@ -67,7 +68,7 @@
                   @click="isOpenProfile = !isOpenProfile"
                   @focusout="isOpenProfile = false"
                 >
-                  <span class="sr-only">{{ $t('user-nav.open-user-menu') }}</span>
+                  <span class="sr-only">{{ $t('pages.user.navigation.open-user-menu') }}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -100,15 +101,18 @@
                   aria-orientation="vertical"
                   aria-labelledby="user-menu"
                 >
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                     role="menuitem"
-                  >
-                    {{ $t('user-nav.settings') }}
-                  </a>
-
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                    {{ $t('user-nav.sing-out') }}
-                  </a>
+                  <localized-link
+                    to="/user/settings"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                    v-text="$t('pages.user.navigation.settings')"
+                  />
+                  <localized-link
+                    to="/"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                    v-text="$t('pages.user.navigation.sing-out')"
+                  />
                 </div>
               </transition>
             </div>
@@ -122,7 +126,7 @@
             aria-expanded="false"
             @click="isOpenMenu = !isOpenMenu"
           >
-            <span class="sr-only">Open main menu</span>
+            <span class="sr-only">{{ $t('pages.user.navigation.open-user-menu') }}</span>
             <svg
               class="block h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -150,30 +154,26 @@
 
     <div v-show="isOpenMenu" id="mobile-menu" class="md:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a
-          href="#"
+        <localized-link
+          to="/user/categories"
           class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-        >
-          {{ $t('user-nav.main-page') }}
-        </a>
-        <a
-          href="#"
+          v-text="$t('pages.user.navigation.categories')"
+        />
+        <localized-link
+          to="/user/invitations"
           class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-        >
-          {{ $t('user-nav.invitation') }}
-        </a>
-        <a
-          href="#"
+          v-text="$t('pages.user.navigation.invitations')"
+        />
+        <localized-link
+          to="/user/friends"
           class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-        >
-          {{ $t('user-nav.friends') }}
-        </a>
-        <a
-          href="#"
+          v-text="$t('pages.user.navigation.friends')"
+        />
+        <localized-link
+          to="/user/profile"
           class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-        >
-          {{ $t('user-nav.profile') }}
-        </a>
+          v-text="$t('pages.user.navigation.profile')"
+        />
       </div>
       <div class="pt-4 pb-3 border-t border-gray-700">
         <div class="flex items-center px-4 sm:px-6 lg:px-8">
@@ -196,42 +196,42 @@
           <div class="ml-3">
             <div class="text-base font-medium leading-none text-white">Tom Cook</div>
           </div>
+
           <button
             type="button"
             class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-yellow-500"
           >
-            <span class="sr-only">{{ $t('user-nav.notifications') }}</span>
-            <svg
-              class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-              />
-            </svg>
+            <localized-link to="/user/notifications">
+              <span class="sr-only">{{ $t('pages.user.navigation.notifications') }}</span>
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                />
+              </svg>
+            </localized-link>
           </button>
         </div>
         <div class="mt-3 px-2 space-y-1">
-          <a
-            href="#"
+          <localized-link
+            to="/user/settings"
             class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-          >
-            {{ $t('user-nav.settings') }}
-          </a>
-
-          <a
-            href="#"
+            v-text="$t('pages.user.navigation.settings')"
+          />
+          <localized-link
+            to="/"
             class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-          >
-            {{ $t('user-nav.sing-out') }}
-          </a>
+            v-text="$t('pages.user.navigation.sing-out')"
+          />
         </div>
       </div>
     </div>

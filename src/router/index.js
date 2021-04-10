@@ -19,9 +19,17 @@ const routes = [
     component: () => import("../views/Auth/RegisterPage")
   },
   {
-    path: '/user/home',
+    path: '/user',
     name: 'User',
-    component: () => import("../views/UserInterface/Homepage")
+    redirect: "/user/categories",
+    component: () => import("../views/UserInterface/UserPage"),
+
+    children: [
+      {
+        path: "categories",
+        component: () => import("../components/UserInterface/MainSections/Categories"),
+      },
+    ]
   }
 ]
 
