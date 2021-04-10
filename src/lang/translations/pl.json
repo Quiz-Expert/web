@@ -110,6 +110,13 @@
       },
       "select-categories": {
         "tittle": "Wybierz Kategorie"
+      },
+      "invitation-list": {
+        "tittle": "Lista Zaproszeń",
+        "nick": "Nick",
+        "name": "Nazwa Gracza",
+        "description": "Opis",
+        "action": "Akcja"
       }
     }
   }

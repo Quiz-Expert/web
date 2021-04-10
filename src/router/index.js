@@ -29,6 +29,10 @@ const routes = [
         path: "categories",
         component: () => import("../components/UserInterface/MainSections/Categories"),
       },
+      {
+        path: "invitations",
+        component: () => import("../components/UserInterface/MainSections/Invitations"),
+      },
     ]
   }
 ]
