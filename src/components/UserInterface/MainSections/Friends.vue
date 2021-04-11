@@ -1,9 +1,9 @@
 <template>
   <main class="w-full py-12 bg-gray-200">
-    <div class="max-w-3xl mx-auto space-y-6">
-      <div>
+    <div class="max-w-3xl mx-auto space-y-6 ">
+      <div  class="flex justify-center">
         <h2 class="mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-4xl leading-tight text-gray-900 text-center">
-          {{ $t('pages.user.invitation-list.tittle') }}
+          {{ $t('pages.user.fiends-list.tittle') }}
         </h2>
       </div>
       <div class="py-2 align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
@@ -15,41 +15,32 @@
                   scope="col"
                   class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {{ $t('pages.user.invitation-list.name') }}
+                  {{ $t('pages.user.fiends-list.name') }}
                 </th>
                 <th
                   scope="col"
                   class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {{ $t('pages.user.invitation-list.description') }}
+                  {{ $t('pages.user.fiends-list.nick') }}
                 </th>
                 <th
                   scope="col"
                   class="px-2 sm:px-4 md:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {{ $t('pages.user.invitation-list.action') }}
+                  {{ $t('pages.user.fiends-list.action') }}
                 </th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="invitation in invitations" :key="invitation" class="hover:bg-gray-100">
+              <tr v-for="friend in friends" :key="friend" class="hover:bg-gray-100">
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div>
-                      <div class="text-sm font-medium text-gray-900">
-                        {{ invitation.name }}
-                      </div>
-                      <div class="text-sm text-gray-500">
-                        {{ invitation.nick }}
-                      </div>
-                    </div>
+                  <div class="text-sm font-medium text-gray-900">
+                    {{ friend.name }}
                   </div>
                 </td>
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="text-sm font-medium text-gray-900 ">
-                      {{ invitation.description }}
-                    </div>
+                  <div class="text-sm text-gray-500">
+                    {{ friend.nick }}
                   </div>
                 </td>
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
@@ -60,13 +51,15 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="w-4 sm:w-5 h-4 sm:h-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                       />
                     </svg>
                   </button>
@@ -92,6 +85,24 @@
             </tbody>
           </table>
         </div>
+        <div class="flex justify-end mt-6">
+          <localized-link to="/user/inviting-to-friends">
+            <button
+              type="button"
+              class="inline-block p-2 text-center text-white transition bg-yellow-500 rounded-full shadow ripple hover:shadow-lg hover:bg-yellow-600 focus:outline-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+              </svg>
+            </button>
+          </localized-link>
+        </div>
       </div>
     </div>
   </main>
@@ -99,19 +110,17 @@
 
 <script>
 export default {
-  name: "Invitations",
+  name: "Friends",
   data() {
     return {
-      invitations: [
+      friends: [
         {
           nick: "jane-cooper123",
           name: "Jane Cooper",
-          description: "Pojedynek",
         },
         {
-          nick: "jane-cooper123",
-          name: "Jane Cooper",
-          description: "Lista Znajomych",
+          nick: "jane-cooper321",
+          name: "Jane ",
         }
       ]
     }

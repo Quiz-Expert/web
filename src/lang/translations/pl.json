@@ -114,9 +114,19 @@
       "invitation-list": {
         "tittle": "Lista Zaproszeń",
         "nick": "Nick",
-        "name": "Nazwa Gracza",
+        "name": "Nazwa",
         "description": "Opis",
         "action": "Akcja"
+      },
+      "fiends-list": {
+        "tittle": "Lista Znajomych",
+        "nick": "Nick",
+        "name": "Nazwa",
+        "action": "Akcja"
+      },
+      "inviting-to-friends": {
+        "tittle": "Zaproś do Znajomych",
+        "search": "Wyszukaj..."
       }
     }
   }
