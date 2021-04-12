@@ -37,6 +37,10 @@ module.exports = [
         path: "inviting-to-friends",
         component: () => import("../components/UserInterface/MainSections/InvitingToFriends"),
       },
+      {
+        path: "profile",
+        component: () => import("../components/UserInterface/MainSections/Profile"),
+      },
     ]
   }
 ]

@@ -127,6 +127,9 @@
       "inviting-to-friends": {
         "tittle": "Zaproś do Znajomych",
         "search": "Wyszukaj..."
+      },
+      "your-profile": {
+        "tittle": "Twój Profil"
       }
     }
   }
