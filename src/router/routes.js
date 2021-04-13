@@ -41,6 +41,10 @@ module.exports = [
         path: "profile",
         component: () => import("../components/UserInterface/MainSections/Profile"),
       },
+      {
+        path: "settings",
+        component: () => import("../components/UserInterface/MainSections/Settings"),
+      },
     ]
   }
 ]

@@ -130,6 +130,16 @@
       },
       "your-profile": {
         "tittle": "Twój Profil"
+      },
+      "settings": {
+        "tittle": "Ustawienia",
+        "account": "Konto",
+        "email": "Twój e-mail",
+        "personal-info": "Informacje personalne",
+        "name": "Twoja nazwa",
+        "nick": "Twój nick",
+        "change-password": "Zmień hasło",
+        "delete-account": "Usuń konto"
       }
     }
   }

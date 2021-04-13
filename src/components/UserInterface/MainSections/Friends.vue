@@ -1,7 +1,7 @@
 <template>
   <main class="w-full py-12 bg-gray-200">
-    <div class="max-w-3xl mx-auto space-y-6 ">
-      <div  class="flex justify-center">
+    <div class="max-w-3xl mx-auto space-y-6">
+      <div>
         <h2 class="mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-4xl leading-tight text-gray-900 text-center">
           {{ $t('pages.user.fiends-list.tittle') }}
         </h2>
