@@ -2,9 +2,10 @@
   <main class="w-full py-12 bg-gray-200">
     <div class="max-w-3xl mx-auto space-y-6">
       <div>
-        <h2 class="mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-4xl leading-tight text-gray-900 text-center">
-          {{ $t('pages.user.invitation-list.tittle') }}
-        </h2>
+        <h2
+          class="mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-4xl leading-tight text-gray-900 text-center"
+          v-text="$t('pages.user.invitation-list.tittle')"
+        />
       </div>
       <div class="py-2 align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
         <div class="shadow-xl overflow-hidden border-b border-gray-200 rounded-lg">
@@ -14,21 +15,18 @@
                 <th
                   scope="col"
                   class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  {{ $t('pages.user.invitation-list.name') }}
-                </th>
+                  v-text="$t('pages.user.invitation-list.name')"
+                />
                 <th
                   scope="col"
                   class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  {{ $t('pages.user.invitation-list.description') }}
-                </th>
+                  v-text="$t('pages.user.invitation-list.description')"
+                />
                 <th
                   scope="col"
                   class="px-2 sm:px-4 md:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  {{ $t('pages.user.invitation-list.action') }}
-                </th>
+                  v-text="$t('pages.user.invitation-list.action')"
+                />
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -36,20 +34,14 @@
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
                     <div>
-                      <div class="text-sm font-medium text-gray-900">
-                        {{ invitation.name }}
-                      </div>
-                      <div class="text-sm text-gray-500">
-                        {{ invitation.nick }}
-                      </div>
+                      <p class="text-sm font-medium text-gray-900" v-text="invitation.name" />
+                      <p class="text-sm text-gray-500" v-text="invitation.nick" />
                     </div>
                   </div>
                 </td>
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
-                    <div class="text-sm font-medium text-gray-900 ">
-                      {{ invitation.description }}
-                    </div>
+                    <div class="text-sm font-medium text-gray-900" v-text="invitation.description" />
                   </div>
                 </td>
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">

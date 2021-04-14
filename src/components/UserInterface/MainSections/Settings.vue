@@ -2,9 +2,10 @@
   <main class="w-full py-12 bg-gray-200">
     <div class="max-w-3xl mx-auto space-y-6">
       <div>
-        <h2 class="mb-4 text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight text-gray-900 text-center">
-          {{ $t('pages.user.settings.tittle') }}
-        </h2>
+        <h2
+          class="mb-4 text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight text-gray-900 text-center"
+          v-text="$t('pages.user.settings.tittle')"
+        />
       </div>
       <div class="py-2 align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
         <div class="bg-gray-50 shadow-2xl overflow-hidden rounded-md border-b-2 border-t-2 border-yellow-500">
@@ -98,9 +99,7 @@
               </div>
             </div>
           </div>
-
           <hr>
-
           <div class="grid grid-cols-6 gap-8 p-8">
             <div class="col-span-3">
               <button

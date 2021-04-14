@@ -37,7 +37,7 @@
               type="button"
               class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-yellow-500"
             >
-              <span class="sr-only">{{ $t('pages.user.navigation.notifications') }}</span>
+              <span class="sr-only" v-text="$t('pages.user.navigation.notifications')" />
               <svg
                 class="h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@
                   @click="isOpenProfile = !isOpenProfile"
                   @focusout="isOpenProfile = false"
                 >
-                  <span class="sr-only">{{ $t('pages.user.navigation.open-user-menu') }}</span>
+                  <span class="sr-only" v-text="$t('pages.user.navigation.open-user-menu')" />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -125,7 +125,7 @@
             @click="isOpenMenu = !isOpenMenu"
             @focusout="isOpenMenu = false"
           >
-            <span class="sr-only">{{ $t('pages.user.navigation.open-user-menu') }}</span>
+            <span class="sr-only" v-text="$t('pages.user.navigation.open-user-menu')" />
             <svg
               class="block h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +134,12 @@
               stroke="currentColor"
               aria-hidden="true"
             >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
             <svg
               class="hidden h-6 w-6"
@@ -144,7 +149,12 @@
               stroke="currentColor"
               aria-hidden="true"
             >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -203,7 +213,6 @@
             <div class="ml-3">
               <div class="text-base font-medium leading-none text-white">Tom Cook</div>
             </div>
-
             <button
               type="button"
               class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-yellow-500"

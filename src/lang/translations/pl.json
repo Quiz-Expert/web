@@ -54,15 +54,15 @@
         },
         "links": {
           "tittle": "Linki",
-          "mobile": "Aplikacja Mobilna",
-          "pc": "Aplikacja Desktopowa"
+          "mobile": "Aplikacja mobilna",
+          "pc": "Aplikacja desktopowa"
         }
       }
     },
     "login": {
       "tittle": "Zaloguj się do swojego konta",
       "email": {
-        "label": "Adres E-mail",
+        "label": "Adres e-mail",
         "description": "Wprowadź adres e-mail"
       },
       "password": {
@@ -82,7 +82,7 @@
         "description": "Wprowadż nazwę użytkownika"
       },
       "email": {
-        "label": "Adres E-mail",
+        "label": "Adres e-mail",
         "description": "Wprowadź adres e-mail"
       },
       "password": {
@@ -109,27 +109,27 @@
         "sing-out": "Wyloguj się"
       },
       "select-categories": {
-        "tittle": "Wybierz Kategorie"
+        "tittle": "Wybierz kategorie"
       },
       "invitation-list": {
-        "tittle": "Lista Zaproszeń",
+        "tittle": "Lista zaproszeń",
         "nick": "Nick",
         "name": "Nazwa",
         "description": "Opis",
         "action": "Akcja"
       },
       "fiends-list": {
-        "tittle": "Lista Znajomych",
+        "tittle": "Lista znajomych",
         "nick": "Nick",
         "name": "Nazwa",
         "action": "Akcja"
       },
       "inviting-to-friends": {
-        "tittle": "Zaproś do Znajomych",
+        "tittle": "Zaproś do znajomych",
         "search": "Wyszukaj..."
       },
       "your-profile": {
-        "tittle": "Twój Profil"
+        "tittle": "Twój profil"
       },
       "settings": {
         "tittle": "Ustawienia",

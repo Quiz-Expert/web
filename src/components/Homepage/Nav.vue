@@ -3,8 +3,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
         <div class="flex justify-start lg:w-0 lg:flex-1">
-          <localized-link to="/" class="no-underline hover:no-underline text-2xl lg:text-4xl">
-            <span class="sr-only text-gray-900">{{ $t('name') }}</span>
+          <localized-link :to="{ name :'Homepage' }" class="no-underline hover:no-underline text-2xl lg:text-4xl">
+            <span class="sr-only text-gray-900" v-text="$t('name')" />
             {{ $t('name') }}
           </localized-link>
         </div>
@@ -15,7 +15,7 @@
             aria-expanded="false"
             @click="isOpen = !isOpen"
           >
-            <span class="sr-only">{{ $t('pages.home.navigation.open') }}</span>
+            <span class="sr-only" v-text="$t('pages.home.navigation.open')" />
             <svg
               class="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -34,21 +34,19 @@
           </button>
         </div>
         <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          <localized-link to="/auth/login">
+          <localized-link :to="{ name :'LoginPage' }">
             <button
               type="button"
               class="focus:outline-none text-yellow-600 py-3 px-6 rounded-md hover:text-yellow-800"
-            >
-              {{ $t('pages.home.navigation.sign-in') }}
-            </button>
+              v-text="$t('pages.home.navigation.sign-in')"
+            />
           </localized-link>
-          <localized-link to="/auth/register">
+          <localized-link :to="{ name :'RegisterPage' }">
             <button
               type="button"
               class="focus:outline-none text-white py-3 px-6 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
-            >
-              {{ $t('pages.home.navigation.sign-up') }}
-            </button>
+              v-text="$t('pages.home.navigation.sign-up')"
+            />
           </localized-link>
         </div>
       </div>
@@ -69,16 +67,14 @@
           <div class="pt-5 pb-6 px-5">
             <div class="flex items-center justify-between">
               <img class="h-8 w-auto" src="@/assets/images/logo/icon.png">
-              <p class="text-center text-base font-medium text-gray-500">
-                {{ $t('name') }}
-              </p>
+              <p class="text-center text-base font-medium text-gray-500" v-text="$t('name')" />
               <div class="-mr-2 items-end">
                 <button
                   type="button"
                   class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                   @click="isOpen = !isOpen"
                 >
-                  <span class="sr-only">{{ $t('pages.home.navigation.close') }}</span>
+                  <span class="sr-only" v-text="$t('pages.home.navigation.close')" />
                   <svg
                     class="h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
@@ -100,19 +96,20 @@
           </div>
           <div class="py-6 px-5 space-y-6">
             <div>
-              <localized-link to="/auth/login">
+              <localized-link :to="{ name :'LoginPage' }">
                 <button
                   type="button"
                   class="w-full focus:outline-none text-white py-3 px-6 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
-                >
-                  {{ $t('pages.home.navigation.sign-in') }}
-                </button>
+                  v-text="$t('pages.home.navigation.sign-in')"
+                />
               </localized-link>
               <p class="mt-6 text-center text-base font-medium text-gray-500">
                 {{ $t('pages.home.navigation.question') }}
-                <localized-link to="/auth/register" class="text-yellow-600 hover:text-yellow-800">
-                  {{ $t('pages.home.navigation.sign-up') }}
-                </localized-link>
+                <localized-link
+                  :to="{ name :'RegisterPage' }"
+                  class="text-yellow-600 hover:text-yellow-800"
+                  v-text="$t('pages.home.navigation.sign-up')"
+                />
               </p>
             </div>
           </div>

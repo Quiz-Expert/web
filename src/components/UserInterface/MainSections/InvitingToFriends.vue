@@ -38,16 +38,10 @@
               >
             </div>
             <div v-for="friend in friends" :key="friend" class="my-1 text-sm">
-              <div
-                class="flex justify-between items-center cursor-pointer text-gray-700 rounded-md hover:bg-gray-100 px-2 py-2"
-              >
+              <div class="flex justify-between items-center cursor-pointer text-gray-700 rounded-md hover:bg-gray-100 px-2 py-2">
                 <div>
-                  <div class="text-sm font-medium text-gray-900">
-                    {{ friend.name }}
-                  </div>
-                  <div class="text-sm text-gray-500">
-                    {{ friend.nick }}
-                  </div>
+                  <p class="text-sm font-medium text-gray-900" v-text="friend.name" />
+                  <p class="text-sm text-gray-500" v-text="friend.nick" />
                 </div>
                 <div>
                   <button
