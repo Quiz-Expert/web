@@ -3,37 +3,40 @@
     <div class="max-w-xs md:max-w-sm w-full space-y-6">
       <div>
         <div class="flex justify-center">
-          <localized-link to="/">
+          <localized-link :to="{ name :'Homepage' }">
             <img class="mx-auto h-32 w-auto" src="@/assets/images/logo/icon.png">
           </localized-link>
         </div>
-        <h2 class="mt-6 text-center text-2xl sm:text-3xl font-extrabold text-gray-900">
-          {{ $t('pages.login.tittle') }}
-        </h2>
+        <h2
+          class="mt-6 text-center text-2xl sm:text-3xl font-extrabold text-gray-900"
+          v-text="$t('pages.login.tittle')"
+        />
       </div>
       <form class="mt-8 space-y-6" action="#" method="POST">
         <input type="hidden" name="remember" value="true">
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
-            <label for="email-address" class="sr-only">{{ $t('pages.login.email.label') }}</label>
-            <input id="email-address"
-                   name="email"
-                   type="email"
-                   autocomplete="email"
-                   required
-                   class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10"
-                   :placeholder="$t('pages.login.email.description')"
+            <label for="email-address" class="sr-only" v-text="$t('pages.login.email.label')" />
+            <input
+              id="email-address"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10"
+              :placeholder="$t('pages.login.email.description')"
             >
           </div>
           <div>
-            <label for="password" class="sr-only">{{ $t('pages.login.password.label') }}</label>
-            <input id="password"
-                   name="password"
-                   type="password"
-                   autocomplete="current-password"
-                   required
-                   class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10"
-                   :placeholder="$t('pages.login.password.description')"
+            <label for="password" class="sr-only" v-text="$t('pages.login.password.label')" />
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10"
+              :placeholder="$t('pages.login.password.description')"
             >
           </div>
         </div>
@@ -45,15 +48,13 @@
               type="checkbox"
               class="h-4 w-4 text-green-500 focus:ring-green-500 border-gray-300 rounded"
             >
-            <label for="remember_me" class="ml-2 block text-sm text-gray-900">
-              {{ $t('pages.login.remember-me') }}
-            </label>
+            <label for="remember_me" class="ml-2 block text-sm text-gray-900" v-text="$t('pages.login.remember-me')" />
           </div>
-          <localized-link class="text-sm" to="/auth/forgot-password">
-            <button type="button" class="text-yellow-600 font-medium hover:text-yellow-800">
-              {{ $t('pages.login.forgot-password') }}
-            </button>
-          </localized-link>
+          <button
+            type="button"
+            class="text-sm text-yellow-600 font-medium hover:text-yellow-800"
+            v-text="$t('pages.login.forgot-password')"
+          />
         </div>
         <div>
           <button
@@ -80,7 +81,7 @@
         </div>
       </form>
       <div class="flex items-center justify-between">
-        <localized-link class="text-sm" to="/">
+        <localized-link class="text-sm" :to="{ name :'Homepage' }">
           <button type="button" class="text-yellow-600 font-medium hover:text-yellow-800">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -96,13 +97,13 @@
                 d="M10 19l-7-7m0 0l7-7m-7 7h18"
               />
             </svg>
-            <span class="ml-1">{{ $t('pages.login.back-to-homepage') }}</span>
+            <span class="ml-1" v-text="$t('pages.login.back-to-homepage')" />
           </button>
         </localized-link>
-        <localized-link class="text-sm" to="/auth/register">
-          <button type="button" class="text-yellow-600 font-medium hover:text-yellow-800">
-            {{ $t('pages.login.back-to-register') }}
-          </button>
+        <localized-link class="text-sm" :to="{ name :'RegisterPage' }">
+          <button type="button" class="text-yellow-600 font-medium hover:text-yellow-800"
+                  v-text="$t('pages.login.back-to-register')"
+          />
         </localized-link>
       </div>
     </div>

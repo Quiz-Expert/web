@@ -1,24 +1,7 @@
 import {createWebHistory} from 'vue-router'
 import translations from '../lang'
 import {createLangRouter} from 'vue-lang-router'
-
-const routes = [
-  {
-    path: '/',
-    name: 'Homepage',
-    component: () => import("../views/Homepage"),
-  },
-  {
-    path: '/auth/login',
-    name: 'LoginPage',
-    component: () => import("../views/LoginPage")
-  },
-  {
-    path: '/auth/register',
-    name: 'RegisterPage',
-    component: () => import("../views/RegisterPage")
-  }
-]
+import routes from './routes';
 
 const langRouterOptions = {
   defaultLanguage: 'pl',

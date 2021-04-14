@@ -3,12 +3,14 @@
     <div class="mt-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:mt-24 lg:mt-26 xl:mt-28">
       <div class="w-full py-6 flex flex-wrap flex-col md:flex-row items-center">
         <div class="flex w-full md:w-3/5 flex-col text-center md:text-left">
-          <h1 class="mb-4 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight text-gray-900">
-            {{ $t('pages.home.introduction.tittle') }}
-          </h1>
-          <p class="leading-normal sm:text-2xl lg:text-3xl mb-8 text-gray-500 ">
-            {{ $t('pages.home.introduction.description') }}
-          </p>
+          <h1
+            class="mb-4 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight text-gray-900"
+            v-text="$t('pages.home.introduction.tittle')"
+          />
+          <p
+            class="leading-normal sm:text-2xl lg:text-3xl mb-8 text-gray-500"
+            v-text="$t('pages.home.introduction.description')"
+          />
         </div>
         <div class="flex w-full md:w-2/5 justify-center">
           <img class="w-3/6 sm:w-2/5 md:w-3/6" src="@/assets/images/logo/icon.png">
@@ -38,17 +40,16 @@
                     />
                   </svg>
                 </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
-                  {{
-                    $t('pages.home.game-modes.invitation.tittle')
-                  }}
-                </p>
+                <p
+                  class="ml-16 text-lg leading-6 font-medium text-gray-900"
+                  v-text="$t('pages.home.game-modes.invitation.tittle')"
+                />
               </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">
-                {{ $t('pages.home.game-modes.invitation.description') }}
-              </dd>
+              <dd
+                class="mt-2 ml-16 text-base text-gray-500"
+                v-text="$t('pages.home.game-modes.invitation.description')"
+              />
             </div>
-
             <div class="relative">
               <dt>
                 <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
@@ -68,20 +69,19 @@
                     />
                   </svg>
                 </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
-                  {{ $t('pages.home.game-modes.random.tittle') }}
-                </p>
+                <p
+                  class="ml-16 text-lg leading-6 font-medium text-gray-900"
+                  v-text="$t('pages.home.game-modes.random.tittle')"
+                />
               </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">
-                {{ $t('pages.home.game-modes.random.description') }}
-              </dd>
+              <dd
+                class="mt-2 ml-16 text-base text-gray-500"
+                v-text="$t('pages.home.game-modes.random.description')"
+              />
             </div>
-
             <div class="relative">
               <dt>
-                <div
-                  class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-green-600 md:bg-yellow-500 text-white"
-                >
+                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-green-600 md:bg-yellow-500 text-white">
                   <svg
                     class="h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
@@ -98,20 +98,19 @@
                     />
                   </svg>
                 </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
-                  {{ $t('pages.home.game-modes.single.tittle') }}
-                </p>
+                <p
+                  class="ml-16 text-lg leading-6 font-medium text-gray-900"
+                  v-text="$t('pages.home.game-modes.single.tittle')"
+                />
               </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">
-                {{ $t('pages.home.game-modes.single.description') }}
-              </dd>
+              <dd
+                class="mt-2 ml-16 text-base text-gray-500"
+                v-text="$t('pages.home.game-modes.single.description')"
+              />
             </div>
-
             <div class="relative">
               <dt>
-                <div
-                  class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 md:bg-green-600 text-white"
-                >
+                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 md:bg-green-600 text-white">
                   <svg
                     class="h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
@@ -128,13 +127,15 @@
                     />
                   </svg>
                 </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">
-                  {{ $t('pages.home.game-modes.correspondence.tittle') }}
-                </p>
+                <p
+                  class="ml-16 text-lg leading-6 font-medium text-gray-900"
+                  v-text="$t('pages.home.game-modes.correspondence.tittle')"
+                />
               </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">
-                {{ $t('pages.home.game-modes.correspondence.description') }}
-              </dd>
+              <dd
+                class="mt-2 ml-16 text-base text-gray-500"
+                v-text="$t('pages.home.game-modes.correspondence.description')"
+              />
             </div>
           </dl>
         </div>
