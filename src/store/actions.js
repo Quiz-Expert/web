@@ -9,10 +9,12 @@ export default {
         .then(response => {
           const token = response.data.token;
           localStorage.setItem('ACCESS_TOKEN', token);
+
           commit('AUTH_LOGIN', token);
         })
         .catch((err) => {
           localStorage.removeItem('ACCESS_TOKEN');
+
           commit('AUTH_ERROR');
           reject(err);
         });
@@ -21,6 +23,7 @@ export default {
         .then(response => {
           const user = response.data;
           localStorage.setItem('CURRENT_USER', JSON.stringify(user));
+
           commit('AUTH_SUCCESS', user);
           resolve(response);
         })
@@ -39,6 +42,7 @@ export default {
         .then(response => {
           const token = response.data.token;
           localStorage.setItem('ACCESS_TOKEN', token);
+
           commit('AUTH_LOGIN', token);
         })
         .catch(err => {
@@ -52,6 +56,7 @@ export default {
         .then(response => {
           const user = response.data;
           localStorage.setItem('CURRENT_USER', JSON.stringify(user));
+
           commit('AUTH_SUCCESS', user);
           resolve(response);
         })
