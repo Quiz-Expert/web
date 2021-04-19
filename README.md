@@ -10,12 +10,17 @@ git clone -b develop https://github.com/Quiz-Expert/web.git quiz-expert-web
 cd quiz-expert-web
 ```
 
-**2. Uruchomienie kontenerów dockerowych**
+**2. Konfiguracja pliku `.env`**
+```
+cp .env.example .env
+```
+
+**3. Uruchomienie kontenerów dockerowych**
 ```
 docker-compose up -d --build
 ```
 
-**3. Aplikacja powinna być dostępna na:**
+**4. Aplikacja powinna być dostępna na:**
 ```
 http://localhost:8080
 ```
