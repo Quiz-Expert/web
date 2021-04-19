@@ -5,18 +5,25 @@ module.exports = [
     component: () => import("../views/Home/Homepage"),
   },
   {
+    path: '/auth',
+    redirect: '/auth/login',
+  },
+  {
     path: '/auth/login',
-    name: 'LoginPage',
-    component: () => import("../views/Auth/LoginPage")
+    name: 'Login',
+    component: () => import("../views/Auth/Login")
   },
   {
     path: '/auth/register',
-    name: 'RegisterPage',
-    component: () => import("../views/Auth/RegisterPage")
+    name: 'Register',
+    component: () => import("../views/Auth/Register")
   },
   {
     path: '/user',
     name: 'User',
+    meta: {
+      requiresAuth: true,
+    },
     redirect: "/user/categories",
     component: () => import("../views/UserInterface/UserPage"),
 

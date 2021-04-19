@@ -105,10 +105,11 @@
                     role="menuitem"
                     v-text="$t('pages.user.navigation.settings')"
                   />
-                  <localized-link
-                    :to="{ name: 'Homepage' }"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  <button
+                    type="button"
+                    class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     role="menuitem"
+                    @click="logout"
                     v-text="$t('pages.user.navigation.sing-out')"
                   />
                 </div>
@@ -211,7 +212,7 @@
               </svg>
             </div>
             <div class="ml-3">
-              <div class="text-base font-medium leading-none text-white">Tom Cook</div>
+              <div class="text-base font-medium leading-none text-white">{{ user.name }}</div>
             </div>
             <button
               type="button"
@@ -241,9 +242,10 @@
               class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
               v-text="$t('pages.user.navigation.settings')"
             />
-            <localized-link
-              :to="{ name: 'Homepage' }"
-              class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+            <button
+              type="button"
+              class="nav-link w-full block px-3 py-2 rounded-md text-base text-left font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              @click="logout"
               v-text="$t('pages.user.navigation.sing-out')"
             />
           </div>
@@ -254,12 +256,26 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: "Nav",
   data: () => ({
     isOpenProfile: false,
     isOpenMenu: false,
-  })
+  }),
+
+  computed: {
+    ...mapGetters(['user'])
+  },
+
+  methods: {
+    logout() {
+      this.$store.dispatch("LOGOUT").then(() => {
+        this.$router.push({name: 'Homepage'});
+      });
+    }
+  }
 }
 </script>
 
