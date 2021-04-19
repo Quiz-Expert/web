@@ -33,8 +33,8 @@
                 </div>
                 <input
                   type="email"
-                  class="focus:ring-green-500 focus:border-green-500 placeholder-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  :placeholder="user.email"
+                  class="focus:ring-green-500 focus:border-green-500 text-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  :value="user.email"
                   disabled
                 >
               </div>
@@ -45,7 +45,7 @@
             <div class="md:w-1/3 mx-auto max-w-sm">
               <h2 v-text="$t('pages.user.settings.personal-info')" />
             </div>
-            <div class="md:w-2/3 mx-auto max-w-sm space-y-2">
+            <form class="md:w-2/3 mx-auto max-w-sm space-y-2" method="POST" @submit.prevent="updateAccount">
               <div>
                 <label class="text-sm text-gray-500" v-text="$t('pages.user.settings.name')" />
                 <div class="w-full inline-flex">
@@ -67,7 +67,7 @@
                   <input
                     type="text"
                     class="focus:ring-green-500 focus:border-green-500 placeholder-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    :placeholder="user.name"
+                    :value="user.name"
                   >
                 </div>
               </div>
@@ -93,14 +93,35 @@
                   <input
                     type="text"
                     class="focus:ring-green-500 focus:border-green-500 placeholder-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    :placeholder="user.nick"
+                    :value="user.surname"
                   >
                 </div>
               </div>
-            </div>
+              <div class="flex justify-end">
+                <button
+                  type="submit"
+                  class="p-3 border shadow-lg text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </form>
           </div>
           <hr>
-          <div class="grid grid-cols-6 gap-8 p-8">
+          <div class="grid grid-cols-6 gap-4 p-4 sm:gap-6 sm:p-6 md:gap-8 md:px-8">
             <div class="col-span-3">
               <button
                 type="button"
@@ -123,16 +144,17 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: "Settings",
-  data() {
-    return {
-      user:
-        {
-          nick: "jane-cooper123",
-          name: "Jane Cooper",
-          email: "email@example.com"
-        }
+
+  computed: {
+    ...mapGetters(['user'])
+  },
+
+  methods: {
+    updateAccount() {
     }
   }
 }

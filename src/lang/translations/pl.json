@@ -77,9 +77,13 @@
     },
     "register": {
       "tittle": "Wprowadź swoje dane, aby się zarejestrować",
-      "nick": {
+      "name": {
         "label": "Nazwa użytkownika",
         "description": "Wprowadż nazwę użytkownika"
+      },
+      "nick": {
+        "label": "Nick użytkownika",
+        "description": "Wprowadż nick użytkownika"
       },
       "email": {
         "label": "Adres e-mail",
@@ -138,6 +142,7 @@
         "personal-info": "Informacje personalne",
         "name": "Twoja nazwa",
         "nick": "Twój nick",
+        "save": "Zapisz",
         "change-password": "Zmień hasło",
         "delete-account": "Usuń konto"
       }

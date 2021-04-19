@@ -34,14 +34,14 @@
           </button>
         </div>
         <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          <localized-link :to="{ name :'LoginPage' }">
+          <localized-link :to="{ name :'Login' }">
             <button
               type="button"
               class="focus:outline-none text-yellow-600 py-3 px-6 rounded-md hover:text-yellow-800"
               v-text="$t('pages.home.navigation.sign-in')"
             />
           </localized-link>
-          <localized-link :to="{ name :'RegisterPage' }">
+          <localized-link :to="{ name :'Register' }">
             <button
               type="button"
               class="focus:outline-none text-white py-3 px-6 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
@@ -96,7 +96,7 @@
           </div>
           <div class="py-6 px-5 space-y-6">
             <div>
-              <localized-link :to="{ name :'LoginPage' }">
+              <localized-link :to="{ name :'Login' }">
                 <button
                   type="button"
                   class="w-full focus:outline-none text-white py-3 px-6 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
@@ -106,7 +106,7 @@
               <p class="mt-6 text-center text-base font-medium text-gray-500">
                 {{ $t('pages.home.navigation.question') }}
                 <localized-link
-                  :to="{ name :'RegisterPage' }"
+                  :to="{ name :'Register' }"
                   class="text-yellow-600 hover:text-yellow-800"
                   v-text="$t('pages.home.navigation.sign-up')"
                 />

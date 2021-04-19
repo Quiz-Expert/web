@@ -12,13 +12,23 @@
           v-text="$t('pages.login.tittle')"
         />
       </div>
-      <form class="mt-8 space-y-6" action="#" method="POST">
-        <input type="hidden" name="remember" value="true">
+      <div v-if="error.alertOpen" class="text-white p-3 rounded-md relative bg-red-500">
+        <span class="inline-block align-middle" v-text="error.message" />
+        <button
+          type="button"
+          class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-3 mr-3 outline-none focus:outline-none"
+          @click="closeAlert()"
+        >
+          <span>×</span>
+        </button>
+      </div>
+      <form class="mt-8 space-y-6" method="POST" @submit.prevent="login">
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
             <label for="email-address" class="sr-only" v-text="$t('pages.login.email.label')" />
             <input
               id="email-address"
+              v-model="userData.email"
               name="email"
               type="email"
               autocomplete="email"
@@ -31,6 +41,7 @@
             <label for="password" class="sr-only" v-text="$t('pages.login.password.label')" />
             <input
               id="password"
+              v-model="userData.password"
               name="password"
               type="password"
               autocomplete="current-password"
@@ -40,26 +51,10 @@
             >
           </div>
         </div>
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <input
-              id="remember_me"
-              name="remember_me"
-              type="checkbox"
-              class="h-4 w-4 text-green-500 focus:ring-green-500 border-gray-300 rounded"
-            >
-            <label for="remember_me" class="ml-2 block text-sm text-gray-900" v-text="$t('pages.login.remember-me')" />
-          </div>
-          <button
-            type="button"
-            class="text-sm text-yellow-600 font-medium hover:text-yellow-800"
-            v-text="$t('pages.login.forgot-password')"
-          />
-        </div>
         <div>
           <button
             type="submit"
-            class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
               <svg
@@ -100,9 +95,11 @@
             <span class="ml-1" v-text="$t('pages.login.back-to-homepage')" />
           </button>
         </localized-link>
-        <localized-link class="text-sm" :to="{ name :'RegisterPage' }">
-          <button type="button" class="text-yellow-600 font-medium hover:text-yellow-800"
-                  v-text="$t('pages.login.back-to-register')"
+        <localized-link class="text-sm" :to="{ name :'Register' }">
+          <button
+            type="button"
+            class="text-yellow-600 font-medium hover:text-yellow-800"
+            v-text="$t('pages.login.back-to-register')"
           />
         </localized-link>
       </div>
@@ -112,6 +109,36 @@
 
 <script>
 export default {
-  name: "LoginForm"
+  name: "Login",
+
+  data() {
+    return {
+      error: {
+        alertOpen: false,
+        message: '',
+      },
+
+      userData: {
+        email: '',
+        password: '',
+      }
+    }
+  },
+
+  methods: {
+    login() {
+      this.$store.dispatch("LOGIN", this.userData)
+        .then(() => this.$router.push({name: 'User'}))
+        .catch(err => {
+          console.log(err);
+          this.error.alertOpen = true;
+          this.error.message = err.response.data.message;
+        })
+    },
+
+    closeAlert(){
+      this.error.alertOpen = false;
+    }
+  }
 }
 </script>

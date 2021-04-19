@@ -12,17 +12,31 @@
           v-text="$t('pages.register.tittle')"
         />
       </div>
-      <form action="#" method="POST">
+      <form method="POST" @submit.prevent="register">
         <div class="shadow-2xl overflow-hidden rounded-md border-b-2 border-t-2 border-yellow-500">
           <div class="px-4 py-5 sm:p-6">
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 md:col-span-3">
+                <label for="nick" class="block text-sm font-medium text-gray-700" v-text="$t('pages.register.name.label')" />
+                <input
+                  id="name"
+                  v-model="userData.name"
+                  type="text"
+                  name="name"
+                  autocomplete="given-name"
+                  required
+                  class="mt-1 focus:ring-green-500 focus:border-green-500 placeholder-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  :placeholder="$t('pages.register.name.description')"
+                >
+              </div>
+              <div class="col-span-6 md:col-span-3">
                 <label for="nick" class="block text-sm font-medium text-gray-700" v-text="$t('pages.register.nick.label')" />
                 <input
                   id="nick"
+                  v-model="userData.nick"
                   type="text"
                   name="nick"
-                  autocomplete="given-name"
+                  autocomplete="given-nick"
                   required
                   class="mt-1 focus:ring-green-500 focus:border-green-500 placeholder-gray-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   :placeholder="$t('pages.register.nick.description')"
@@ -32,6 +46,7 @@
                 <label for="email_address" class="block text-sm font-medium text-gray-700" v-text="$t('pages.register.email.label')" />
                 <input
                   id="email_address"
+                  v-model="userData.email"
                   type="email"
                   name="email_address"
                   autocomplete="email"
@@ -40,10 +55,13 @@
                   :placeholder="$t('pages.register.email.description')"
                 >
               </div>
+            </div>
+            <div class="grid grid-cols-6 gap-6 mt-6">
               <div class="col-span-6 md:col-span-3">
                 <label for="password" class="block text-sm font-medium text-gray-700" v-text="$t('pages.register.password.label')" />
                 <input
                   id="password"
+                  v-model="userData.password"
                   type="password"
                   name="password"
                   autocomplete="email"
@@ -52,11 +70,11 @@
                   :placeholder="$t('pages.register.password.description')"
                 >
               </div>
-
               <div class="col-span-6 md:col-span-3">
                 <label for="password_confirm" class="block text-sm font-medium text-gray-700" v-text="$t('pages.register.password-confirm.label')" />
                 <input
                   id="password_confirm"
+                  v-model="userData.password_confirmation"
                   type="password"
                   name="password_confirm"
                   autocomplete="email"
@@ -96,7 +114,7 @@
             <span class="ml-1" v-text="$t('pages.register.back-to-homepage')" />
           </button>
         </localized-link>
-        <localized-link class="text-sm" :to="{ name :'LoginPage' }">
+        <localized-link class="text-sm" :to="{ name :'Login' }">
           <button type="button" class="text-yellow-600 font-medium hover:text-yellow-800" v-text="$t('pages.register.back-to-login')" />
         </localized-link>
       </div>
@@ -106,6 +124,26 @@
 
 <script>
 export default {
-  name: "RegisterForm"
+  name: "Register",
+
+  data() {
+    return {
+      userData: {
+        nick: '',
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+      }
+    }
+  },
+
+  methods: {
+    register() {
+      this.$store.dispatch("REGISTER", this.userData)
+        .then(() => this.$router.push({name: 'User'}))
+        .catch(err => console.log(err))
+    }
+  }
 }
 </script>
