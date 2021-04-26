@@ -1,4 +1,6 @@
-module.exports = [
+import NotFound from "../views/NotFound";
+
+const routes = [
   {
     path: '/',
     name: 'Homepage',
@@ -59,5 +61,12 @@ module.exports = [
         component: () => import("../components/UserInterface/MainSections/Settings"),
       },
     ]
-  }
-]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'Not-found',
+    component: NotFound,
+  },
+];
+
+export default routes;

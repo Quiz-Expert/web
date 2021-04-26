@@ -5,6 +5,11 @@
     "language": "Polski"
   },
   "pages": {
+    "not-found": {
+      "tittle": "Przepraszamy, nie mogliśmy znaleźć tej strony.",
+      "descriptions": "Ale nie martw się, na naszej stronie głównej znajdziesz wiele innych rzeczy.",
+      "back-to-homepage": "Powrót na stronę główną"
+    },
     "home": {
       "navigation": {
         "open": "Otwórz menu",

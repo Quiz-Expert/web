@@ -21,7 +21,7 @@ router.beforeEach((to, from, next) => {
     } else {
       next('/auth/login');
     }
-  }else {
+  } else {
     return next();
   }
 });
