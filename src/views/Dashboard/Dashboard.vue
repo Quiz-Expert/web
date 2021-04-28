@@ -17,30 +17,25 @@
       </div>
 
       <nav class="flex flex-col mt-10 px-4 text-center" @click="isOpenMenu = false">
-        <localized-link
-          :to="{ name: 'Overview' }"
-          class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
-          v-text="$t('pages.dashboard.navigation.overview')"
+        <localized-link :to="{ name: 'Overview' }"
+                        class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
+                        v-text="$t('pages.dashboard.navigation.overview')"
         />
-        <localized-link
-          :to="{ name: 'Categories-panel' }"
-          class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
-          v-text="$t('pages.dashboard.navigation.categories')"
+        <localized-link :to="{ name: 'Categories-panel' }"
+                        class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
+                        v-text="$t('pages.dashboard.navigation.categories')"
         />
-        <localized-link
-          :to="{ name: 'Questions-panel' }"
-          class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
-          v-text="$t('pages.dashboard.navigation.questions')"
+        <localized-link :to="{ name: 'Questions-panel' }"
+                        class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
+                        v-text="$t('pages.dashboard.navigation.questions')"
         />
-        <localized-link
-          :to="{ name: 'Suggestions-panel' }"
-          class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
-          v-text="$t('pages.dashboard.navigation.suggestions')"
+        <localized-link :to="{ name: 'Suggestions-panel' }"
+                        class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
+                        v-text="$t('pages.dashboard.navigation.suggestions')"
         />
-        <localized-link
-          :to="{ name: 'Users-panel' }"
-          class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
-          v-text="$t('pages.dashboard.navigation.users')"
+        <localized-link :to="{ name: 'Users-panel' }"
+                        class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
+                        v-text="$t('pages.dashboard.navigation.users')"
         />
       </nav>
     </div>

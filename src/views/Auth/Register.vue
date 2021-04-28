@@ -7,9 +7,8 @@
             <img class="mx-auto h-32 w-auto" src="@/assets/images/logo/icon.png">
           </localized-link>
         </div>
-        <h2
-          class="mt-6 text-center text-2xl sm:text-3xl font-extrabold text-gray-900"
-          v-text="$t('pages.register.tittle')"
+        <h2 class="mt-6 text-center text-2xl sm:text-3xl font-extrabold text-gray-900"
+            v-text="$t('pages.register.tittle')"
         />
       </div>
       <form method="POST" @submit.prevent="register">
@@ -129,7 +128,10 @@
           </button>
         </localized-link>
         <localized-link class="text-sm" :to="{ name :'Login' }">
-          <button type="button" class="text-yellow-600 font-medium hover:text-yellow-800" v-text="$t('pages.register.back-to-login')" />
+          <button type="button" 
+                  class="text-yellow-600 font-medium hover:text-yellow-800"
+                  v-text="$t('pages.register.back-to-login')"
+          />
         </localized-link>
       </div>
     </div>

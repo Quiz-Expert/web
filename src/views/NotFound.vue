@@ -7,10 +7,9 @@
         <p class="mb-8" v-text="$t('pages.not-found.descriptions')" />
         <div>
           <localized-link :to="{ name :'Homepage' }">
-            <button
-              type="button"
-              class="focus:outline-none text-white py-2 px-6 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
-              v-text="$t('pages.not-found.back-to-homepage')"
+            <button type="button"
+                    class="focus:outline-none text-white py-2 px-6 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
+                    v-text="$t('pages.not-found.back-to-homepage')"
             />
           </localized-link>
         </div>
