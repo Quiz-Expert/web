@@ -1,29 +1,31 @@
 import axios from "../axios";
 
 export default {
-  LOGIN({commit}, user) {
+  AUTH({commit}, [user, action]) {
     return new Promise((resolve, reject) => {
-      commit('AUTH_REQUEST')
-
-      axios.post('login', user)
+      commit('AUTH_REQUEST');
+      return axios.post(`auth/${action}`, user)
         .then(response => {
-          const token = response.data.token;
+          const token = response.data.data;
           localStorage.setItem('ACCESS_TOKEN', token);
-
           commit('AUTH_LOGIN', token);
+          resolve(response);
         })
         .catch((err) => {
           localStorage.removeItem('ACCESS_TOKEN');
-
           commit('AUTH_ERROR');
           reject(err);
         });
+    })
+  },
 
-      axios.get('user')
+  GET_USER({commit}) {
+    return new Promise((resolve, reject) => {
+      commit('AUTH_REQUEST');
+      return axios.get('auth/user')
         .then(response => {
-          const user = response.data;
+          const user = response.data.data;
           localStorage.setItem('CURRENT_USER', JSON.stringify(user));
-
           commit('AUTH_SUCCESS', user);
           resolve(response);
         })
@@ -34,45 +36,25 @@ export default {
     })
   },
 
-  REGISTER({commit}, user) {
-    return new Promise((resolve, reject) => {
-      commit('AUTH_REQUEST')
+  async LOGIN({dispatch}, user) {
+    await dispatch('AUTH', [user, "login"]);
+    await dispatch('GET_USER');
+  },
 
-      axios.post('register', user)
-        .then(response => {
-          const token = response.data.token;
-          localStorage.setItem('ACCESS_TOKEN', token);
-
-          commit('AUTH_LOGIN', token);
-        })
-        .catch(err => {
-          commit('AUTH_ERROR');
-          localStorage.removeItem('ACCESS_TOKEN');
-
-          reject(err);
-        });
-
-      axios.get('user')
-        .then(response => {
-          const user = response.data;
-          localStorage.setItem('CURRENT_USER', JSON.stringify(user));
-
-          commit('AUTH_SUCCESS', user);
-          resolve(response);
-        })
-        .catch((err) => {
-          commit('AUTH_ERROR');
-          reject(err);
-        });
-    });
+  async REGISTER({dispatch}, user) {
+    await dispatch('AUTH', [user, 'register']);
+    await dispatch('GET_USER');
   },
 
   LOGOUT({commit}) {
     return new Promise((resolve) => {
-      commit('AUTH_LOGOUT');
-      localStorage.removeItem('ACCESS_TOKEN');
-      localStorage.removeItem('CURRENT_USER');
-      resolve();
+      return axios.post('auth/logout')
+        .then(() => {
+          commit('AUTH_LOGOUT');
+          localStorage.removeItem('ACCESS_TOKEN');
+          localStorage.removeItem('CURRENT_USER');
+          resolve();
+        })
     });
   }
 }

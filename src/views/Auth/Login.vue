@@ -12,12 +12,12 @@
           v-text="$t('pages.login.tittle')"
         />
       </div>
-      <div v-if="error.alertOpen" class="text-white p-3 rounded-md relative bg-red-500">
+      <div v-if="error.alertOpen" class="text-white text-center p-3 pr-5 rounded-md relative bg-red-500">
         <span class="inline-block align-middle" v-text="error.message" />
         <button
           type="button"
           class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-3 mr-3 outline-none focus:outline-none"
-          @click="closeAlert()"
+          @click="clearErrors()"
         >
           <span>×</span>
         </button>
@@ -33,7 +33,8 @@
               type="email"
               autocomplete="email"
               required
-              class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10"
+              :class="checkInput('email') ? 'ring-red-500 border-red-500 z-10' : 'border-gray-300'"
+              class="relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10"
               :placeholder="$t('pages.login.email.description')"
             >
           </div>
@@ -46,7 +47,8 @@
               type="password"
               autocomplete="current-password"
               required
-              class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10"
+              :class="checkInput('password') ? 'ring-red-500 border-red-500 z-10' : 'border-gray-300'"
+              class="relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10"
               :placeholder="$t('pages.login.password.description')"
             >
           </div>
@@ -116,6 +118,7 @@ export default {
       error: {
         alertOpen: false,
         message: '',
+        data: {},
       },
 
       userData: {
@@ -126,18 +129,26 @@ export default {
   },
 
   methods: {
+    checkInput(name) {
+      return name in this.error.data;
+    },
+
+    clearErrors() {
+      this.error.alertOpen = false;
+      this.error.message = '';
+      this.error.data = {};
+    },
+
     login() {
+      this.clearErrors();
       this.$store.dispatch("LOGIN", this.userData)
         .then(() => this.$router.push({name: 'User'}))
         .catch(err => {
           console.log(err);
           this.error.alertOpen = true;
           this.error.message = err.response.data.message;
+          this.error.data = err.response.data.errors;
         })
-    },
-
-    closeAlert(){
-      this.error.alertOpen = false;
     }
   }
 }
