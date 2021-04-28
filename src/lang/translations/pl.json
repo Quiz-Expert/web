@@ -10,6 +10,40 @@
       "descriptions": "Ale nie martw się, na naszej stronie głównej znajdziesz wiele innych rzeczy.",
       "back-to-homepage": "Powrót na stronę główną"
     },
+    "dashboard": {
+      "navigation": {
+        "tittle": "Panel Administratora",
+        "overview": "Przegląd",
+        "users": "Użytkownicy",
+        "categories": "Kategorie",
+        "questions": "Pytania",
+        "suggestions": "Propozycje"
+      },
+      "categories-panel": {
+        "tittle": "Kategorie",
+        "name": "Nazwa",
+        "description": "Opis",
+        "actions": "Akcje"
+      },
+      "questions-panel": {
+        "tittle": "Pytania",
+        "category": "Kategoria",
+        "name": "Nazwa",
+        "actions": "Akcje"
+      },
+      "users-panel": {
+        "tittle": "Użytkownicy",
+        "name": "Nazwa",
+        "role": "Rola",
+        "actions": "Akcje"
+      },
+      "suggestions-panel": {
+        "tittle": "Propozycje pytań",
+        "category":"Kategoria",
+        "name": "Nazwa",
+        "actions": "Akcje"
+      }
+    },
     "home": {
       "navigation": {
         "open": "Otwórz menu",
@@ -115,6 +149,7 @@
         "notifications": "Powiadomienia",
         "open-user-menu": "Otwórz menu użytkownika",
         "settings": "Ustawienia",
+        "dashboard": "Panel Administratora",
         "sing-out": "Wyloguj się"
       },
       "select-categories": {

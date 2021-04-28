@@ -105,11 +105,18 @@
                     role="menuitem"
                     v-text="$t('pages.user.navigation.settings')"
                   />
+                  <localized-link
+                    v-show="isAdmin"
+                    :to="{ name: 'Dashboard' }"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                    v-text="$t('pages.user.navigation.dashboard')"
+                  />
                   <button
                     type="button"
                     class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     role="menuitem"
-                    @click="logout"
+                    @click="logout()"
                     v-text="$t('pages.user.navigation.sing-out')"
                   />
                 </div>
@@ -212,7 +219,7 @@
               </svg>
             </div>
             <div class="ml-3">
-              <div class="text-base font-medium leading-none text-white">{{ user.name }}</div>
+              <div class="text-base font-medium leading-none text-white" v-text="user.name" />
             </div>
             <button
               type="button"
@@ -242,10 +249,16 @@
               class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
               v-text="$t('pages.user.navigation.settings')"
             />
+            <localized-link
+              v-show="isAdmin"
+              :to="{ name: 'Dashboard' }"
+              class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              v-text="$t('pages.user.navigation.dashboard')"
+            />
             <button
               type="button"
               class="nav-link w-full block px-3 py-2 rounded-md text-base text-left font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              @click="logout"
+              @click="logout()"
               v-text="$t('pages.user.navigation.sing-out')"
             />
           </div>
@@ -266,7 +279,7 @@ export default {
   }),
 
   computed: {
-    ...mapGetters(['user'])
+    ...mapGetters(['user', 'isAdmin'])
   },
 
   methods: {
