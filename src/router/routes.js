@@ -8,6 +8,7 @@ import Friends from "../components/UserInterface/MainSections/Friends"
 import InvitingToFriends from "../components/UserInterface/MainSections/InvitingToFriends"
 import Profile from "../components/UserInterface/MainSections/Profile"
 import Settings from "../components/UserInterface/MainSections/Settings"
+import GameModeSelection from "../views/Game/ModeSelection"
 import Dashboard from "../views/Dashboard/Dashboard"
 import Overview from "../components/Dashboard/MainSections/Overview"
 import CategoriesPanel from "../components/Dashboard/MainSections/Categories"
@@ -84,6 +85,11 @@ const routes = [
         component: Settings,
       },
     ]
+  },
+  {
+    path: '/game/mode-selection',
+    name: 'GameModeSelection',
+    component: GameModeSelection,
   },
   {
     path: '/dashboard',

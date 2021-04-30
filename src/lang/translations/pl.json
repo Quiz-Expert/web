@@ -152,6 +152,14 @@
         }
       }
     },
+    "game": {
+      "mode-selection": {
+        "tittle": "Wybierz tryb gry",
+        "challenge-friend": "Wyzwij znajomego",
+        "random-opponent": "Losuj przeciwnika",
+        "play-alone": "Graj sam"
+      }
+    },
     "login": {
       "tittle": "Zaloguj się do swojego konta",
       "email": {
