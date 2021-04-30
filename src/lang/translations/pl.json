@@ -19,29 +19,83 @@
         "questions": "Pytania",
         "suggestions": "Propozycje"
       },
+      "removal-modal": {
+        "cancel": "Anuluj",
+        "remove": "Usuń"
+      },
       "categories-panel": {
         "tittle": "Kategorie",
         "name": "Nazwa",
         "description": "Opis",
-        "actions": "Akcje"
+        "actions": "Akcje",
+        "removal": {
+          "tittle": "Usuwanie kategorii",
+          "question": "Czy na pewno chcesz usunąć tą kategorie?"
+        },
+        "edition": {
+          "tittle": "Edycja kategorii",
+          "name": "Nazwa",
+          "description": "Opis",
+          "photo": "Zdjęcie",
+          "change-photo": "Zmień zdjęcie",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        }
       },
       "questions-panel": {
         "tittle": "Pytania",
         "category": "Kategoria",
         "name": "Nazwa",
-        "actions": "Akcje"
+        "actions": "Akcje",
+        "removal": {
+          "tittle": "Usuwanie pytania",
+          "question": "Czy na pewno chcesz usunąć to pytanie?"
+        },
+        "edition": {
+          "tittle": "Edycja pytania",
+          "name": "Nazwa",
+          "description": "Opis",
+          "photo": "Zdjęcie",
+          "change-photo": "Zmień zdjęcie",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        }
+      },
+      "suggestions-panel": {
+        "tittle": "Propozycje pytań",
+        "category": "Kategoria",
+        "name": "Nazwa",
+        "actions": "Akcje",
+        "removal": {
+          "tittle": "Usuwanie sugestii",
+          "question": "Czy na pewno chcesz usunąć tą sugestie?"
+        },
+        "edition": {
+          "tittle": "Edycja sugestii",
+          "name": "Nazwa",
+          "description": "Opis",
+          "photo": "Zdjęcie",
+          "change-photo": "Zmień zdjęcie",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        }
       },
       "users-panel": {
         "tittle": "Użytkownicy",
         "name": "Nazwa",
         "role": "Rola",
-        "actions": "Akcje"
-      },
-      "suggestions-panel": {
-        "tittle": "Propozycje pytań",
-        "category":"Kategoria",
-        "name": "Nazwa",
-        "actions": "Akcje"
+        "actions": "Akcje",
+        "removal": {
+          "tittle": "Usuwanie użytkownika",
+          "question": "Czy na pewno chcesz usunąć tego użytkownika?"
+        },
+        "edition": {
+          "tittle": "Edycja użytkownika",
+          "name": "Nazwa",
+          "role": "Rola",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        }
       }
     },
     "home": {

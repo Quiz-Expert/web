@@ -40,6 +40,7 @@
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                   <button type="button"
                           class="inline-block p-1 sm:p-2 text-center text-white transition bg-green-600 rounded-full shadow ripple hover:shadow-lg hover:bg-green-700 focus:outline-none"
+                          @click="isEditModalVisible=true"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="w-4 sm:w-5 h-4 sm:h-5"
@@ -56,6 +57,7 @@
                   </button>
                   <button type="button"
                           class="inline-block p-1 sm:p-2 text-center text-white transition bg-red-500 rounded-full shadow ripple hover:shadow-lg hover:bg-red-600 focus:outline-none"
+                          @click="isDeleteModalVisible=true"
                   >
                     <svg class="w-4 sm:w-5 h-4 sm:h-5 text-white"
                          xmlns="http://www.w3.org/2000/svg"
@@ -76,21 +78,36 @@
         </div>
       </div>
     </div>
+    <EditCategory v-show="isEditModalVisible"
+                  @close="isEditModalVisible=false"
+    />
+    <DeleteModal v-show="isDeleteModalVisible"
+                 :tittle="$t('pages.dashboard.categories-panel.removal.tittle')"
+                 :question="$t('pages.dashboard.categories-panel.removal.question')"
+                 @close="isDeleteModalVisible=false"
+    />
   </main>
 </template>
 
 <script>
-import Pagination from "../Pagination"
+import Pagination from "../Pagination";
+import EditCategory from "../Modals/EditCategory"
+import DeleteModal from "../Modals/DeleteModal"
 
 export default {
   name: "Categories",
 
   components: {
     Pagination,
+    EditCategory,
+    DeleteModal
   },
 
   data() {
     return {
+      isEditModalVisible: false,
+      isDeleteModalVisible: false,
+
       categories: [
         {
           name: "Kategoria - 1",
