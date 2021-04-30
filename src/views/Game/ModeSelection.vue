@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-gray-200">
-    <div class="flex justify-center bg-green-800">
+    <div class="flex justify-center bg-green-700">
       <div class="w-full max-w-7xl">
         <button type="button"
                 class="flex text-gray-200 dark:text-gray-300 focus:outline-none p-3 xl:px-0"
@@ -20,7 +20,7 @@
         </button>
       </div>
     </div>
-    <div class="bg-green-800 w-full text-center -mt-6 py-14 md:py-32 xl:py-44 shadow-2xl">
+    <div class="bg-green-700 w-full text-center -mt-6 py-14 md:py-32 xl:py-44 shadow-2xl">
       <h1 class="font-bold text-3xl md:text-4xl xl:text-5xl text-white text-center" v-text="category.tittle" />
       <p class="mt-6 text-sm md:text-base tracking-widest text-white" v-text="category.description" />
     </div>

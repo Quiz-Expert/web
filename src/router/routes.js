@@ -89,6 +89,9 @@ const routes = [
   {
     path: '/game/mode-selection',
     name: 'GameModeSelection',
+    meta: {
+      requiresAuth: true,
+    },
     component: GameModeSelection,
   },
   {
