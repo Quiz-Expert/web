@@ -15,16 +15,4 @@ axiosApi.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 
-
-axiosApi.interceptors.response.use(function (response) {
-  let token = localStorage.getItem('ACCESS_TOKEN');
-
-  if (token) {
-    response.headers['Authorization'] = `Bearer ${token}`;
-  }
-  return response;
-}, function (error) {
-  return Promise.reject(error);
-});
-
 export default axiosApi;

@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import {createStore} from 'vuex'
 import actions from "./actions";
 import mutations from "./mutations";
 
@@ -11,6 +11,7 @@ const store = createStore({
   getters: {
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
+    isAdmin: state => state.user.is_admin,
     user: state => state.user,
   },
   mutations: mutations,

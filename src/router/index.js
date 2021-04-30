@@ -16,14 +16,24 @@ const router = createLangRouter(langRouterOptions, routerOptions)
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.getters.isLoggedIn) {
-      return next();
-    } else {
-      next('/auth/login');
+    if (!store.getters.isLoggedIn) {
+      next({name: 'Login'});
     }
-  }else {
-    return next();
   }
+
+  if (to.matched.some(record => record.meta.onlyAdmin)) {
+    if (!store.getters.isAdmin) {
+      next({name: 'Not-found'})
+    }
+  }
+
+  if (to.matched.some(record => record.meta.isAuthenticated)) {
+    if (store.getters.isLoggedIn) {
+      next({name: 'User'})
+    }
+  }
+
+  next();
 });
 
 export default router
