@@ -9,6 +9,7 @@ import InvitingToFriends from "../components/UserInterface/MainSections/Inviting
 import Profile from "../components/UserInterface/MainSections/Profile"
 import Settings from "../components/UserInterface/MainSections/Settings"
 import GameModeSelection from "../views/Game/ModeSelection"
+import GameMode from "../views/Game/GameMode"
 import Dashboard from "../views/Dashboard/Dashboard"
 import Overview from "../components/Dashboard/MainSections/Overview"
 import CategoriesPanel from "../components/Dashboard/MainSections/Categories"
@@ -93,6 +94,14 @@ const routes = [
       requiresAuth: true,
     },
     component: GameModeSelection,
+  },
+  {
+    path: '/game/run',
+    name:'GameMode',
+    meta: {
+      requiresAuth: true,
+    },
+    component: GameMode,
   },
   {
     path: '/dashboard',
