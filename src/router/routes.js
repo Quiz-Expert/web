@@ -10,6 +10,7 @@ import Profile from "../components/UserInterface/MainSections/Profile"
 import Settings from "../components/UserInterface/MainSections/Settings"
 import GameModeSelection from "../views/Game/ModeSelection"
 import GameMode from "../views/Game/GameMode"
+import GameFinalResult from "../views/Game/FinalResult"
 import Dashboard from "../views/Dashboard/Dashboard"
 import Overview from "../components/Dashboard/MainSections/Overview"
 import CategoriesPanel from "../components/Dashboard/MainSections/Categories"
@@ -102,6 +103,14 @@ const routes = [
       requiresAuth: true,
     },
     component: GameMode,
+  },
+  {
+    path: '/game/final-result',
+    name:'FinalResult',
+    meta: {
+      requiresAuth: true,
+    },
+    component: GameFinalResult,
   },
   {
     path: '/dashboard',
