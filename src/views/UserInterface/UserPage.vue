@@ -1,7 +1,9 @@
 <template>
-  <Nav />
-  <router-view />
-  <Footer />
+  <div class="min-h-screen bg-gray-200">
+    <Nav />
+    <router-view />
+  </div>
+  <Footer class="-mt-20" />
 </template>
 
 <script>

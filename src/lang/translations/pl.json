@@ -152,6 +152,24 @@
         }
       }
     },
+    "game": {
+      "mode-selection": {
+        "tittle": "Wybierz tryb gry",
+        "challenge-friend": "Wyzwij znajomego",
+        "random-opponent": "Losuj przeciwnika",
+        "play-alone": "Graj sam"
+      },
+      "final-result": {
+        "tittle":"Twój wynik:",
+        "play-again": "Zagraj ponownie",
+        "report-mistake":{
+          "tittle": "Zgłoś błąd w pytaniu",
+          "select-question":"W którym pytaniu znajduje się błąd?",
+          "send": "Wyślij",
+          "cancel": "Anuluj"
+        }
+      }
+    },
     "login": {
       "tittle": "Zaloguj się do swojego konta",
       "email": {

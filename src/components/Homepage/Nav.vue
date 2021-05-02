@@ -39,7 +39,7 @@
           </localized-link>
           <localized-link :to="{ name :'Register' }">
             <button type="button"
-                    class="focus:outline-none text-white py-3 px-6 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
+                    class="focus:outline-none text-white py-3 px-6 rounded-md bg-green-600 hover:bg-green-700 hover:shadow-lg"
                     v-text="$t('pages.home.navigation.sign-up')"
             />
           </localized-link>

@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gradient-to-r from-green-800 to-green-500 pt-10 mt-5 pt-10">
+  <footer class="bg-green-700 pt-10 mt-5 pt-10">
     <div class="max-w-6xl m-auto flex flex-wrap justify-left">
       <div class="p-5 w-1/2 sm:w-4/12 md:w-3/12">
         <p class="text-xs font-bold uppercase text-gray-300 font-medium mb-6"

@@ -9,19 +9,19 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <localized-link :to="{ name: 'Categories' }"
-                              class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                              class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium"
                               v-text="$t('pages.user.navigation.categories')"
               />
               <localized-link :to="{ name: 'Invitations' }"
-                              class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                              class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium"
                               v-text="$t('pages.user.navigation.invitations')"
               />
               <localized-link :to="{ name: 'Friends' }"
-                              class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                              class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium"
                               v-text="$t('pages.user.navigation.friends')"
               />
               <localized-link :to="{ name: 'Profile' }"
-                              class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                              class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium"
                               v-text="$t('pages.user.navigation.profile')"
               />
             </div>
