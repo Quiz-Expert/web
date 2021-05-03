@@ -1,9 +1,9 @@
-import axios from "../axios";
+import axios from "../../../axios";
 
 export default {
   AUTH({commit}, [user, action]) {
     return new Promise((resolve, reject) => {
-      commit('AUTH_REQUEST');
+      commit('REQUEST');
       return axios.post(`auth/${action}`, user)
         .then(response => {
           const token = response.data.data;
@@ -13,7 +13,7 @@ export default {
         })
         .catch((err) => {
           localStorage.removeItem('ACCESS_TOKEN');
-          commit('AUTH_ERROR');
+          commit('ERROR');
           reject(err);
         });
     })
@@ -21,7 +21,7 @@ export default {
 
   GET_USER({commit}) {
     return new Promise((resolve, reject) => {
-      commit('AUTH_REQUEST');
+      commit('REQUEST');
       return axios.get('auth/user')
         .then(response => {
           const user = response.data.data;
@@ -30,7 +30,7 @@ export default {
           resolve(response);
         })
         .catch((err) => {
-          commit('AUTH_ERROR');
+          commit('ERROR');
           reject(err);
         });
     })

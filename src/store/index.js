@@ -1,22 +1,20 @@
 import {createStore} from 'vuex'
-import actions from "./actions";
 import mutations from "./mutations";
+import auth from './Modules/Auth'
+import categories from "./Modules/Categories";
 
 const store = createStore({
   state: {
-    success: '',
-    token: localStorage.getItem('ACCESS_TOKEN') || '',
-    user: JSON.parse(localStorage.getItem('CURRENT_USER')) || '',
+    status: null,
   },
   getters: {
-    isLoggedIn: state => !!state.token,
-    authStatus: state => state.status,
-    isAdmin: state => state.user.is_admin,
-    user: state => state.user,
+    status: state => state.status,
   },
   mutations: mutations,
-  actions: actions,
-  modules: {}
+  modules: {
+    auth: auth,
+    categories: categories
+  }
 })
 
 export default store;
