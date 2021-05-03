@@ -1,5 +1,5 @@
 <template>
-  <main class="flex justify-center py-12 pb-32">
+  <main class="flex justify-center py-12">
     <div class="max-w-6xl w-full space-y-8 px-4">
       <div>
         <h2 class="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight text-gray-900 text-center"
