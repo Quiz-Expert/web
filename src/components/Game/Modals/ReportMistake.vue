@@ -43,7 +43,7 @@
               </div>
             </div>
           </div>
-          <form action="#" method="POST">
+          <form method="POST" @submit.prevent="sendReportMistake()">
             <div class="shadow overflow-hidden sm:rounded-md">
               <div class="px-4 py-5 bg-white sm:p-6">
                 <div class="grid grid-cols-3 gap-6">
@@ -53,28 +53,50 @@
                            v-text="$t('pages.game.final-result.report-mistake.select-question')"
                     />
                     <select id="question"
+                            v-model="mistakeData.question_id"
                             name="role"
                             autocomplete="role"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                            required
                     >
-                      <option v-for="question in questions" :key="question" v-text="question" />
+                      <option v-for="question in questions"
+                              :key="question"
+                              v-bind:value="question.id"
+                              v-text="question.text"
+                      />
                     </select>
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="comments"
+                           class="block text-sm font-medium text-gray-700"
+                           v-text="$t('pages.game.final-result.report-mistake.comments-to-question')"
+                    />
+                    <div class="mt-1">
+                      <textarea id="comments"
+                                v-model="mistakeData.text"
+                                name="comments"
+                                rows="3"
+                                class="shadow-sm focus:ring-green-500 focus:border-green-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
+                                :placeholder="$t('pages.game.final-result.report-mistake.describe-comments')"
+                                required
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button type="submit"
+                      class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+                      v-text="$t('pages.game.final-result.report-mistake.send')"
+              />
+              <button type="button"
+                      class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                      @click="close()"
+                      v-text="$t('pages.game.final-result.report-mistake.cancel')"
+              />
+            </div>
           </form>
-          <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <button type="button"
-                    class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                    v-text="$t('pages.game.final-result.report-mistake.send')"
-            />
-            <button type="button"
-                    class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                    @click="close()"
-                    v-text="$t('pages.game.final-result.report-mistake.cancel')"
-            />
-          </div>
         </div>
       </transition>
     </div>
@@ -84,21 +106,46 @@
 export default {
   name: "ReportMistake",
 
+  data() {
+    return {
+      mistakeData: {
+        text: '',
+        question_id: '',
+      },
+
+      questions: [
+        {
+          id: 1,
+          text: "Pytanie - 1"
+        },
+        {
+          id: 2,
+          text: "Pytanie - 2"
+        },
+        {
+          id: 3,
+          text: "Pytanie - 3"
+        },
+        {
+          id: 4,
+          text: "Pytanie - 4"
+        }
+      ]
+    }
+  },
+
   methods: {
     close() {
       this.$emit('close');
     },
-  },
 
-  data(){
-    return{
-      questions:[
-        "Pytanie - 1",
-        "Pytanie - 2",
-        "Pytanie - 3",
-        "Pytanie - 4",
-      ]
+    sendReportMistake() {
+      this.$emit('close');
+      this.$store.dispatch("CREATE_MISTAKE", this.mistakeData)
+        .catch(err => {
+          console.log(err);
+        });
     }
-  }
+  },
 }
 </script>
