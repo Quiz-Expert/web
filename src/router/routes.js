@@ -138,7 +138,7 @@ const routes = [
       },
       {
         path: "categories",
-        name: 'Category-panel',
+        name: 'Categories-panel',
         component: CategoriesPanel,
       },
       {
