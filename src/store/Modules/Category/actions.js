@@ -16,5 +16,15 @@ export default {
           reject(err);
         });
     })
-  }
+  },
+
+  SELECT_CATEGORIES({commit}, category) {
+    commit('SELECT_CATEGORIES', category);
+    localStorage.setItem('CURRENT_CATEGORIES', JSON.stringify(category));
+  },
+
+  DISCARD_CATEGORIES({commit}) {
+    commit('DISCARD_CATEGORIES');
+    localStorage.removeItem('CURRENT_CATEGORIES');
+  },
 }

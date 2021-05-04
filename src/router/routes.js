@@ -9,6 +9,7 @@ import InvitingToFriends from "../components/UserInterface/MainSections/Inviting
 import Profile from "../components/UserInterface/MainSections/Profile"
 import Settings from "../components/UserInterface/MainSections/Settings"
 import GameModeSelection from "../views/Game/ModeSelection"
+import ChallengingFriend from  "../views/Game/ChallengingFriend"
 import GameMode from "../views/Game/GameMode"
 import GameFinalResult from "../views/Game/FinalResult"
 import Dashboard from "../views/Dashboard/Dashboard"
@@ -97,6 +98,14 @@ const routes = [
     component: GameModeSelection,
   },
   {
+    path: '/game/challenging-friend',
+    name: 'ChallengingFriend',
+    meta: {
+      requiresAuth: true,
+    },
+    component: ChallengingFriend,
+  },
+  {
     path: '/game/run',
     name:'GameMode',
     meta: {
@@ -129,7 +138,7 @@ const routes = [
       },
       {
         path: "categories",
-        name: 'Categories-panel',
+        name: 'Category-panel',
         component: CategoriesPanel,
       },
       {

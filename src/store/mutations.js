@@ -3,6 +3,10 @@ export default {
     state.status = 'loading';
   },
 
+  SUCCESS(state) {
+    state.status = 'success';
+  },
+
   ERROR(state) {
     state.status = 'error';
   },

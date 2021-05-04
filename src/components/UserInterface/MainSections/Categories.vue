@@ -9,9 +9,10 @@
       <div class="grid grid-cols-8 gap-6">
         <div v-for="category in categories.data" :key="category"
              class="col-span-4 md:col-span-2 bg-white border-2 border-gray-300 p-2 sm:p-3 rounded-md shadow-lg hover:border-yellow-500 cursor-pointer"
+             @click="selectingCategory(category)"
         >
           <div class="flex items-center justify-center mb-3">
-            <img alt="icon" class="w-20 border-2 border-gray-300" :src="category.icon">
+            <img alt="icon" class="h-20 w-20 border-2 border-gray-300" :src="category.icon">
           </div>
           <div class="text-center text-gray-600 text-sm md:text-base" v-text="category.name" />
         </div>
@@ -60,6 +61,12 @@ import {mapGetters} from 'vuex'
 export default {
   name: "Categories",
 
+  data() {
+    return {
+      current_page: 1,
+    }
+  },
+
   methods: {
     previousPage() {
       if (this.current_page > 1) {
@@ -72,11 +79,13 @@ export default {
         this.$store.dispatch("GET_CATEGORIES", ++this.current_page);
       }
     },
-  },
 
-  data() {
-    return {
-      current_page: 1,
+    selectingCategory(category) {
+      this.$store.dispatch("SELECT_CATEGORIES", category)
+        .then(() => this.$router.push({name: 'GameModeSelection'}))
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
 

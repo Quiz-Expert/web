@@ -1,7 +1,9 @@
 import {createStore} from 'vuex'
 import mutations from "./mutations";
 import auth from './Modules/Auth'
-import categories from "./Modules/Categories";
+import category from "./Modules/Category";
+import mistake from "./Modules/Mistake";
+import suggestion from "./Modules/Suggestion";
 
 const store = createStore({
   state: {
@@ -13,7 +15,9 @@ const store = createStore({
   mutations: mutations,
   modules: {
     auth: auth,
-    categories: categories
+    category: category,
+    mistake: mistake,
+    suggestion: suggestion
   }
 })
 
