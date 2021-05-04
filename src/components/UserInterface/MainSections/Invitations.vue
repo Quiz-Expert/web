@@ -31,7 +31,6 @@
                   <div class="flex items-center">
                     <div>
                       <p class="text-sm font-medium text-gray-900" v-text="invitation.name" />
-                      <p class="text-sm text-gray-500" v-text="invitation.nick" />
                     </div>
                   </div>
                 </td>
@@ -86,12 +85,10 @@ export default {
     return {
       invitations: [
         {
-          nick: "jane-cooper123",
           name: "Jane Cooper",
           description: "Pojedynek",
         },
         {
-          nick: "jane-cooper123",
           name: "Jane Cooper",
           description: "Lista Znajomych",
         }

@@ -5,18 +5,20 @@
         <button type="button"
                 class="flex text-gray-200 dark:text-gray-300 focus:outline-none p-3 xl:px-0"
         >
-          <svg xmlns="http://www.w3.org/2000/svg"
-               class="h-8 md:h-10 w-8 md:w-12"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke="currentColor"
-          >
-            <path stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
-            />
-          </svg>
+          <localized-link :to="{ name: 'User' }">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="h-8 md:h-10 w-8 md:w-12"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor"
+            >
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
+              />
+            </svg>
+          </localized-link>
         </button>
       </div>
     </div>
@@ -33,11 +35,9 @@
             <div
               class="py-4 rounded overflow-hidden shadow-lg transition bg-purple-500 hover:bg-purple-600 hover:shadow-lg cursor-pointer"
             >
-              <div>
-                <div class="font-bold text-gray-200 md:text-xl uppercase"
-                     v-text="$t('pages.game.final-result.play-again')"
-                />
-              </div>
+              <div class="font-bold text-gray-200 md:text-xl uppercase"
+                   v-text="$t('pages.game.final-result.play-again')"
+              />
             </div>
           </div>
           <div class="col-span-6 text-center">
@@ -45,11 +45,9 @@
               class="py-4 rounded overflow-hidden shadow-lg transition bg-gray-500 hover:bg-gray-600 hover:shadow-lg cursor-pointer"
               @click="isModalVisible=true"
             >
-              <div>
-                <div class="font-bold text-gray-200 md:text-xl uppercase"
-                     v-text="$t('pages.game.final-result.report-mistake.tittle')"
-                />
-              </div>
+              <div class="font-bold text-gray-200 md:text-xl uppercase"
+                   v-text="$t('pages.game.final-result.report-mistake.tittle')"
+              />
             </div>
           </div>
         </div>

@@ -157,7 +157,16 @@
         "tittle": "Wybierz tryb gry",
         "challenge-friend": "Wyzwij znajomego",
         "random-opponent": "Losuj przeciwnika",
-        "play-alone": "Graj sam"
+        "play-alone": "Graj sam",
+        "suggestions": {
+          "tittle": "Sugestie pytań",
+          "question-name": "Treść pytania",
+          "answer-a": "Odpowiedź A",
+          "answer-b": "Odpowiedź B",
+          "answer-c": "Odpowiedź C",
+          "answer-d": "Odpowiedź D",
+          "good-answer": "Poprawna odpowiedź"
+        }
       },
       "final-result": {
         "tittle":"Twój wynik:",
@@ -165,6 +174,8 @@
         "report-mistake":{
           "tittle": "Zgłoś błąd w pytaniu",
           "select-question":"W którym pytaniu znajduje się błąd?",
+          "comments-to-question": "Uwagi do pytania",
+          "describe-comments": "Opisz swoje uwagi ...",
           "send": "Wyślij",
           "cancel": "Anuluj"
         }
@@ -253,9 +264,8 @@
         "email": "Twój e-mail",
         "personal-info": "Informacje personalne",
         "name": "Twoja nazwa",
-        "nick": "Twój nick",
         "change-password": "Zmień hasło",
-        "delete-account": "Usuń konto"
+        "save-changes": "Zapisz zmiany"
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <main class="w-full py-12">
-    <div class="max-w-3xl mx-auto space-y-6">
+    <div class="max-w-xl mx-auto space-y-6">
       <div>
         <h2 class="mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-4xl leading-tight text-gray-900 text-center"
             v-text="$t('pages.user.fiends-list.tittle')"
@@ -16,10 +16,6 @@
                     v-text="$t('pages.user.fiends-list.name')"
                 />
                 <th scope="col"
-                    class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    v-text="$t('pages.user.fiends-list.nick')"
-                />
-                <th scope="col"
                     class="px-2 sm:px-4 md:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
                     v-text="$t('pages.user.fiends-list.action')"
                 />
@@ -29,9 +25,6 @@
               <tr v-for="friend in friends" :key="friend" class="hover:bg-gray-100">
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
                   <p class="text-sm font-medium text-gray-900" v-text="friend.name" />
-                </td>
-                <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
-                  <p class="text-sm text-gray-500" v-text="friend.nick" />
                 </td>
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                   <button type="button"

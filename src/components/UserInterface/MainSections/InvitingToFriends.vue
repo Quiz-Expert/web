@@ -1,13 +1,13 @@
 <template>
   <main class="w-full py-12">
-    <div class="max-w-3xl mx-auto space-y-6 ">
+    <div class="max-w-xl mx-auto space-y-6 ">
       <div class="flex justify-center">
         <h2 class="mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-4xl leading-tight text-gray-900 text-center"
             v-text="$t('pages.user.inviting-to-friends.tittle')"
         />
       </div>
       <div class="flex justify-center px-4 sm:px-6 lg:px-8">
-        <div class="w-full max-w-md">
+        <div class="w-full">
           <div class="bg-white shadow-lg rounded-lg px-3 py-2 mb-4">
             <div class="relative text-gray-600 focus-within:text-gray-400">
               <span class="absolute inset-y-0 flex items-center pl-2">
@@ -37,7 +37,6 @@
               <div class="flex justify-between items-center cursor-pointer text-gray-700 rounded-md hover:bg-gray-100 px-2 py-2">
                 <div>
                   <p class="text-sm font-medium text-gray-900" v-text="friend.name" />
-                  <p class="text-sm text-gray-500" v-text="friend.nick" />
                 </div>
                 <div>
                   <button type="button"
@@ -73,11 +72,9 @@ export default {
     return {
       friends: [
         {
-          nick: "jane-cooper123",
           name: "Jane Cooper",
         },
         {
-          nick: "jane-cooper321",
           name: "Jane ",
         }
       ]

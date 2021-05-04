@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-200">
     <Nav />
-    <router-view />
+    <router-view class="pb-32" />
   </div>
   <Footer class="-mt-20" />
 </template>
