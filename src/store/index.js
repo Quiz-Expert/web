@@ -4,6 +4,7 @@ import auth from './Modules/Auth'
 import category from "./Modules/Category";
 import mistake from "./Modules/Mistake";
 import suggestion from "./Modules/Suggestion";
+import question from "./Modules/Question";
 
 const store = createStore({
   state: {
@@ -17,7 +18,8 @@ const store = createStore({
     auth: auth,
     category: category,
     mistake: mistake,
-    suggestion: suggestion
+    suggestion: suggestion,
+    question: question,
   }
 })
 

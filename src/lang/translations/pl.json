@@ -53,10 +53,13 @@
         },
         "edition": {
           "tittle": "Edycja pytania",
-          "name": "Nazwa",
-          "description": "Opis",
-          "photo": "Zdjęcie",
-          "change-photo": "Zmień zdjęcie",
+          "name": "Treść pytania",
+          "category": "Kategoria",
+          "answer-a": "Odpowiedź A",
+          "answer-b": "Odpowiedź B",
+          "answer-c": "Odpowiedź C",
+          "answer-d": "Odpowiedź D",
+          "good-answer": "Poprawna odpowiedź",
           "save": "Zapisz",
           "cancel": "Anuluj"
         }
