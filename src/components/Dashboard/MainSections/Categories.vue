@@ -1,6 +1,6 @@
 <template>
   <main class="flex justify-center py-12 flex-1 overflow-x-hidden overflow-y-auto">
-    <div class="max-w-5xl w-full space-y-6">
+    <div class="max-w-4xl w-full space-y-6">
       <div>
         <h2 class="mb-4 text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight text-gray-900 text-center"
             v-text="$t('pages.dashboard.categories-panel.tittle')"
@@ -26,21 +26,21 @@
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="category in categories" :key="category" class="hover:bg-gray-100">
+              <tr v-for="category in categories.data" :key="category" class="hover:bg-gray-100">
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center text-sm">
+                    <img alt="icon" class="h-10 w-10 border-2 border-gray-300" :src="category.icon">
+                  </div>
+                </td>
+                <td class="px-2 sm:px-4 md:px-6 py-4">
                   <div class="flex items-center">
                     <div class="text-sm font-medium text-gray-900" v-text="category.name" />
                   </div>
                 </td>
-                <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="text-sm font-medium text-gray-900" v-text="category.description" />
-                  </div>
-                </td>
-                <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                <td class="px-2 sm:px-4 text-right space-x-2 space-y-2 md:space-y-0">
                   <button type="button"
-                          class="inline-block p-1 sm:p-2 text-center text-white transition bg-green-600 rounded-full shadow ripple hover:shadow-lg hover:bg-green-700 focus:outline-none"
-                          @click="isEditModalVisible=true"
+                          class="p-1 sm:p-2 text-center text-white transition bg-green-600 rounded-full shadow ripple hover:shadow-lg hover:bg-green-700 focus:outline-none"
+                          @click="showUpdateModal(category)"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="w-4 sm:w-5 h-4 sm:h-5"
@@ -56,8 +56,8 @@
                     </svg>
                   </button>
                   <button type="button"
-                          class="inline-block p-1 sm:p-2 text-center text-white transition bg-red-500 rounded-full shadow ripple hover:shadow-lg hover:bg-red-600 focus:outline-none"
-                          @click="isDeleteModalVisible=true"
+                          class="p-1 sm:p-2 text-center text-white transition bg-red-500 rounded-full shadow ripple hover:shadow-lg hover:bg-red-600 focus:outline-none"
+                          @click="showRemoveModal(category)"
                   >
                     <svg class="w-4 sm:w-5 h-4 sm:h-5 text-white"
                          xmlns="http://www.w3.org/2000/svg"
@@ -74,22 +74,28 @@
               </tr>
             </tbody>
           </table>
-          <Pagination />
+          <Pagination @previous-page="previousPage()"
+                      @next-page="nextPage()"
+          />
         </div>
       </div>
     </div>
-    <EditCategory v-show="isEditModalVisible"
-                  @close="isEditModalVisible=false"
+    <EditCategory v-if="currentCategory && this.isEditModalVisible"
+                  :category-id="currentCategory.id"
+                  @close="this.isEditModalVisible = false"
+                  @edit="loadPage()"
     />
-    <DeleteModal v-show="isDeleteModalVisible"
+    <DeleteModal v-if="currentCategory && this.isDeleteModalVisible"
                  :tittle="$t('pages.dashboard.categories-panel.removal.tittle')"
                  :question="$t('pages.dashboard.categories-panel.removal.question')"
-                 @close="isDeleteModalVisible=false"
+                 @close="isDeleteModalVisible = false"
+                 @remove="removeCategory()"
     />
   </main>
 </template>
 
 <script>
+import {mapGetters} from "vuex"
 import Pagination from "../Pagination";
 import EditCategory from "../Modals/EditCategory"
 import DeleteModal from "../Modals/DeleteModal"
@@ -103,30 +109,56 @@ export default {
     DeleteModal
   },
 
+  computed: {
+    ...mapGetters(["categories"]),
+  },
+
+  methods: {
+    loadPage() {
+      this.$store.dispatch("GET_CATEGORIES", this.currentPage);
+    },
+
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.loadPage();
+      }
+    },
+
+    nextPage() {
+      if (this.currentPage < this.categories.pagination.total_pages) {
+        this.loadPage();
+      }
+    },
+
+    removeCategory() {
+      this.$store.dispatch("REMOVE_CATEGORY", this.currentCategory.id)
+        .then(() => {
+          this.loadPage();
+        });
+    },
+
+    showRemoveModal(currentCategory) {
+      this.currentCategory = currentCategory;
+      this.isDeleteModalVisible = true;
+    },
+
+    showUpdateModal(currentCategory) {
+      this.currentCategory = currentCategory;
+      this.isEditModalVisible = true;
+    }
+  },
+
   data() {
     return {
       isEditModalVisible: false,
       isDeleteModalVisible: false,
-
-      categories: [
-        {
-          name: "Kategoria - 1",
-          description: "Opis Kategorii 1"
-        },
-        {
-          name: "Kategoria - 2",
-          description: "Opis Kategorii 2"
-        },
-        {
-          name: "Kategoria - 3",
-          description: "Opis Kategorii 3"
-        },
-        {
-          name: "Kategoria - 4",
-          description: "Opis Kategorii 4"
-        },
-      ]
+      currentPage: 1,
+      currentCategory: null,
     }
-  }
+  },
+
+  mounted() {
+    this.loadPage();
+  },
 }
 </script>

@@ -43,7 +43,7 @@
               </div>
             </div>
           </div>
-          <form action="#" method="POST">
+          <form method="POST" @submit.prevent="updateCategory()">
             <div class="shadow overflow-hidden sm:rounded-md">
               <div class="px-4 py-5 bg-white sm:p-6">
                 <div class="grid grid-cols-3 gap-6">
@@ -52,24 +52,36 @@
                            class="block text-sm font-medium text-gray-700"
                            v-text="$t('pages.dashboard.categories-panel.edition.name')"
                     />
-                    <input id="name"
-                           type="text"
-                           name="name"
-                           autocomplete="given-name"
-                           class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    <input
+                      id="name"
+                      v-model="categoryData.name"
+                      type="text"
+                      name="name"
+                      autocomplete="given-name"
+                      :class="checkInput('name') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
+                      class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm rounded-md"
                     >
+                    <span v-show="checkInput('name')"
+                          class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
+                          v-text="getErrorMessage('name')"
+                    />
                   </div>
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="about"
+                    <label for="description"
                            class="block text-sm font-medium text-gray-700"
                            v-text="$t('pages.dashboard.categories-panel.edition.description')"
                     />
                     <div class="mt-1">
-                      <textarea id="about"
-                                name="about"
+                      <textarea id="description"
+                                v-model="categoryData.description"
+                                name="description"
                                 rows="3"
-                                class="shadow-sm focus:ring-green-500 focus:border-green-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
-                                placeholder="Opis ....."
+                                :class="checkInput('description') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
+                                class="shadow-sm focus:ring-green-500 focus:border-green-500 mt-1 block w-full sm:text-sm rounded-md"
+                      />
+                      <span v-show="checkInput('description')"
+                            class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
+                            v-text="getErrorMessage('description')"
                       />
                     </div>
                   </div>
@@ -78,14 +90,9 @@
                            v-text="$t('pages.dashboard.categories-panel.edition.photo')"
                     />
                     <div class="mt-1 flex items-center">
-                      <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                        <svg class="h-full w-full text-gray-300"
-                             fill="currentColor"
-                             viewBox="0 0 24 24"
-                        >
-                          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                      </span>
+                      <div class="flex items-center text-sm">
+                        <img alt="icon" class="h-10 w-10 border-2 border-gray-300" :src="categoryData.icon">
+                      </div>
                       <button type="button"
                               class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                               v-text="$t('pages.dashboard.categories-panel.edition.change-photo')"
@@ -95,32 +102,85 @@
                 </div>
               </div>
             </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button type="submit"
+                      class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+                      v-text="$t('pages.dashboard.categories-panel.edition.save')"
+              />
+              <button type="button"
+                      class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                      @click="close()"
+                      v-text="$t('pages.dashboard.categories-panel.edition.cancel')"
+              />
+            </div>
           </form>
-          <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <button type="button"
-                    class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                    v-text="$t('pages.dashboard.categories-panel.edition.save')"
-            />
-            <button type="button"
-                    class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                    @click="close()"
-                    v-text="$t('pages.dashboard.categories-panel.edition.cancel')"
-            />
-          </div>
         </div>
       </transition>
     </div>
   </div>
 </template>
-
 <script>
+import {mapGetters} from "vuex"
+
 export default {
   name: "EditCategory",
+
+  props: {
+    categoryId: {
+      type: Number
+    }
+  },
+
+  computed: {
+    ...mapGetters(["categoryById"]),
+  },
+
+  data() {
+    return {
+      error: {
+        message: '',
+        data: {},
+      },
+
+      categoryData: {},
+    }
+  },
+
+  mounted() {
+    this.$store.dispatch("GET_CATEGORY_BY_ID", this.categoryId)
+      .then(() => {
+        this.categoryData = this.categoryById;
+      });
+  },
 
   methods: {
     close() {
       this.$emit('close');
+      this.$store.dispatch("DISCARD_CATEGORY_BY_ID");
     },
+
+    checkInput(name) {
+      return name in this.error.data;
+    },
+
+    getErrorMessage(name) {
+      return (this.error.data[name] + "").toString();
+    },
+
+    updateCategory() {
+      this.categoryData.icon = "SomeIcon.png"
+      this.$store.dispatch("UPDATE_CATEGORY", this.categoryData)
+        .then(() => {
+          this.close();
+          this.$emit('edit');
+        })
+        .catch(err => {
+          console.log(err);
+          const response = err.response.data;
+          this.error.message = response.message;
+          this.error.data = response.errors;
+        });
+    }
   },
 }
 </script>

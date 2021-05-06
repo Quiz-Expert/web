@@ -3,12 +3,14 @@ import mutations from "./mutations";
 
 const category = {
   state: {
-    categories: [],
-    currentCategory: JSON.parse(localStorage.getItem('CURRENT_CATEGORIES')) || null,
+    categories: JSON.parse(localStorage.getItem('CATEGORIES')) || [],
+    currentCategory: JSON.parse(localStorage.getItem('CURRENT_CATEGORIES')) || {},
+    categoryById: JSON.parse(localStorage.getItem('CATEGORY_BY_ID')) || {},
   },
   getters: {
     categories: state => state.categories,
     currentCategory: state => state.currentCategory,
+    categoryById: state => state.categoryById
   },
   mutations: mutations,
   actions: actions,

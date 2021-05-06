@@ -63,20 +63,20 @@ export default {
 
   data() {
     return {
-      current_page: 1,
+      currentPage: 1,
     }
   },
 
   methods: {
     previousPage() {
-      if (this.current_page > 1) {
-        this.$store.dispatch("GET_CATEGORIES", --this.current_page);
+      if (this.currentPage > 1) {
+        this.$store.dispatch("GET_CATEGORIES", --this.currentPage);
       }
     },
 
     nextPage() {
-      if (this.current_page < this.categories.pagination.total_pages) {
-        this.$store.dispatch("GET_CATEGORIES", ++this.current_page);
+      if (this.currentPage < this.categories.pagination.total_pages) {
+        this.$store.dispatch("GET_CATEGORIES", ++this.currentPage);
       }
     },
 
@@ -90,7 +90,7 @@ export default {
   },
 
   mounted() {
-    this.$store.dispatch("GET_CATEGORIES", this.current_page);
+    this.$store.dispatch("GET_CATEGORIES", this.currentPage);
   },
 
   computed: {
