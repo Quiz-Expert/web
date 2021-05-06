@@ -120,12 +120,14 @@ export default {
 
     previousPage() {
       if (this.currentPage > 1) {
+        this.currentPage--;
         this.loadPage();
       }
     },
 
     nextPage() {
       if (this.currentPage < this.categories.pagination.total_pages) {
+        this.currentPage++;
         this.loadPage();
       }
     },

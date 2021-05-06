@@ -39,7 +39,7 @@
                 </td>
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                   <button type="button"
-                          class="inline-block p-1 sm:p-2 text-center text-white transition bg-green-600 rounded-full shadow ripple hover:shadow-lg hover:bg-green-700 focus:outline-none"
+                          class="p-1 sm:p-2 text-center text-white transition bg-green-600 rounded-full shadow ripple hover:shadow-lg hover:bg-green-700 focus:outline-none"
                           @click="isEditModalVisible=true"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@
                     </svg>
                   </button>
                   <button type="button"
-                          class="inline-block p-1 sm:p-2 text-center text-white transition bg-red-500 rounded-full shadow ripple hover:shadow-lg hover:bg-red-600 focus:outline-none"
+                          class="p-1 sm:p-2 text-center text-white transition bg-red-500 rounded-full shadow ripple hover:shadow-lg hover:bg-red-600 focus:outline-none"
                           @click="isDeleteModalVisible=true"
                   >
                     <svg class="w-4 sm:w-5 h-4 sm:h-5 text-white"
