@@ -74,12 +74,15 @@
           "question": "Czy na pewno chcesz usunąć tą sugestie?"
         },
         "edition": {
-          "tittle": "Edycja sugestii",
-          "name": "Nazwa",
-          "description": "Opis",
-          "photo": "Zdjęcie",
-          "change-photo": "Zmień zdjęcie",
-          "save": "Zapisz",
+          "tittle": "Widok sugestii pytania",
+          "name": "Treść pytania",
+          "answer-a": "Odpowiedź A",
+          "answer-b": "Odpowiedź B",
+          "answer-c": "Odpowiedź C",
+          "answer-d": "Odpowiedź D",
+          "good-answer": "Poprawna odpowiedź",
+          "accept": "Akceptuj",
+          "reject": "Odrzuć",
           "cancel": "Anuluj"
         }
       },
