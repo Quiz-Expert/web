@@ -1,10 +1,31 @@
 <template>
   <main class="flex justify-center py-12 flex-1 overflow-x-hidden overflow-y-auto">
     <div class="max-w-4xl w-full space-y-6">
-      <div>
-        <h2 class="mb-4 text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight text-gray-900 text-center"
-            v-text="$t('pages.dashboard.questions-panel.tittle')"
-        />
+      <div class="flex justify-between align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
+        <div class="w-full -mr-10">
+          <h2 class="mb-4 text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight text-gray-900 text-center"
+              v-text="$t('pages.dashboard.questions-panel.tittle')"
+          />
+        </div>
+        <div class="">
+          <button type="button"
+                  class="p-1 sm:p-2 text-center text-white transition bg-yellow-500 rounded-full shadow ripple hover:shadow-lg hover:bg-yellow-600 focus:outline-none"
+                  @click="this.isCreateModalVisible=true"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="h-6 w-6"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor"
+            >
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
       <div class="py-2 align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
         <div class="shadow-xl overflow-hidden border-b border-gray-200 rounded-lg">
@@ -73,6 +94,10 @@
         </div>
       </div>
     </div>
+    <CreateQuestion v-if="this.isCreateModalVisible"
+                    @close="this.isCreateModalVisible = false"
+                    @create="loadPage()"
+    />
     <EditQuestion v-if="currentQuestion && this.isEditModalVisible"
                   :question-id="currentQuestion.id"
                   @close="this.isEditModalVisible = false"
@@ -89,6 +114,7 @@
 <script>
 import {mapGetters} from "vuex"
 import Pagination from "../Pagination";
+import CreateQuestion from "../Modals/CreateQuestion";
 import EditQuestion from "../Modals/EditQuestion"
 import DeleteModal from "../Modals/DeleteModal"
 
@@ -97,6 +123,7 @@ export default {
 
   components: {
     Pagination,
+    CreateQuestion,
     EditQuestion,
     DeleteModal
   },
@@ -144,6 +171,7 @@ export default {
 
   data() {
     return {
+      isCreateModalVisible: false,
       isEditModalVisible: false,
       isDeleteModalVisible: false,
       currentPage: 1,

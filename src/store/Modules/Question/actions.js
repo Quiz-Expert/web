@@ -18,6 +18,21 @@ export default {
     })
   },
 
+  CREATE_QUESTION({commit}, question) {
+    return new Promise((resolve, reject) => {
+      commit('REQUEST');
+      return axios.post('questions', question)
+        .then(response => {
+          commit('SUCCESS');
+          resolve(response);
+        })
+        .catch((err) => {
+          commit('ERROR');
+          reject(err);
+        });
+    })
+  },
+
   GET_QUESTION_BY_ID({commit}, id) {
     return new Promise((resolve, reject) => {
       commit('REQUEST');
