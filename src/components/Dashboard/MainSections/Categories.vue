@@ -1,10 +1,31 @@
 <template>
   <main class="flex justify-center py-12 flex-1 overflow-x-hidden overflow-y-auto">
     <div class="max-w-4xl w-full space-y-6">
-      <div>
-        <h2 class="mb-4 text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight text-gray-900 text-center"
-            v-text="$t('pages.dashboard.categories-panel.tittle')"
-        />
+      <div class="flex justify-between align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
+        <div class="w-full -mr-10">
+          <h2 class="mb-4 text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight text-gray-900 text-center"
+              v-text="$t('pages.dashboard.categories-panel.tittle')"
+          />
+        </div>
+        <div class="">
+          <button type="button"
+                  class="p-1 sm:p-2 text-center text-white transition bg-yellow-500 rounded-full shadow ripple hover:shadow-lg hover:bg-yellow-600 focus:outline-none"
+                  @click="this.isCreateModalVisible=true"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="h-6 w-6"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor"
+            >
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
       <div class="py-2 align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
         <div class="shadow-xl overflow-hidden border-b border-gray-200 rounded-lg">
@@ -27,8 +48,8 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
               <tr v-for="category in categories.data" :key="category" class="hover:bg-gray-100">
-                <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center text-sm">
+                <td class="px-2 sm:px-4 md:px-6 py-4">
+                  <div class="flex items-center">
                     <img alt="icon" class="h-10 w-10 border-2 border-gray-300" :src="category.icon">
                   </div>
                 </td>
@@ -38,7 +59,7 @@
                   </div>
                 </td>
                 <td>
-                  <div class="flex-row md:flex px-2 sm:px-6 text-right space-x-2 space-y-2 md:space-y-0">
+                  <div class="flex-row md:flex px-2 py-2 sm:px-6 md:pr-2 text-right space-x-2 space-y-2 md:space-y-0">
                     <button type="button"
                             class="p-1 sm:p-2 text-center text-white transition bg-green-600 rounded-full shadow ripple hover:shadow-lg hover:bg-green-700 focus:outline-none"
                             @click="showUpdateModal(category)"
@@ -82,15 +103,19 @@
         </div>
       </div>
     </div>
-    <EditCategory v-if="currentCategory && this.isEditModalVisible"
+    <CreateCategory v-if="this.isCreateModalVisible"
+                    @close="this.isCreateModalVisible = false"
+                    @create="loadPage()"
+    />
+    <EditCategory v-if="this.currentCategory && this.isEditModalVisible"
                   :category-id="currentCategory.id"
                   @close="this.isEditModalVisible = false"
                   @edit="loadPage()"
     />
-    <DeleteModal v-if="currentCategory && this.isDeleteModalVisible"
+    <DeleteModal v-if="this.currentCategory && this.isDeleteModalVisible"
                  :tittle="$t('pages.dashboard.categories-panel.removal.tittle')"
                  :question="$t('pages.dashboard.categories-panel.removal.question')"
-                 @close="isDeleteModalVisible = false"
+                 @close="this.isDeleteModalVisible = false"
                  @remove="removeCategory()"
     />
   </main>
@@ -99,6 +124,7 @@
 <script>
 import {mapGetters} from "vuex"
 import Pagination from "../Pagination";
+import CreateCategory from "../Modals/CreateCategory";
 import EditCategory from "../Modals/EditCategory"
 import DeleteModal from "../Modals/DeleteModal"
 
@@ -107,6 +133,7 @@ export default {
 
   components: {
     Pagination,
+    CreateCategory,
     EditCategory,
     DeleteModal
   },
@@ -154,6 +181,7 @@ export default {
 
   data() {
     return {
+      isCreateModalVisible: false,
       isEditModalVisible: false,
       isDeleteModalVisible: false,
       currentPage: 1,

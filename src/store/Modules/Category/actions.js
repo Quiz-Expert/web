@@ -18,6 +18,21 @@ export default {
     })
   },
 
+  CREATE_CATEGORY({commit}, category) {
+    return new Promise((resolve, reject) => {
+      commit('REQUEST');
+      return axios.post('categories', category)
+        .then(response => {
+          commit('SUCCESS');
+          resolve(response);
+        })
+        .catch((err) => {
+          commit('ERROR');
+          reject(err);
+        });
+    })
+  },
+
   GET_CATEGORY_BY_ID({commit}, id) {
     return new Promise((resolve, reject) => {
       commit('REQUEST');

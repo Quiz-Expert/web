@@ -32,6 +32,15 @@
           "tittle": "Usuwanie kategorii",
           "question": "Czy na pewno chcesz usunąć tą kategorie?"
         },
+        "creating": {
+          "tittle": "Tworzenie kategorii",
+          "name": "Nazwa",
+          "description": "Opis",
+          "photo": "Zdjęcie",
+          "change-photo": "Zmień zdjęcie",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        },
         "edition": {
           "tittle": "Edycja kategorii",
           "name": "Nazwa",
