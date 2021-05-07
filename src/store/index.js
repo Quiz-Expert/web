@@ -5,6 +5,7 @@ import category from "./Modules/Category";
 import mistake from "./Modules/Mistake";
 import suggestion from "./Modules/Suggestion";
 import question from "./Modules/Question";
+import file from "./Modules/File";
 
 const store = createStore({
   state: {
@@ -20,6 +21,7 @@ const store = createStore({
     mistake: mistake,
     suggestion: suggestion,
     question: question,
+    file: file,
   }
 })
 

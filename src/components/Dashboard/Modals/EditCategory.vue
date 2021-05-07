@@ -86,16 +86,28 @@
                     </div>
                   </div>
                   <div class="col-span-6 sm:col-span-3">
-                    <label class="block text-sm font-medium text-gray-700"
-                           v-text="$t('pages.dashboard.categories-panel.edition.photo')"
-                    />
+                    <p class="text-sm text-gray-700" v-text="$t('pages.dashboard.categories-panel.edition.photo')" />
                     <div class="mt-1 flex items-center">
                       <div class="flex items-center text-sm">
-                        <img alt="icon" class="h-10 w-10 border-2 border-gray-300" :src="categoryData.icon">
+                        <img alt="icon" class="h-10 w-10 border-2 border-gray-300" :src="categoryIcon">
                       </div>
-                      <button type="button"
-                              class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                              v-text="$t('pages.dashboard.categories-panel.edition.change-photo')"
+                      <label class="cursor-pointer" for="file">
+                        <span
+                          :class="checkInput('icon') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
+                          class="whitespace-nowrap ml-5 bg-white py-2 px-5 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                          v-text="$t('pages.dashboard.categories-panel.edition.change-photo')"
+                        />
+                        <input id="file"
+                               ref="file"
+                               type="file"
+                               class="hidden"
+                               accept="image/png"
+                               @change="handleFileUpload()"
+                        >
+                      </label>
+                      <span v-show="checkInput('icon')"
+                            class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
+                            v-text="getErrorMessage('icon')"
                       />
                     </div>
                   </div>
@@ -132,7 +144,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["categoryById"]),
+    ...mapGetters(["categoryById", "icon"]),
   },
 
   data() {
@@ -143,6 +155,7 @@ export default {
       },
 
       categoryData: {},
+      categoryIcon: ''
     }
   },
 
@@ -150,6 +163,8 @@ export default {
     this.$store.dispatch("GET_CATEGORY_BY_ID", this.categoryId)
       .then(() => {
         this.categoryData = this.categoryById;
+        this.categoryIcon = this.categoryData.icon;
+        this.categoryData.icon = this.lastPath(this.categoryData.icon);
       });
   },
 
@@ -157,6 +172,11 @@ export default {
     close() {
       this.$emit('close');
       this.$store.dispatch("DISCARD_CATEGORY_BY_ID");
+      this.$store.dispatch("DISCARD_ICON");
+    },
+
+    lastPath(path) {
+      return path.substring(path.lastIndexOf('/') + 1);
     },
 
     checkInput(name) {
@@ -167,8 +187,22 @@ export default {
       return (this.error.data[name] + "").toString();
     },
 
+    handleFileUpload() {
+      let file = this.$refs.file.files[0];
+      let formData = new FormData();
+      formData.append('file', file);
+
+      this.$store.dispatch("UPLOAD_ICON", formData)
+        .then(() => {
+          this.categoryData.icon = this.icon.filename;
+          this.categoryIcon = this.icon.url;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+
     updateCategory() {
-      this.categoryData.icon = "SomeIcon.png"
       this.$store.dispatch("UPDATE_CATEGORY", this.categoryData)
         .then(() => {
           this.close();

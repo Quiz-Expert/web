@@ -34,7 +34,7 @@
               <tr>
                 <th scope="col"
                     class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    v-text="$t('pages.dashboard.categories-panel.name')"
+                    v-text="$t('pages.dashboard.categories-panel.icon')"
                 />
                 <th scope="col"
                     class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -50,7 +50,7 @@
               <tr v-for="category in categories.data" :key="category" class="hover:bg-gray-100">
                 <td class="px-2 sm:px-4 md:px-6 py-4">
                   <div class="flex items-center">
-                    <img alt="icon" class="h-10 w-10 border-2 border-gray-300" :src="category.icon">
+                    <img alt="icon" class="h-10 w-10" :src="category.icon">
                   </div>
                 </td>
                 <td class="px-2 sm:px-4 md:px-6 py-4">
