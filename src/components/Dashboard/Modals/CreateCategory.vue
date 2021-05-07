@@ -21,9 +21,9 @@
         <div class="inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 align-middle w-full max-w-lg">
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="sm:flex sm:items-start">
-              <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+              <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 sm:mx-0 sm:h-10 sm:w-10">
                 <svg xmlns="http://www.w3.org/2000/svg"
-                     class="h-6 w-6 text-green-600"
+                     class="h-6 w-6 text-yellow-600"
                      fill="none"
                      viewBox="0 0 24 24"
                      stroke="currentColor"
@@ -31,14 +31,14 @@
                   <path stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                   />
                 </svg>
               </div>
               <div class="pt-2 text-center sm:ml-4 sm:text-left">
                 <h3 id="modal-title"
                     class="text-lg leading-6 font-medium text-gray-900"
-                    v-text="$t('pages.dashboard.categories-panel.edition.tittle')"
+                    v-text="$t('pages.dashboard.categories-panel.creating.tittle')"
                 />
               </div>
             </div>
@@ -50,7 +50,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label for="name"
                            class="block text-sm font-medium text-gray-700"
-                           v-text="$t('pages.dashboard.categories-panel.edition.name')"
+                           v-text="$t('pages.dashboard.categories-panel.creating.name')"
                     />
                     <input
                       id="name"
@@ -69,7 +69,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label for="description"
                            class="block text-sm font-medium text-gray-700"
-                           v-text="$t('pages.dashboard.categories-panel.edition.description')"
+                           v-text="$t('pages.dashboard.categories-panel.creating.description')"
                     />
                     <div class="mt-1">
                       <textarea id="description"
@@ -86,7 +86,7 @@
                     </div>
                   </div>
                   <div class="col-span-6 sm:col-span-3">
-                    <p class="text-sm text-gray-700" v-text="$t('pages.dashboard.categories-panel.edition.photo')" />
+                    <p class="text-sm text-gray-700" v-text="$t('pages.dashboard.categories-panel.creating.photo')" />
                     <div class="mt-1 flex items-center">
                       <div class="flex items-center text-sm">
                         <img alt="icon" class="h-10 w-10 border-2 border-gray-300" :src="categoryIcon">
@@ -95,7 +95,7 @@
                         <span
                           :class="checkInput('icon') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
                           class="whitespace-nowrap ml-5 bg-white py-2 px-5 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                          v-text="$t('pages.dashboard.categories-panel.edition.change-photo')"
+                          v-text="$t('pages.dashboard.categories-panel.creating.change-photo')"
                         />
                         <input id="file"
                                ref="file"
@@ -117,12 +117,12 @@
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
               <button type="submit"
                       class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                      v-text="$t('pages.dashboard.categories-panel.edition.save')"
+                      v-text="$t('pages.dashboard.categories-panel.creating.save')"
               />
               <button type="button"
                       class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                       @click="close()"
-                      v-text="$t('pages.dashboard.categories-panel.edition.cancel')"
+                      v-text="$t('pages.dashboard.categories-panel.creating.cancel')"
               />
             </div>
           </form>
@@ -135,16 +135,10 @@
 import {mapGetters} from "vuex"
 
 export default {
-  name: "EditCategory",
-
-  props: {
-    categoryId: {
-      type: Number
-    }
-  },
+  name: "CreateCategory",
 
   computed: {
-    ...mapGetters(["categoryById", "icon"]),
+    ...mapGetters(["icon"]),
   },
 
   data() {
@@ -159,24 +153,10 @@ export default {
     }
   },
 
-  mounted() {
-    this.$store.dispatch("GET_CATEGORY_BY_ID", this.categoryId)
-      .then(() => {
-        this.categoryData = this.categoryById;
-        this.categoryIcon = this.categoryData.icon;
-        this.categoryData.icon = this.lastPath(this.categoryData.icon);
-      });
-  },
-
   methods: {
     close() {
       this.$emit('close');
-      this.$store.dispatch("DISCARD_CATEGORY_BY_ID");
       this.$store.dispatch("DISCARD_ICON");
-    },
-
-    lastPath(path) {
-      return path.substring(path.lastIndexOf('/') + 1);
     },
 
     checkInput(name) {
@@ -203,10 +183,10 @@ export default {
     },
 
     updateCategory() {
-      this.$store.dispatch("UPDATE_CATEGORY", this.categoryData)
+      this.$store.dispatch("CREATE_CATEGORY", this.categoryData)
         .then(() => {
           this.close();
-          this.$emit('edit');
+          this.$emit('create');
         })
         .catch(err => {
           console.log(err);

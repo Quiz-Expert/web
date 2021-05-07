@@ -3,7 +3,7 @@
     <div class="max-w-4xl w-full space-y-6">
       <div>
         <h2 class="mb-4 text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight text-gray-900 text-center"
-            v-text="$t('pages.dashboard.suggestions-panel.tittle')"
+            v-text="$t('pages.dashboard.mistakes-panel.tittle')"
         />
       </div>
       <div class="py-2 align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
@@ -13,23 +13,23 @@
               <tr>
                 <th scope="col"
                     class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    v-text="$t('pages.dashboard.suggestions-panel.status')"
+                    v-text="$t('pages.dashboard.mistakes-panel.status')"
                 />
                 <th scope="col"
                     class="px-2 sm:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    v-text="$t('pages.dashboard.suggestions-panel.name')"
+                    v-text="$t('pages.dashboard.mistakes-panel.text')"
                 />
                 <th scope="col"
                     class="px-2 sm:px-4 md:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    v-text="$t('pages.dashboard.suggestions-panel.actions')"
+                    v-text="$t('pages.dashboard.mistakes-panel.actions')"
                 />
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="suggestion in suggestions.data" :key="suggestion" class="hover:bg-gray-100">
+              <tr v-for="mistake in mistakes.data" :key="mistake" class="hover:bg-gray-100">
                 <td class="px-2 sm:px-4 md:px-6">
                   <div class="flex justify-center">
-                    <div v-if="checkStatus(suggestion,'accepted')"
+                    <div v-if="isStatusActive(mistake)"
                          class="p-1 sm:p-2 text-center text-white transition bg-green-600 rounded-full shadow ripple focus:outline-none"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@
                         />
                       </svg>
                     </div>
-                    <div v-if="checkStatus(suggestion,'rejected')"
+                    <div v-if="!isStatusActive(mistake)"
                          class="p-1 sm:p-2 text-center text-white transition bg-red-600 rounded-full shadow ripple focus:outline-none"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg"
@@ -59,34 +59,18 @@
                         />
                       </svg>
                     </div>
-                    <div v-if="checkStatus(suggestion,'pending')"
-                         class="p-1 sm:p-2 text-center text-white transition bg-gray-400 rounded-full shadow ripple focus:outline-none"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg"
-                           class="w-4 sm:w-5 h-4 sm:h-5"
-                           fill="none"
-                           viewBox="0 0 24 24"
-                           stroke="currentColor"
-                      >
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M13 10V3L4 14h7v7l9-11h-7z"
-                        />
-                      </svg>
-                    </div>
                   </div>
                 </td>
                 <td class="px-2 sm:px-4 py-4">
                   <div class="flex items-center">
-                    <div class="text-sm font-medium text-gray-900" v-text="suggestion.text" />
+                    <div class="text-sm font-medium text-gray-900" v-text="mistake.text" />
                   </div>
                 </td>
                 <td>
                   <div class="flex px-2 sm:px-6 text-right">
                     <button type="button"
                             class="p-1 sm:p-2 text-center text-white transition bg-yellow-600 rounded-full shadow ripple hover:shadow-lg hover:bg-yellow-700 focus:outline-none"
-                            @click="showUpdateModal(suggestion)"
+                            @click="showUpdateModal(mistake)"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg"
                            class="w-4 sm:w-5 h-4 sm:h-5"
@@ -117,33 +101,47 @@
         </div>
       </div>
     </div>
-    <EditSuggestion v-if="currentSuggestion && this.isEditModalVisible"
-                    :suggestion-id="currentSuggestion.id"
-                    @close="this.isEditModalVisible = false"
-                    @edit="loadPage()"
+    <EditMistake v-if="this.currentMistake && this.isEditMistakeModalVisible"
+                 :mistake-id="this.currentMistake.id"
+                 @close="this.isEditMistakeModalVisible = false;"
+                 @edit="loadPage()"
+                 @edit-question="this.isEditQuestionModalVisible=true"
+    />
+    <EditQuestion v-if="this.currentQuestionWithMistake && this.isEditQuestionModalVisible"
+                  :question-id="currentQuestionWithMistake.id"
+                  @close="closeQuestionModal()"
+                  @edit="loadPage()"
+                  @back="this.isEditMistakeModalVisible=true"
     />
   </main>
 </template>
 <script>
 import {mapGetters} from "vuex"
 import Pagination from "../Pagination"
-import EditSuggestion from "../Modals/EditSuggestion"
+import EditMistake from "../Modals/EditMistake"
+import EditQuestion from "../Modals/EditQuestion"
 
 export default {
-  name: "Suggestions",
+  name: "Mistakes",
 
   components: {
-    EditSuggestion,
     Pagination,
+    EditMistake,
+    EditQuestion,
   },
 
   computed: {
-    ...mapGetters(["suggestions"]),
+    ...mapGetters(["mistakes"]),
   },
 
   methods: {
+    closeQuestionModal() {
+      this.isEditQuestionModalVisible = false;
+      this.$store.dispatch("DISCARD_MISTAKE_BY_ID");
+    },
+
     loadPage() {
-      this.$store.dispatch("GET_SUGGESTIONS", this.currentPage);
+      this.$store.dispatch("GET_MISTAKES", this.currentPage);
     },
 
     previousPage() {
@@ -154,31 +152,34 @@ export default {
     },
 
     nextPage() {
-      if (this.currentPage < this.suggestions.pagination.total_pages) {
+      if (this.currentPage < this.mistakes.pagination.total_pages) {
         this.currentPage++;
         this.loadPage();
       }
     },
 
-    showUpdateModal(currentSuggestion) {
-      this.currentSuggestion = currentSuggestion;
-      this.isEditModalVisible = true;
+    showUpdateModal(currentMistake) {
+      this.currentMistake = currentMistake;
+      this.currentQuestionWithMistake = currentMistake.question;
+      this.isEditMistakeModalVisible = true;
     },
 
-    checkStatus(suggestion, status) {
-      return suggestion.status == status;
+    isStatusActive(mistake) {
+      return mistake.is_active == true;
     }
   },
 
   data() {
     return {
-      isEditModalVisible: false,
+      isEditMistakeModalVisible: false,
+      isEditQuestionModalVisible: false,
       currentPage: 1,
-      currentSuggestion: null,
+      currentMistake: null,
+      currentQuestionWithMistake: null
     }
   },
 
-  mounted() {
+  created() {
     this.loadPage();
   },
 }

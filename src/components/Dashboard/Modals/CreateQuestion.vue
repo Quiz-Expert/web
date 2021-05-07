@@ -21,9 +21,9 @@
         <div class="inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 align-middle w-full max-w-xl">
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="sm:flex sm:items-start">
-              <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+              <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 sm:mx-0 sm:h-10 sm:w-10">
                 <svg xmlns="http://www.w3.org/2000/svg"
-                     class="h-6 w-6 text-green-600"
+                     class="h-6 w-6 text-yellow-600"
                      fill="none"
                      viewBox="0 0 24 24"
                      stroke="currentColor"
@@ -31,14 +31,14 @@
                   <path stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                   />
                 </svg>
               </div>
               <div class="pt-2 text-center sm:ml-4 sm:text-left">
                 <h3 id="modal-title"
                     class="text-lg leading-6 font-medium text-gray-900"
-                    v-text="$t('pages.dashboard.questions-panel.edition.tittle')"
+                    v-text="$t('pages.dashboard.questions-panel.creating.tittle')"
                 />
               </div>
             </div>
@@ -50,7 +50,7 @@
                   <div class="col-span-6">
                     <label for="text"
                            class="block text-sm font-medium text-gray-700"
-                           v-text="$t('pages.dashboard.questions-panel.edition.name')"
+                           v-text="$t('pages.dashboard.questions-panel.creating.name')"
                     />
                     <input id="text"
                            v-model="questionData.text"
@@ -59,6 +59,7 @@
                            autocomplete="given-text"
                            :class="checkInput('text') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
                            class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                           required
                     >
                     <span v-show="checkInput('text')"
                           class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
@@ -68,7 +69,7 @@
                   <div class="col-span-6 sm:col-span-4">
                     <label for="category"
                            class="block text-sm font-medium text-gray-700"
-                           v-text="$t('pages.dashboard.questions-panel.edition.category')"
+                           v-text="$t('pages.dashboard.questions-panel.creating.category')"
                     />
                     <select id="category"
                             v-model="questionData.category_id"
@@ -76,6 +77,7 @@
                             autocomplete="category"
                             :class="checkInput('category_id') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                            required
                     >
                       <option value="1">Kategoria - 1</option>
                       <option value="2">Kategoria - 2</option>
@@ -88,7 +90,7 @@
                   <div class="col-span-6 sm:col-span-2">
                     <label for="good-answer"
                            class="block text-sm font-medium text-gray-700"
-                           v-text="$t('pages.dashboard.questions-panel.edition.good-answer')"
+                           v-text="$t('pages.dashboard.questions-panel.creating.good-answer')"
                     />
                     <select id="good-answer"
                             v-model="questionData.good_answer"
@@ -96,18 +98,19 @@
                             autocomplete="good-answer"
                             :class="checkInput('good_answer') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                            required
                     >
                       <option value="a"
-                              v-text="$t('pages.dashboard.questions-panel.edition.answer-a')"
+                              v-text="$t('pages.dashboard.questions-panel.creating.answer-a')"
                       />
                       <option value="b"
-                              v-text="$t('pages.dashboard.questions-panel.edition.answer-b')"
+                              v-text="$t('pages.dashboard.questions-panel.creating.answer-b')"
                       />
                       <option value="c"
-                              v-text="$t('pages.dashboard.questions-panel.edition.answer-c')"
+                              v-text="$t('pages.dashboard.questions-panel.creating.answer-c')"
                       />
                       <option value="d"
-                              v-text="$t('pages.dashboard.questions-panel.edition.answer-d')"
+                              v-text="$t('pages.dashboard.questions-panel.creating.answer-d')"
                       />
                     </select>
                     <span v-show="checkInput('good_answer')"
@@ -118,7 +121,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label for="answer-a"
                            class="block text-sm font-medium text-gray-700"
-                           v-text="$t('pages.dashboard.questions-panel.edition.answer-a')"
+                           v-text="$t('pages.dashboard.questions-panel.creating.answer-a')"
                     />
                     <input id="answer-a"
                            v-model="questionData.answer_a"
@@ -127,6 +130,7 @@
                            autocomplete="given-answer-a"
                            :class="checkInput('answer_a') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
                            class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                           required
                     >
                     <span v-show="checkInput('answer_a')"
                           class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
@@ -136,7 +140,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label for="answer-b"
                            class="block text-sm font-medium text-gray-700"
-                           v-text="$t('pages.dashboard.questions-panel.edition.answer-b')"
+                           v-text="$t('pages.dashboard.questions-panel.creating.answer-b')"
                     />
                     <input id="answer-b"
                            v-model="questionData.answer_b"
@@ -145,6 +149,7 @@
                            autocomplete="given-answer-b"
                            :class="checkInput('answer_b') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
                            class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                           required
                     >
                     <span v-show="checkInput('answer_b')"
                           class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
@@ -154,7 +159,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label for="answer-c"
                            class="block text-sm font-medium text-gray-700"
-                           v-text="$t('pages.dashboard.questions-panel.edition.answer-c')"
+                           v-text="$t('pages.dashboard.questions-panel.creating.answer-c')"
                     />
                     <input id="answer-c"
                            v-model="questionData.answer_c"
@@ -163,6 +168,7 @@
                            autocomplete="given-answer-c"
                            :class="checkInput('answer_c') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
                            class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                           required
                     >
                     <span v-show="checkInput('answer_c')"
                           class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
@@ -172,7 +178,7 @@
                   <div class="col-span-6 sm:col-span-3">
                     <label for="answer-d"
                            class="block text-sm font-medium text-gray-700"
-                           v-text="$t('pages.dashboard.questions-panel.edition.answer-d')"
+                           v-text="$t('pages.dashboard.questions-panel.creating.answer-d')"
                     />
                     <input id="answer-d"
                            v-model="questionData.answer_d"
@@ -181,6 +187,7 @@
                            autocomplete="given-answer-d"
                            :class="checkInput('answer_d') ? 'ring-red-500 border-red-500' : 'border-gray-300'"
                            class="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                           required
                     >
                     <span v-show="checkInput('answer_d')"
                           class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
@@ -193,18 +200,12 @@
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
               <button type="submit"
                       class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-                      v-text="$t('pages.dashboard.questions-panel.edition.save')"
-              />
-              <button v-if="this.isMistakeExist"
-                      type="button"
-                      class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-600 text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:ml-3 sm:w-auto sm:text-sm"
-                      @click="backToMistake()"
-                      v-text="$t('pages.dashboard.questions-panel.edition.back')"
+                      v-text="$t('pages.dashboard.questions-panel.creating.save')"
               />
               <button type="button"
                       class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                       @click="close()"
-                      v-text="$t('pages.dashboard.questions-panel.edition.cancel')"
+                      v-text="$t('pages.dashboard.questions-panel.creating.cancel')"
               />
             </div>
           </form>
@@ -214,20 +215,8 @@
   </div>
 </template>
 <script>
-import {mapGetters} from "vuex"
-
 export default {
-  name: "EditQuestion",
-
-  props: {
-    questionId: {
-      type: Number
-    }
-  },
-
-  computed: {
-    ...mapGetters(["questionById", "isMistakeExist"]),
-  },
+  name: "CreateQuestion",
 
   data() {
     return {
@@ -240,22 +229,9 @@ export default {
     }
   },
 
-  mounted() {
-    this.$store.dispatch("GET_QUESTION_BY_ID", this.questionId)
-      .then(() => {
-        this.questionData = this.questionById;
-      });
-  },
-
   methods: {
     close() {
       this.$emit('close');
-      this.$store.dispatch("DISCARD_QUESTION_BY_ID");
-    },
-
-    backToMistake() {
-      this.$emit('close');
-      this.$emit('back');
     },
 
     checkInput(name) {
@@ -267,10 +243,11 @@ export default {
     },
 
     updateQuestion() {
-      this.$store.dispatch("UPDATE_QUESTION", this.questionData)
+      console.log(this.questionData)
+      this.$store.dispatch("CREATE_QUESTION", this.questionData)
         .then(() => {
           this.close();
-          this.$emit('edit');
+          this.$emit('create');
         })
         .catch(err => {
           console.log(err);

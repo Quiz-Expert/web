@@ -1,14 +1,14 @@
 import axios from "../../../axios";
 
 export default {
-  GET_CATEGORIES({commit}, page) {
+  GET_QUESTIONS({commit}, page) {
     return new Promise((resolve, reject) => {
       commit('REQUEST');
-      return axios.get(`categories?page=${page}`)
+      return axios.get(`questions?page=${page}`)
         .then(response => {
-          const categories = response.data;
-          localStorage.setItem('CATEGORIES', JSON.stringify(categories));
-          commit('CATEGORIES', categories);
+          const questions = response.data;
+          localStorage.setItem('QUESTIONS', JSON.stringify(questions));
+          commit('QUESTIONS', questions);
           resolve(response);
         })
         .catch((err) => {
@@ -18,43 +18,10 @@ export default {
     })
   },
 
-  CREATE_CATEGORY({commit}, category) {
+  CREATE_QUESTION({commit}, question) {
     return new Promise((resolve, reject) => {
       commit('REQUEST');
-      return axios.post('categories', category)
-        .then(response => {
-          commit('SUCCESS');
-          resolve(response);
-        })
-        .catch((err) => {
-          commit('ERROR');
-          reject(err);
-        });
-    })
-  },
-
-  GET_CATEGORY_BY_ID({commit}, id) {
-    return new Promise((resolve, reject) => {
-      commit('REQUEST');
-      return axios.get(`categories/${id}`)
-        .then(response => {
-          const category = response.data.data;
-          localStorage.setItem('CATEGORY_BY_ID', JSON.stringify(category));
-          commit('CATEGORY_BY_ID', category);
-          resolve(response);
-        })
-        .catch((err) => {
-          commit('ERROR');
-          reject(err);
-        });
-    })
-  },
-
-  UPDATE_CATEGORY({commit}, category) {
-    return new Promise((resolve, reject) => {
-      commit('REQUEST');
-      const id = category.id;
-      return axios.put(`categories/${id}`, category)
+      return axios.post('questions', question)
         .then(response => {
           commit('SUCCESS');
           resolve(response);
@@ -66,10 +33,28 @@ export default {
     })
   },
 
-  REMOVE_CATEGORY({commit}, id) {
+  GET_QUESTION_BY_ID({commit}, id) {
     return new Promise((resolve, reject) => {
       commit('REQUEST');
-      return axios.delete(`categories/${id}`)
+      return axios.get(`questions/${id}`)
+        .then(response => {
+          const question = response.data.data;
+          localStorage.setItem('QUESTION_BY_ID', JSON.stringify(question));
+          commit('QUESTION_BY_ID', question);
+          resolve(response);
+        })
+        .catch((err) => {
+          commit('ERROR');
+          reject(err);
+        });
+    })
+  },
+
+  UPDATE_QUESTION({commit}, question) {
+    return new Promise((resolve, reject) => {
+      commit('REQUEST');
+      const id = question.id;
+      return axios.put(`questions/${id}`, question)
         .then(response => {
           commit('SUCCESS');
           resolve(response);
@@ -81,18 +66,23 @@ export default {
     })
   },
 
-  SELECT_CATEGORIES({commit}, category) {
-    commit('SELECT_CATEGORIES', category);
-    localStorage.setItem('CURRENT_CATEGORIES', JSON.stringify(category));
+  REMOVE_QUESTION({commit}, id) {
+    return new Promise((resolve, reject) => {
+      commit('REQUEST');
+      return axios.delete(`questions/${id}`)
+        .then(response => {
+          commit('SUCCESS');
+          resolve(response);
+        })
+        .catch((err) => {
+          commit('ERROR');
+          reject(err);
+        });
+    })
   },
 
-  DISCARD_CATEGORIES({commit}) {
-    commit('DISCARD_CATEGORIES');
-    localStorage.removeItem('CURRENT_CATEGORIES');
-  },
-
-  DISCARD_CATEGORY_BY_ID({commit}) {
-    commit('DISCARD_CATEGORY_BY_ID');
-    localStorage.removeItem('CATEGORY_BY_ID');
+  DISCARD_QUESTION_BY_ID({commit}) {
+    commit('DISCARD_QUESTION_BY_ID');
+    localStorage.removeItem('QUESTION_BY_ID');
   },
 }

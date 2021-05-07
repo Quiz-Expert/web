@@ -16,6 +16,7 @@
         "overview": "Przegląd",
         "users": "Użytkownicy",
         "categories": "Kategorie",
+        "mistakes": "Błędy",
         "questions": "Pytania",
         "suggestions": "Propozycje"
       },
@@ -25,12 +26,21 @@
       },
       "categories-panel": {
         "tittle": "Kategorie",
-        "name": "Nazwa",
+        "icon": "Ikona",
         "description": "Opis",
         "actions": "Akcje",
         "removal": {
           "tittle": "Usuwanie kategorii",
           "question": "Czy na pewno chcesz usunąć tą kategorie?"
+        },
+        "creating": {
+          "tittle": "Tworzenie kategorii",
+          "name": "Nazwa",
+          "description": "Opis",
+          "photo": "Zdjęcie",
+          "change-photo": "Zmień zdjęcie",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
         },
         "edition": {
           "tittle": "Edycja kategorii",
@@ -51,18 +61,49 @@
           "tittle": "Usuwanie pytania",
           "question": "Czy na pewno chcesz usunąć to pytanie?"
         },
+        "creating": {
+          "tittle": "Tworzenie pytania",
+          "name": "Treść pytania",
+          "category": "Kategoria",
+          "answer-a": "Odpowiedź A",
+          "answer-b": "Odpowiedź B",
+          "answer-c": "Odpowiedź C",
+          "answer-d": "Odpowiedź D",
+          "good-answer": "Poprawna odpowiedź",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        },
         "edition": {
           "tittle": "Edycja pytania",
-          "name": "Nazwa",
-          "description": "Opis",
-          "photo": "Zdjęcie",
-          "change-photo": "Zmień zdjęcie",
+          "name": "Treść pytania",
+          "category": "Kategoria",
+          "answer-a": "Odpowiedź A",
+          "answer-b": "Odpowiedź B",
+          "answer-c": "Odpowiedź C",
+          "answer-d": "Odpowiedź D",
+          "good-answer": "Poprawna odpowiedź",
           "save": "Zapisz",
+          "back": "Do błędu",
+          "cancel": "Anuluj"
+        }
+      },
+      "mistakes-panel": {
+        "tittle": "Zgłoszone błędy",
+        "status": "Status",
+        "text": "Treść błędu",
+        "actions": "Akcje",
+        "editing": {
+          "tittle": "Widok błędu",
+          "question": "Treść dotyczącego pytania",
+          "text": "Treść błedu",
+          "close": "Zamknij",
+          "move": "Do pytania",
           "cancel": "Anuluj"
         }
       },
       "suggestions-panel": {
         "tittle": "Propozycje pytań",
+        "status": "Status",
         "category": "Kategoria",
         "name": "Nazwa",
         "actions": "Akcje",
@@ -71,12 +112,15 @@
           "question": "Czy na pewno chcesz usunąć tą sugestie?"
         },
         "edition": {
-          "tittle": "Edycja sugestii",
-          "name": "Nazwa",
-          "description": "Opis",
-          "photo": "Zdjęcie",
-          "change-photo": "Zmień zdjęcie",
-          "save": "Zapisz",
+          "tittle": "Widok sugestii pytania",
+          "name": "Treść pytania",
+          "answer-a": "Odpowiedź A",
+          "answer-b": "Odpowiedź B",
+          "answer-c": "Odpowiedź C",
+          "answer-d": "Odpowiedź D",
+          "good-answer": "Poprawna odpowiedź",
+          "accept": "Akceptuj",
+          "reject": "Odrzuć",
           "cancel": "Anuluj"
         }
       },

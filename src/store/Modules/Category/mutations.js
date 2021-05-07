@@ -3,6 +3,10 @@ export default {
     state.status = 'success';
     state.categories = data;
   },
+  CATEGORY_BY_ID(state, data) {
+    state.status = 'success';
+    state.categoryById = data;
+  },
   SELECT_CATEGORIES(state, date) {
     state.status = "success";
     state.currentCategory = date;
@@ -10,5 +14,9 @@ export default {
   DISCARD_CATEGORIES(state) {
     state.status = "success";
     state.currentCategory = null
+  },
+  DISCARD_CATEGORY_BY_ID(state) {
+    state.status = "success";
+    state.categoryById = null
   }
 }

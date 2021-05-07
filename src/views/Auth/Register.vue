@@ -145,7 +145,6 @@ export default {
   data() {
     return {
       error: {
-        alertOpen: false,
         message: '',
         data: {},
       },
@@ -166,12 +165,6 @@ export default {
 
     getErrorMessage(name) {
       return (this.error.data[name] + "").toString();
-    },
-
-    clearErrors() {
-      this.error.alertOpen = false;
-      this.error.message = '';
-      this.error.data = [];
     },
 
     register() {

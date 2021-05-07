@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-screen bg-gray-200">
+  <div class="flex min-h-screen bg-gray-200">
     <div :class="isOpenMenu ? 'block' : 'hidden'"
          class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"
          @click="isOpenMenu = false"
@@ -28,6 +28,10 @@
         <localized-link :to="{ name: 'Questions-panel' }"
                         class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
                         v-text="$t('pages.dashboard.navigation.questions')"
+        />
+        <localized-link :to="{ name: 'Mistakes-panel' }"
+                        class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
+                        v-text="$t('pages.dashboard.navigation.mistakes')"
         />
         <localized-link :to="{ name: 'Suggestions-panel' }"
                         class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
