@@ -66,6 +66,7 @@
       },
       "suggestions-panel": {
         "tittle": "Propozycje pytań",
+        "status": "Status",
         "category": "Kategoria",
         "name": "Nazwa",
         "actions": "Akcje",
