@@ -29,6 +29,10 @@
                         class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
                         v-text="$t('pages.dashboard.navigation.questions')"
         />
+        <localized-link :to="{ name: 'Mistakes-panel' }"
+                        class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
+                        v-text="$t('pages.dashboard.navigation.mistakes')"
+        />
         <localized-link :to="{ name: 'Suggestions-panel' }"
                         class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block mt-3 px-3 py-2 rounded-md text-base font-medium"
                         v-text="$t('pages.dashboard.navigation.suggestions')"

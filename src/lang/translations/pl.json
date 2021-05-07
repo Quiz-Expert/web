@@ -16,6 +16,7 @@
         "overview": "Przegląd",
         "users": "Użytkownicy",
         "categories": "Kategorie",
+        "mistakes": "Błędy",
         "questions": "Pytania",
         "suggestions": "Propozycje"
       },
@@ -82,6 +83,21 @@
           "answer-d": "Odpowiedź D",
           "good-answer": "Poprawna odpowiedź",
           "save": "Zapisz",
+          "back": "Do błędu",
+          "cancel": "Anuluj"
+        }
+      },
+      "mistakes-panel": {
+        "tittle": "Zgłoszone błędy",
+        "status": "Status",
+        "text": "Treść błędu",
+        "actions": "Akcje",
+        "editing": {
+          "tittle": "Widok błędu",
+          "question": "Treść dotyczącego pytania",
+          "text": "Treść błedu",
+          "close": "Zamknij",
+          "move": "Do pytania",
           "cancel": "Anuluj"
         }
       },

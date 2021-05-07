@@ -1,0 +1,186 @@
+<template>
+  <main class="flex justify-center py-12 flex-1 overflow-x-hidden overflow-y-auto">
+    <div class="max-w-4xl w-full space-y-6">
+      <div>
+        <h2 class="mb-4 text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight text-gray-900 text-center"
+            v-text="$t('pages.dashboard.mistakes-panel.tittle')"
+        />
+      </div>
+      <div class="py-2 align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
+        <div class="shadow-xl overflow-hidden border-b border-gray-200 rounded-lg">
+          <table class="w-full divide-y-2 divide-green-600">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col"
+                    class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    v-text="$t('pages.dashboard.mistakes-panel.status')"
+                />
+                <th scope="col"
+                    class="px-2 sm:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    v-text="$t('pages.dashboard.mistakes-panel.text')"
+                />
+                <th scope="col"
+                    class="px-2 sm:px-4 md:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    v-text="$t('pages.dashboard.mistakes-panel.actions')"
+                />
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr v-for="mistake in mistakes.data" :key="mistake" class="hover:bg-gray-100">
+                <td class="px-2 sm:px-4 md:px-6">
+                  <div class="flex justify-center">
+                    <div v-if="isStatusActive(mistake)"
+                         class="p-1 sm:p-2 text-center text-white transition bg-green-600 rounded-full shadow ripple focus:outline-none"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg"
+                           class="w-4 sm:w-5 h-4 sm:h-5"
+                           viewBox="0 0 20 20"
+                           fill="currentColor"
+                      >
+                        <path fill-rule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clip-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div v-if="!isStatusActive(mistake)"
+                         class="p-1 sm:p-2 text-center text-white transition bg-red-600 rounded-full shadow ripple focus:outline-none"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg"
+                           class="w-4 sm:w-5 h-4 sm:h-5"
+                           fill="none"
+                           viewBox="0 0 24 24"
+                           stroke="currentColor"
+                      >
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-2 sm:px-4 py-4">
+                  <div class="flex items-center">
+                    <div class="text-sm font-medium text-gray-900" v-text="mistake.text" />
+                  </div>
+                </td>
+                <td>
+                  <div class="flex px-2 sm:px-6 text-right">
+                    <button type="button"
+                            class="p-1 sm:p-2 text-center text-white transition bg-yellow-600 rounded-full shadow ripple hover:shadow-lg hover:bg-yellow-700 focus:outline-none"
+                            @click="showUpdateModal(mistake)"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg"
+                           class="w-4 sm:w-5 h-4 sm:h-5"
+                           fill="none"
+                           viewBox="0 0 24 24"
+                           stroke="currentColor"
+                      >
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                        />
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <Pagination @previous-page="previousPage()"
+                      @next-page="nextPage()"
+          />
+        </div>
+      </div>
+    </div>
+    <EditMistake v-if="this.currentMistake && this.isEditMistakeModalVisible"
+                 :mistake-id="this.currentMistake.id"
+                 @close="this.isEditMistakeModalVisible = false;"
+                 @edit="loadPage()"
+                 @edit-question="this.isEditQuestionModalVisible=true"
+    />
+    <EditQuestion v-if="this.currentQuestionWithMistake && this.isEditQuestionModalVisible"
+                  :question-id="currentQuestionWithMistake.id"
+                  @close="closeQuestionModal()"
+                  @edit="loadPage()"
+                  @back="this.isEditMistakeModalVisible=true"
+    />
+  </main>
+</template>
+<script>
+import {mapGetters} from "vuex"
+import Pagination from "../Pagination"
+import EditMistake from "../Modals/EditMistake"
+import EditQuestion from "../Modals/EditQuestion"
+
+export default {
+  name: "Mistakes",
+
+  components: {
+    Pagination,
+    EditMistake,
+    EditQuestion,
+  },
+
+  computed: {
+    ...mapGetters(["mistakes"]),
+  },
+
+  methods: {
+    closeQuestionModal() {
+      this.isEditQuestionModalVisible = false;
+      this.$store.dispatch("DISCARD_MISTAKE_BY_ID");
+    },
+
+    loadPage() {
+      this.$store.dispatch("GET_MISTAKES", this.currentPage);
+    },
+
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+        this.loadPage();
+      }
+    },
+
+    nextPage() {
+      if (this.currentPage < this.mistakes.pagination.total_pages) {
+        this.currentPage++;
+        this.loadPage();
+      }
+    },
+
+    showUpdateModal(currentMistake) {
+      this.currentMistake = currentMistake;
+      this.currentQuestionWithMistake = currentMistake.question;
+      this.isEditMistakeModalVisible = true;
+    },
+
+    isStatusActive(mistake) {
+      return mistake.is_active == true;
+    }
+  },
+
+  data() {
+    return {
+      isEditMistakeModalVisible: false,
+      isEditQuestionModalVisible: false,
+      currentPage: 1,
+      currentMistake: null,
+      currentQuestionWithMistake: null
+    }
+  },
+
+  created() {
+    this.loadPage();
+  },
+}
+</script>
