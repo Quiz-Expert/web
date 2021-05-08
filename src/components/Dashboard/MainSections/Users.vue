@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import Pagination from "../Pagination"
+import Pagination from "../../Pagination"
 import EditUser from "../Modals/EditUser"
 import DeleteModal from "../Modals/DeleteModal"
 

@@ -6,6 +6,7 @@ import mistake from "./Modules/Mistake";
 import suggestion from "./Modules/Suggestion";
 import question from "./Modules/Question";
 import file from "./Modules/File";
+import notification from "./Modules/Notification";
 
 const store = createStore({
   state: {
@@ -22,6 +23,7 @@ const store = createStore({
     suggestion: suggestion,
     question: question,
     file: file,
+    notification: notification
   }
 })
 

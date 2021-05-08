@@ -135,7 +135,10 @@ export default {
     login() {
       this.clearErrors();
       this.$store.dispatch("LOGIN", this.userData)
-        .then(() => this.$router.push({name: 'User'}))
+        .then(() => {
+          this.$router.push({name: 'User'});
+          this.$store.dispatch("LOGIN_NOTIFICATION", this.$t('pages.login.message'));
+        })
         .catch(err => {
           console.log(err);
           this.error.alertOpen = true;

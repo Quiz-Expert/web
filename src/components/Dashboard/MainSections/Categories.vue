@@ -123,7 +123,7 @@
 
 <script>
 import {mapGetters} from "vuex"
-import Pagination from "../Pagination";
+import Pagination from "../../Pagination"
 import CreateCategory from "../Modals/CreateCategory";
 import EditCategory from "../Modals/EditCategory"
 import DeleteModal from "../Modals/DeleteModal"

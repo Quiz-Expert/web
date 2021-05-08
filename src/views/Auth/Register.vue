@@ -169,7 +169,10 @@ export default {
 
     register() {
       this.$store.dispatch("REGISTER", this.userData)
-        .then(() => this.$router.push({name: 'User'}))
+        .then(() => {
+          this.$router.push({name: 'User'});
+          this.$store.dispatch("REGISTER_NOTIFICATION", this.$t('pages.register.message'));
+        })
         .catch(err => {
           console.log(err);
           this.error.alertOpen = true;
