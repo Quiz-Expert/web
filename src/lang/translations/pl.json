@@ -227,6 +227,7 @@
     },
     "login": {
       "tittle": "Zaloguj się do swojego konta",
+      "message": "Zalogano pomyślnie",
       "email": {
         "label": "Adres e-mail",
         "description": "Wprowadź adres e-mail"
@@ -243,6 +244,7 @@
     },
     "register": {
       "tittle": "Wprowadź swoje dane, aby się zarejestrować",
+      "message": "Zarejestrowano pomyślnie",
       "name": {
         "label": "Nazwa użytkownika",
         "description": "Wprowadż nazwę użytkownika"
@@ -288,6 +290,12 @@
         "name": "Nazwa",
         "description": "Opis",
         "action": "Akcja"
+      },
+      "notification": {
+        "tittle": "Lista powiadomień",
+        "text": "Treść",
+        "action": "Akcje",
+        "reed-all": "Przeczytaj wszystkie"
       },
       "fiends-list": {
         "tittle": "Lista znajomych",

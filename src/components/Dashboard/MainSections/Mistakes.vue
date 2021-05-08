@@ -117,7 +117,7 @@
 </template>
 <script>
 import {mapGetters} from "vuex"
-import Pagination from "../Pagination"
+import Pagination from "../../Pagination"
 import EditMistake from "../Modals/EditMistake"
 import EditQuestion from "../Modals/EditQuestion"
 

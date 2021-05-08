@@ -126,7 +126,7 @@
 </template>
 <script>
 import {mapGetters} from "vuex"
-import Pagination from "../Pagination"
+import Pagination from "../../Pagination"
 import EditSuggestion from "../Modals/EditSuggestion"
 
 export default {

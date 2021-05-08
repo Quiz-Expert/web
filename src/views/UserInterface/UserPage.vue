@@ -7,14 +7,39 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+import pusher from "../../pusher";
 import Nav from "@/components/UserInterface/Nav";
 import Footer from "@/components/UserInterface/Footer"
 
 export default {
   name: "Homepage",
+
   components: {
     Nav,
     Footer
-  }
+  },
+
+  computed: {
+    ...mapGetters(['user'])
+  },
+
+  data() {
+    return {
+      notificationData: null,
+    }
+  },
+
+  mounted() {
+    const channel = pusher.subscribe(`private-notifications.${this.user.id}`);
+
+    channel.bind("incoming_notification", data => {
+      this.$store.dispatch("REGISTER_NOTIFICATION", data.message);
+    });
+  },
+
+  unmounted() {
+    pusher.unsubscribe(`private-notifications.${this.user.id}`);
+  },
 }
 </script>

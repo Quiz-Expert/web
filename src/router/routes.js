@@ -19,7 +19,7 @@ import QuestionsPanel from "../components/Dashboard/MainSections/Questions"
 import MistakePanel from "../components/Dashboard/MainSections/Mistakes"
 import SuggestionsPanel from "../components/Dashboard/MainSections/Suggestions"
 import UsersPanel from "../components/Dashboard/MainSections/Users"
-import AdminNotifications from "../components/Dashboard/MainSections/Notifications"
+import Notifications from "../components/UserInterface/MainSections/Notifications"
 import NotFound from "../views/NotFound";
 
 const routes = [
@@ -62,6 +62,11 @@ const routes = [
         path: "categories",
         name: 'Categories',
         component: Categories,
+      },
+      {
+        path: "notifications",
+        name: 'Notifications',
+        component: Notifications,
       },
       {
         path: "invitations",
@@ -161,12 +166,7 @@ const routes = [
         path: "users",
         name: 'Users-panel',
         component: UsersPanel,
-      },
-      {
-        path: "notifications",
-        name: "Admin-Notifications",
-        component: AdminNotifications,
-      },
+      }
     ]
   },
   {
