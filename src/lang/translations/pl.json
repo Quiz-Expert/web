@@ -286,10 +286,16 @@
       },
       "invitation-list": {
         "tittle": "Lista zaproszeń",
-        "nick": "Nick",
-        "name": "Nazwa",
-        "description": "Opis",
-        "action": "Akcja"
+        "friend": {
+          "tittle": "Znajomi",
+          "name": "Nazwa gracz",
+          "action": "Akcje"
+        },
+        "game": {
+          "tittle": "Gra",
+          "name": "Nazwa gracz",
+          "action": "Akcje"
+        }
       },
       "notification": {
         "tittle": "Lista powiadomień",
@@ -305,7 +311,8 @@
       },
       "inviting-to-friends": {
         "tittle": "Zaproś do znajomych",
-        "search": "Wyszukaj..."
+        "search": "Wyszukaj...",
+        "message": "Zaproszono użytkownika {user}"
       },
       "your-profile": {
         "tittle": "Twój profil"
