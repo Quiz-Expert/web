@@ -92,6 +92,10 @@ export default {
     this.$store.dispatch("GET_CATEGORIES", this.currentPage);
   },
 
+  unmounted() {
+    this.$store.dispatch("DISCARD_ALL_CATEGORIES");
+  },
+
   computed: {
     ...mapGetters(['categories']),
   }

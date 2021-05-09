@@ -64,16 +64,21 @@ export default {
 
   methods: {
     inviteUser(user) {
-      this.$store.dispatch("INVITE_FRIEND", user.id).then(() => {
-        this.$store.dispatch("FRIEND_LIST_INVITATION", this.$t('pages.user.inviting-to-friends.message', {user: user.name}));
-      });
+      this.$store.dispatch("INVITE_FRIEND", user.id)
+        .then(() => {
+          this.$store.dispatch(
+            "FRIEND_LIST_INVITATION",
+            this.$t('pages.user.inviting-to-friends.message', {user: user.name})
+          );
+        });
     },
 
     onChange() {
       if (this.searchData.length >= 3) {
-        this.$store.dispatch("SEARCH_USER", this.searchData).then(() => {
-          this.usersData = this.searchUser || [];
-        });
+        this.$store.dispatch("SEARCH_USER", this.searchData)
+          .then(() => {
+            this.usersData = this.searchUser || [];
+          });
       } else {
         this.usersData = [];
       }
@@ -89,13 +94,14 @@ export default {
 
   computed: {
     ...mapGetters(['searchUser']),
+
     debouncedOnChange() {
       return _debounce(this.onChange, 400);
     }
   },
 
   unmounted() {
-    this.$store.dispatch("DISCARD_SEARCH_USER", this.searchData);
+    this.$store.dispatch("DISCARD_SEARCH_USER");
   }
 }
 </script>

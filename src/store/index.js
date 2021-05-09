@@ -11,7 +11,7 @@ import friend from "./Modules/Friend";
 
 const store = createStore({
   state: {
-    status: null,
+    status: '',
   },
   getters: {
     status: state => state.status,

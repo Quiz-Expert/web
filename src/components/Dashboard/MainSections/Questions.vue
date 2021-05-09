@@ -175,12 +175,16 @@ export default {
       isEditModalVisible: false,
       isDeleteModalVisible: false,
       currentPage: 1,
-      currentQuestion: null,
+      currentQuestion: {},
     }
   },
 
   mounted() {
     this.loadPage();
   },
+
+  unmounted() {
+    this.$store.dispatch("DISCARD_QUESTIONS");
+  }
 }
 </script>

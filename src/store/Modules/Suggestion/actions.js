@@ -84,4 +84,9 @@ export default {
     commit('DISCARD_SUGGESTION_BY_ID');
     localStorage.removeItem('SUGGESTION_BY_ID');
   },
+
+  DISCARD_SUGGESTIONS({commit}) {
+    commit('DISCARD_SUGGESTIONS');
+    localStorage.removeItem('SUGGESTIONS');
+  },
 }

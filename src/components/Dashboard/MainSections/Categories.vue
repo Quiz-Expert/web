@@ -185,12 +185,16 @@ export default {
       isEditModalVisible: false,
       isDeleteModalVisible: false,
       currentPage: 1,
-      currentCategory: null,
+      currentCategory: {},
     }
   },
 
   mounted() {
     this.loadPage();
   },
+
+  unmounted() {
+    this.$store.dispatch("DISCARD_ALL_CATEGORIES");
+  }
 }
 </script>

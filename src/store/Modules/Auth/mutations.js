@@ -10,7 +10,7 @@ export default {
   },
 
   AUTH_LOGOUT(state) {
-    state.status = null;
-    state.token = null;
+    state.status = '';
+    state.token = '';
   },
 }

@@ -174,12 +174,16 @@ export default {
     return {
       isEditModalVisible: false,
       currentPage: 1,
-      currentSuggestion: null,
+      currentSuggestion: {},
     }
   },
 
   mounted() {
     this.loadPage();
   },
+
+  unmounted() {
+    this.$store.dispatch("DISCARD_SUGGESTIONS");
+  }
 }
 </script>

@@ -4,7 +4,7 @@ import mutations from "./mutations";
 const question = {
   state: {
     questions: JSON.parse(localStorage.getItem('QUESTIONS')) || [],
-    questionById: JSON.parse(localStorage.getItem('QUESTION_BY_ID')) || null,
+    questionById: JSON.parse(localStorage.getItem('QUESTION_BY_ID')) || {},
   },
   getters: {
     questions: state => state.questions,

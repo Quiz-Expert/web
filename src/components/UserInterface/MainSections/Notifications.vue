@@ -1,6 +1,6 @@
 <template>
   <main class="w-full py-12">
-    <div class="max-w-3xl mx-auto space-y-6">
+    <div class="max-w-2xl mx-auto space-y-6">
       <div class="flex justify-between align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
         <div class="w-full -mr-10">
           <h2 class="mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-4xl leading-tight text-gray-900 text-center"
@@ -34,7 +34,7 @@
               <tr>
                 <th scope="col"
                     class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    v-text="$t('pages.user.notification.text')"
+                    v-text="$t('pages.user.notification.text.tittle')"
                 />
                 <th scope="col"
                     class="px-2 sm:px-4 md:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -43,10 +43,12 @@
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="notification in notificationsData.data" :key="notification" class="hover:bg-gray-100">
-                <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
+              <tr v-for="notification in notifications.data" :key="notification" class="hover:bg-gray-100">
+                <td class="px-2 sm:px-4 md:px-6 py-4">
                   <div class="flex items-center">
-                    <div class="text-sm font-medium text-gray-900" v-text="notification.data.message" />
+                    <div class="text-sm font-medium text-gray-900"
+                         v-text="$t(`pages.user.notification.text.${notification.type}`,{user:  getUserName(notification.data.data)})"
+                    />
                   </div>
                 </td>
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
@@ -93,26 +95,29 @@ export default {
   data() {
     return {
       currentPage: 1,
-      notificationsData: []
     }
   },
 
   methods: {
+    getUserName(user = {name: ''}) {
+      return user.name;
+    },
+
     loadPage() {
-      this.$store.dispatch("GET_NOTIFICATION", this.currentPage).then(() => {
-        this.notificationsData = this.notifications || [];
-      });
+      this.$store.dispatch("GET_NOTIFICATION", this.currentPage);
     },
 
     previousPage() {
       if (this.currentPage > 1) {
-        this.$store.dispatch("GET_NOTIFICATION", --this.currentPage);
+        this.currentPage--;
+        this.loadPage();
       }
     },
 
     nextPage() {
       if (this.currentPage < this.notifications.pagination.total_pages) {
-        this.$store.dispatch("GET_CATEGORIES", ++this.currentPage);
+        this.currentPage++;
+        this.loadPage();
       }
     },
 

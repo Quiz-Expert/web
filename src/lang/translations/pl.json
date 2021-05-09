@@ -299,7 +299,12 @@
       },
       "notification": {
         "tittle": "Lista powiadomień",
-        "text": "Treść",
+        "text": {
+          "tittle": "Nazwa powiadomienia",
+          "accepted_friend_request": "Dodano gracza {user} do znajomych",
+          "incoming_friend_request": "Otrzymano zaproszenie od {user} do znajomych",
+          "message": "Wiadomość"
+        },
         "action": "Akcje",
         "reed-all": "Przeczytaj wszystkie"
       },
