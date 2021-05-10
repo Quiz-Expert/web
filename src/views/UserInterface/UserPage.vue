@@ -34,7 +34,7 @@ export default {
     const channel = pusher.subscribe(`private-notifications.${this.user.id}`);
 
     channel.bind("incoming_notification", data => {
-      this.$store.dispatch("REGISTER_NOTIFICATION", data.message);
+      this.$store.dispatch("INFO_NOTIFICATION", data.message);
     });
   },
 

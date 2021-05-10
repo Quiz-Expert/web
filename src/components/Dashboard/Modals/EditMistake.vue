@@ -138,6 +138,7 @@ export default {
         .then(() => {
           this.close();
           this.$emit('edit');
+          this.$store.dispatch("INFO_NOTIFICATION", this.$t('pages.dashboard.mistakes-panel.editing.message'));
         })
         .catch(err => {
           console.log(err);

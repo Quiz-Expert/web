@@ -165,6 +165,7 @@ export default {
       this.$store.dispatch("REMOVE_CATEGORY", this.currentCategory.id)
         .then(() => {
           this.loadPage();
+          this.$store.dispatch("DELETE_NOTIFICATION", this.$t('pages.dashboard.categories-panel.delete.message'));
         });
     },
 

@@ -155,6 +155,7 @@ export default {
       this.$store.dispatch("REMOVE_QUESTION", this.currentQuestion.id)
         .then(() => {
           this.loadPage();
+          this.$store.dispatch("DELETE_NOTIFICATION", this.$t('pages.dashboard.questions-panel.removal.message'));
         });
     },
 

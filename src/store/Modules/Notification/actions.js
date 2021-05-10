@@ -67,12 +67,27 @@ export default {
   },
 
   LOGIN_NOTIFICATION({commit}, message) {
-    commit('NEW_NOTIFICATION', 'info');
+    commit('NEW_NOTIFICATION', 'success');
     toast.success(message);
   },
 
   REGISTER_NOTIFICATION({commit}, message) {
     commit('NEW_NOTIFICATION', 'success');
     toast.success(message);
+  },
+
+  SUCCESS_NOTIFICATION({commit}, message) {
+    commit('NEW_NOTIFICATION', 'success');
+    toast.success(message);
+  },
+
+  INFO_NOTIFICATION({commit}, message) {
+    commit('NEW_NOTIFICATION', 'info');
+    toast.info(message);
+  },
+
+  DELETE_NOTIFICATION({commit}, message) {
+    commit('NEW_NOTIFICATION', 'info');
+    toast.error(message);
   }
 }

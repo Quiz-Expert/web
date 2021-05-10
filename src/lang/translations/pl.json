@@ -35,6 +35,7 @@
         },
         "creating": {
           "tittle": "Tworzenie kategorii",
+          "message": "Stworzono nową kategorie",
           "name": "Nazwa",
           "description": "Opis",
           "photo": "Zdjęcie",
@@ -44,12 +45,16 @@
         },
         "edition": {
           "tittle": "Edycja kategorii",
+          "message": "Zaktualizowano kategorie",
           "name": "Nazwa",
           "description": "Opis",
           "photo": "Zdjęcie",
           "change-photo": "Zmień zdjęcie",
           "save": "Zapisz",
           "cancel": "Anuluj"
+        },
+        "delete": {
+          "message": "Usunięto kategorie"
         }
       },
       "questions-panel": {
@@ -59,10 +64,12 @@
         "actions": "Akcje",
         "removal": {
           "tittle": "Usuwanie pytania",
+          "message": "Usunięto pytanie",
           "question": "Czy na pewno chcesz usunąć to pytanie?"
         },
         "creating": {
           "tittle": "Tworzenie pytania",
+          "message": "Stworzono nowe pytanie",
           "name": "Treść pytania",
           "category": "Kategoria",
           "answer-a": "Odpowiedź A",
@@ -75,6 +82,7 @@
         },
         "edition": {
           "tittle": "Edycja pytania",
+          "message": "Zaktualizowano pytanie",
           "name": "Treść pytania",
           "category": "Kategoria",
           "answer-a": "Odpowiedź A",
@@ -94,6 +102,7 @@
         "actions": "Akcje",
         "editing": {
           "tittle": "Widok błędu",
+          "message": "Zamknięto błąd",
           "question": "Treść dotyczącego pytania",
           "text": "Treść błedu",
           "close": "Zamknij",
@@ -109,10 +118,12 @@
         "actions": "Akcje",
         "removal": {
           "tittle": "Usuwanie sugestii",
+          "message": "Zamknięto propozycje pytania",
           "question": "Czy na pewno chcesz usunąć tą sugestie?"
         },
         "edition": {
           "tittle": "Widok sugestii pytania",
+          "message": "Dodano propozycje pytania",
           "name": "Treść pytania",
           "answer-a": "Odpowiedź A",
           "answer-b": "Odpowiedź B",
@@ -289,6 +300,8 @@
         "friend": {
           "tittle": "Znajomi",
           "name": "Nazwa gracz",
+          "accept-invitation": "Dodano gracza {user} do znajomych",
+          "reject-invitation": "Odrzuciłeś zaproszenie od {user}",
           "action": "Akcje"
         },
         "game": {
@@ -310,6 +323,7 @@
       },
       "fiends-list": {
         "tittle": "Lista znajomych",
+        "message": "Usunięto {user} z listy znajomych",
         "nick": "Nick",
         "name": "Nazwa",
         "action": "Akcja"

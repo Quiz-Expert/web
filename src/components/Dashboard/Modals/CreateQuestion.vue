@@ -43,7 +43,7 @@
               </div>
             </div>
           </div>
-          <form method="POST" @submit.prevent="updateQuestion()">
+          <form method="POST" @submit.prevent="createQuestion()">
             <div class="shadow overflow-hidden sm:rounded-md">
               <div class="px-4 py-5 bg-white sm:p-6">
                 <div class="grid grid-cols-6 gap-6">
@@ -242,12 +242,13 @@ export default {
       return (this.error.data[name] + "").toString();
     },
 
-    updateQuestion() {
+    createQuestion() {
       console.log(this.questionData)
       this.$store.dispatch("CREATE_QUESTION", this.questionData)
         .then(() => {
           this.close();
           this.$emit('create');
+          this.$store.dispatch("SUCCESS_NOTIFICATION", this.$t('pages.dashboard.questions-panel.creating.message'));
         })
         .catch(err => {
           console.log(err);

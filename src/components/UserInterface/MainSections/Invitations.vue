@@ -48,7 +48,7 @@
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                   <button type="button"
                           class="inline-block p-1 sm:p-2 text-center text-white transition bg-green-600 rounded-full shadow ripple hover:shadow-lg hover:bg-green-700 focus:outline-none"
-                          @click="acceptInvitationToFriend(incomingFriend.id)"
+                          @click="acceptInvitationToFriend(incomingFriend)"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="w-4 sm:w-5 h-4 sm:h-5"
@@ -63,7 +63,7 @@
                   </button>
                   <button type="button"
                           class="inline-block p-1 sm:p-2 text-center text-white transition bg-red-500 rounded-full shadow ripple hover:shadow-lg hover:bg-red-600 focus:outline-none"
-                          @click="rejectInvitationToFriend(incomingFriend.id)"
+                          @click="rejectInvitationToFriend(incomingFriend)"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="w-4 sm:w-5 h-4 sm:h-5 text-white"
@@ -130,17 +130,19 @@ export default {
       this.openTab = tabNumber;
     },
 
-    acceptInvitationToFriend(id) {
-      this.$store.dispatch("ACCEPT_INVITATION_TO_FRIEND", id)
+    acceptInvitationToFriend(incomingFriend) {
+      this.$store.dispatch("ACCEPT_INVITATION_TO_FRIEND", incomingFriend.id)
         .then(() => {
           this.loadPage();
+          this.$store.dispatch("SUCCESS_NOTIFICATION", this.$t('pages.user.invitation-list.friend.accept-invitation', {user: incomingFriend.user.name}));
         });
     },
 
-    rejectInvitationToFriend(id) {
-      this.$store.dispatch("REJECT_INVITATION_TO_FRIEND", id)
+    rejectInvitationToFriend(incomingFriend) {
+      this.$store.dispatch("REJECT_INVITATION_TO_FRIEND", incomingFriend.id)
         .then(() => {
           this.loadPage();
+          this.$store.dispatch("DELETE_NOTIFICATION", this.$t('pages.user.invitation-list.friend.reject-invitation', {user: incomingFriend.user.name}));
         });
     }
   },

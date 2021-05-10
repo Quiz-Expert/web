@@ -135,6 +135,7 @@ export default {
       this.$store.dispatch("UNFRIEND_USER", user.id)
         .then(() => {
           this.loadPage();
+          this.$store.dispatch("DELETE_NOTIFICATION", this.$t('pages.user.fiends-list.message', {user: user.name}));
         });
     }
   },
