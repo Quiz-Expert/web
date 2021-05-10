@@ -15,7 +15,24 @@ export default {
           commit('ERROR');
           reject(err);
         });
-    })
+    });
+  },
+
+  GET_ALL_CATEGORIES({commit}) {
+    return new Promise((resolve, reject) => {
+      commit('REQUEST');
+      return axios.get('categories/all')
+        .then(response => {
+          const categories = response.data;
+          localStorage.setItem('ALL_CATEGORIES', JSON.stringify(categories));
+          commit('ALL_CATEGORIES', categories);
+          resolve(response);
+        })
+        .catch((err) => {
+          commit('ERROR');
+          reject(err);
+        });
+    });
   },
 
   CREATE_CATEGORY({commit}, category) {
@@ -86,18 +103,23 @@ export default {
     localStorage.setItem('CURRENT_CATEGORIES', JSON.stringify(category));
   },
 
-  DISCARD_ALL_CATEGORIES({commit}) {
-    commit('DISCARD_ALL_CATEGORIES');
-    localStorage.removeItem('CATEGORIES');
-  },
-
-  DISCARD_CATEGORIES({commit}) {
-    commit('DISCARD_CATEGORIES');
+  DISCARD_CATEGORY({commit}) {
+    commit('DISCARD_CATEGORY');
     localStorage.removeItem('CURRENT_CATEGORIES');
   },
 
   DISCARD_CATEGORY_BY_ID({commit}) {
     commit('DISCARD_CATEGORY_BY_ID');
     localStorage.removeItem('CATEGORY_BY_ID');
+  },
+
+  DISCARD_CATEGORIES({commit}) {
+    commit('DISCARD_CATEGORIES');
+    localStorage.removeItem('CATEGORIES');
+  },
+
+  DISCARD_ALL_CATEGORIES({commit}) {
+    commit('DISCARD_ALL_CATEGORIES');
+    localStorage.removeItem('ALL_CATEGORIES');
   },
 }

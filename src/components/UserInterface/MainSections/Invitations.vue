@@ -5,14 +5,14 @@
         <ul class="grid grid-cols-4 gap-6">
           <li class="flex-auto text-center col-span-4 md:col-span-2 ">
             <a class="font-bold uppercase py-2 md:py-3 shadow-lg rounded block cursor-pointer"
-               :class="{'bg-gray-300': openTab !== 1, 'bg-green-600 text-gray-200': openTab === 1}"
+               :class="{'bg-gray-300': openTab !== 1, 'bg-yellow-600 text-gray-200': openTab === 1}"
                @click="toggleTabs(1)"
                v-text="$t('pages.user.invitation-list.friend.tittle')"
             />
           </li>
           <li class="flex-auto text-center col-span-4 md:col-span-2">
             <a class="font-bold uppercase py-2 md:py-3 shadow-lg rounded block cursor-pointer"
-               :class="{'bg-gray-300': openTab !== 2, 'bg-green-600 text-gray-200': openTab === 2}"
+               :class="{'bg-gray-300': openTab !== 2, 'bg-yellow-600 text-gray-200': openTab === 2}"
                @click="toggleTabs(2)"
                v-text="$t('pages.user.invitation-list.game.tittle')"
             />

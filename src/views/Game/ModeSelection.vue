@@ -112,6 +112,10 @@ export default {
           console.log(err);
         });
     },
+  },
+
+  unmounted() {
+    this.$store.dispatch("DISCARD_CATEGORY");
   }
 }
 </script>

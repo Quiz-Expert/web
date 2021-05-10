@@ -24,9 +24,20 @@ export default {
     ...mapGetters(['user'])
   },
 
-  data() {
-    return {
-      notificationData: null,
+  methods: {
+    acceptedFriendNotification(data = {}) {
+      const name = data.data.name;
+      this.$store.dispatch("INFO_NOTIFICATION", this.$t('pages.user.notification.text.accepted_friend_request', {user: name}));
+    },
+
+    incomingFriendNotification(data = {}) {
+      const name = data.data.user.name;
+      this.$store.dispatch("INFO_NOTIFICATION", this.$t('pages.user.notification.text.incoming_friend_request', {user: name}));
+    },
+
+    incomingGameNotification(data = {}) {
+      const name = data.data.user.name;
+      this.$store.dispatch("INFO_NOTIFICATION", this.$t('pages.user.notification.text.incoming_game_request', {user: name}));
     }
   },
 
@@ -34,7 +45,25 @@ export default {
     const channel = pusher.subscribe(`private-notifications.${this.user.id}`);
 
     channel.bind("incoming_notification", data => {
-      this.$store.dispatch("INFO_NOTIFICATION", data.message);
+      switch (data.type) {
+        case 'accepted_friend_request': {
+          this.acceptedFriendNotification(data);
+          break;
+        }
+        case 'incoming_friend_request': {
+          this.incomingFriendNotification(data);
+          break;
+        }
+        case 'incoming_game_request': {
+          this.incomingGameNotification(data);
+          break;
+        }
+        default: {
+          const text = this.$t(`pages.user.notification.text.${data.type}`);
+          this.$store.dispatch("INFO_NOTIFICATION", text);
+          break;
+        }
+      }
     });
   },
 

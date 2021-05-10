@@ -195,7 +195,7 @@ export default {
   },
 
   unmounted() {
-    this.$store.dispatch("DISCARD_ALL_CATEGORIES");
+    this.$store.dispatch("DISCARD_CATEGORIES");
   }
 }
 </script>
