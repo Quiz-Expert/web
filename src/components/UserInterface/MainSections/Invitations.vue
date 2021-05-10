@@ -1,47 +1,54 @@
 <template>
   <main class="w-full py-12">
     <div class="max-w-3xl mx-auto space-y-6">
-      <div>
-        <h2 class="mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-4xl leading-tight text-gray-900 text-center"
-            v-text="$t('pages.user.invitation-list.tittle')"
-        />
+      <div class="px-4 sm:px-6 lg:px-8">
+        <ul class="grid grid-cols-4 gap-6">
+          <li class="flex-auto text-center col-span-4 md:col-span-2 ">
+            <a class="font-bold uppercase py-2 md:py-3 shadow-lg rounded block cursor-pointer"
+               :class="{'bg-gray-300': openTab !== 1, 'bg-green-600 text-gray-200': openTab === 1}"
+               @click="toggleTabs(1)"
+               v-text="$t('pages.user.invitation-list.friend.tittle')"
+            />
+          </li>
+          <li class="flex-auto text-center col-span-4 md:col-span-2">
+            <a class="font-bold uppercase py-2 md:py-3 shadow-lg rounded block cursor-pointer"
+               :class="{'bg-gray-300': openTab !== 2, 'bg-green-600 text-gray-200': openTab === 2}"
+               @click="toggleTabs(2)"
+               v-text="$t('pages.user.invitation-list.game.tittle')"
+            />
+          </li>
+        </ul>
       </div>
-      <div class="py-2 align-middle inline-block px-4 sm:px-6 lg:px-8 w-full">
+      <div :class="{'hidden': openTab !== 1, 'block': openTab === 1}"
+           class="py-2 align-middle inline-block px-4 sm:px-6 lg:px-8 w-full"
+      >
         <div class="shadow-xl overflow-hidden border-b border-gray-200 rounded-lg">
           <table class="w-full divide-y-2 divide-green-600">
             <thead class="bg-gray-50">
               <tr>
                 <th scope="col"
                     class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    v-text="$t('pages.user.invitation-list.name')"
-                />
-                <th scope="col"
-                    class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    v-text="$t('pages.user.invitation-list.description')"
+                    v-text="$t('pages.user.invitation-list.friend.name')"
                 />
                 <th scope="col"
                     class="px-2 sm:px-4 md:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    v-text="$t('pages.user.invitation-list.action')"
+                    v-text="$t('pages.user.invitation-list.friend.action')"
                 />
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="invitation in invitations" :key="invitation" class="hover:bg-gray-100">
+              <tr v-for="incomingFriend in incomingFriends.data" :key="incomingFriend" class="hover:bg-gray-100">
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
                     <div>
-                      <p class="text-sm font-medium text-gray-900" v-text="invitation.name" />
+                      <p class="text-sm font-medium text-gray-900" v-text="incomingFriend.user.name" />
                     </div>
-                  </div>
-                </td>
-                <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="text-sm font-medium text-gray-900" v-text="invitation.description" />
                   </div>
                 </td>
                 <td class="px-2 sm:px-4 md:px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                   <button type="button"
                           class="inline-block p-1 sm:p-2 text-center text-white transition bg-green-600 rounded-full shadow ripple hover:shadow-lg hover:bg-green-700 focus:outline-none"
+                          @click="acceptInvitationToFriend(incomingFriend)"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="w-4 sm:w-5 h-4 sm:h-5"
@@ -56,15 +63,18 @@
                   </button>
                   <button type="button"
                           class="inline-block p-1 sm:p-2 text-center text-white transition bg-red-500 rounded-full shadow ripple hover:shadow-lg hover:bg-red-600 focus:outline-none"
+                          @click="rejectInvitationToFriend(incomingFriend)"
                   >
-                    <svg class="w-4 sm:w-5 h-4 sm:h-5 text-white"
-                         xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 20 20"
-                         fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="w-4 sm:w-5 h-4 sm:h-5 text-white"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor"
                     >
-                      <path fill-rule="evenodd"
-                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                            clip-rule="evenodd"
+                      <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
                   </button>
@@ -74,26 +84,79 @@
           </table>
         </div>
       </div>
+      <div :class="{'hidden': openTab !== 2, 'block': openTab === 2}"
+           class="py-2 align-middle inline-block px-4 sm:px-6 lg:px-8 w-full"
+      >
+        <div class="shadow-xl overflow-hidden border-b border-gray-200 rounded-lg">
+          <table class="w-full divide-y-2 divide-green-600">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col"
+                    class="px-2 sm:px-4 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    v-text="$t('pages.user.invitation-list.game.name')"
+                />
+                <th scope="col"
+                    class="px-2 sm:px-4 md:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    v-text="$t('pages.user.invitation-list.game.action')"
+                />
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200" />
+          </table>
+        </div>
+      </div>
     </div>
   </main>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: "Invitations",
+
   data() {
     return {
-      invitations: [
-        {
-          name: "Jane Cooper",
-          description: "Pojedynek",
-        },
-        {
-          name: "Jane Cooper",
-          description: "Lista Znajomych",
-        }
-      ]
+      openTab: 1,
     }
+  },
+
+  methods: {
+    loadPage() {
+      this.$store.dispatch("INCOMING_FRIENDS");
+    },
+
+    toggleTabs(tabNumber) {
+      this.openTab = tabNumber;
+    },
+
+    acceptInvitationToFriend(incomingFriend) {
+      this.$store.dispatch("ACCEPT_INVITATION_TO_FRIEND", incomingFriend.id)
+        .then(() => {
+          this.loadPage();
+          this.$store.dispatch("SUCCESS_NOTIFICATION", this.$t('pages.user.invitation-list.friend.accept-invitation', {user: incomingFriend.user.name}));
+        });
+    },
+
+    rejectInvitationToFriend(incomingFriend) {
+      this.$store.dispatch("REJECT_INVITATION_TO_FRIEND", incomingFriend.id)
+        .then(() => {
+          this.loadPage();
+          this.$store.dispatch("DELETE_NOTIFICATION", this.$t('pages.user.invitation-list.friend.reject-invitation', {user: incomingFriend.user.name}));
+        });
+    }
+  },
+
+  mounted() {
+    this.loadPage();
+  },
+
+  unmounted() {
+    this.$store.dispatch("DISCARD_INCOMING_FRIENDS");
+  },
+
+  computed: {
+    ...mapGetters(['incomingFriends']),
   }
 }
 </script>

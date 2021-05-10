@@ -155,6 +155,7 @@ export default {
       this.$store.dispatch("REMOVE_QUESTION", this.currentQuestion.id)
         .then(() => {
           this.loadPage();
+          this.$store.dispatch("DELETE_NOTIFICATION", this.$t('pages.dashboard.questions-panel.removal.message'));
         });
     },
 
@@ -175,12 +176,16 @@ export default {
       isEditModalVisible: false,
       isDeleteModalVisible: false,
       currentPage: 1,
-      currentQuestion: null,
+      currentQuestion: {},
     }
   },
 
   mounted() {
     this.loadPage();
   },
+
+  unmounted() {
+    this.$store.dispatch("DISCARD_QUESTIONS");
+  }
 }
 </script>

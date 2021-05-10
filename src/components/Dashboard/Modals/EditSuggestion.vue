@@ -209,6 +209,7 @@ export default {
         .then(() => {
           this.close();
           this.$emit('edit');
+          this.$store.dispatch("INFO_NOTIFICATION", this.$t('pages.dashboard.suggestions-panel.edition.message'));
         })
         .catch(err => {
           console.log(err);
@@ -220,6 +221,7 @@ export default {
         .then(() => {
           this.close();
           this.$emit('edit');
+          this.$store.dispatch("INFO_NOTIFICATION", this.$t('pages.dashboard.suggestions-panel.removal.message'));
         })
         .catch(err => {
           console.log(err);

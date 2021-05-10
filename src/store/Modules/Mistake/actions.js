@@ -69,4 +69,9 @@ export default {
     commit('DISCARD_MISTAKE_BY_ID');
     localStorage.removeItem('MISTAKE_BY_ID');
   },
+
+  DISCARD_MISTAKES({commit}) {
+    commit('DISCARD_MISTAKES');
+    localStorage.removeItem('MISTAKES');
+  },
 }

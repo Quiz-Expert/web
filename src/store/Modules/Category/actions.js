@@ -86,6 +86,11 @@ export default {
     localStorage.setItem('CURRENT_CATEGORIES', JSON.stringify(category));
   },
 
+  DISCARD_ALL_CATEGORIES({commit}) {
+    commit('DISCARD_ALL_CATEGORIES');
+    localStorage.removeItem('CATEGORIES');
+  },
+
   DISCARD_CATEGORIES({commit}) {
     commit('DISCARD_CATEGORIES');
     localStorage.removeItem('CURRENT_CATEGORIES');

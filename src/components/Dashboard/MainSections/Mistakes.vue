@@ -174,13 +174,17 @@ export default {
       isEditMistakeModalVisible: false,
       isEditQuestionModalVisible: false,
       currentPage: 1,
-      currentMistake: null,
-      currentQuestionWithMistake: null
+      currentMistake: {},
+      currentQuestionWithMistake: {}
     }
   },
 
   created() {
     this.loadPage();
   },
+
+  unmounted() {
+    this.$store.dispatch("DISCARD_MISTAKES");
+  }
 }
 </script>

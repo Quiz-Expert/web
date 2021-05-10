@@ -43,7 +43,7 @@
               </div>
             </div>
           </div>
-          <form method="POST" @submit.prevent="updateCategory()">
+          <form method="POST" @submit.prevent="createCategory()">
             <div class="shadow overflow-hidden sm:rounded-md">
               <div class="px-4 py-5 bg-white sm:p-6">
                 <div class="grid grid-cols-3 gap-6">
@@ -182,11 +182,12 @@ export default {
         });
     },
 
-    updateCategory() {
+    createCategory() {
       this.$store.dispatch("CREATE_CATEGORY", this.categoryData)
         .then(() => {
           this.close();
           this.$emit('create');
+          this.$store.dispatch("SUCCESS_NOTIFICATION", this.$t('pages.dashboard.categories-panel.creating.message'));
         })
         .catch(err => {
           console.log(err);

@@ -10,6 +10,6 @@ export default {
 
   DISCARD_NOTIFICATIONS(state) {
     state.status = "success";
-    state.notifications = null
+    state.notifications = []
   },
 }

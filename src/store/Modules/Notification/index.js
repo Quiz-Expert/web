@@ -3,7 +3,7 @@ import mutations from "./mutations";
 
 const notification = {
   state: {
-    notifications: JSON.parse(localStorage.getItem('NOTIFICATIONS')) || null,
+    notifications: JSON.parse(localStorage.getItem('NOTIFICATIONS')) || [],
     notificationStatus: 'none'
   },
   getters: {

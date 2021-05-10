@@ -271,6 +271,7 @@ export default {
         .then(() => {
           this.close();
           this.$emit('edit');
+          this.$store.dispatch("SUCCESS_NOTIFICATION", this.$t('pages.dashboard.questions-panel.edition.message'));
         })
         .catch(err => {
           console.log(err);

@@ -85,4 +85,9 @@ export default {
     commit('DISCARD_QUESTION_BY_ID');
     localStorage.removeItem('QUESTION_BY_ID');
   },
+
+  DISCARD_QUESTIONS({commit}) {
+    commit('DISCARD_QUESTIONS');
+    localStorage.removeItem('QUESTIONS');
+  },
 }

@@ -3,8 +3,8 @@ import actions from "./actions";
 
 const auth = {
   state: {
-    token: localStorage.getItem('ACCESS_TOKEN') || null,
-    user: JSON.parse(localStorage.getItem('CURRENT_USER')) || null,
+    token: localStorage.getItem('ACCESS_TOKEN') || '',
+    user: JSON.parse(localStorage.getItem('CURRENT_USER')) || {},
   },
   getters: {
     isLoggedIn: state => !!state.token,
