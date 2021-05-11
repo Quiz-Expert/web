@@ -314,9 +314,12 @@
         "tittle": "Lista powiadomień",
         "text": {
           "tittle": "Nazwa powiadomienia",
-          "accepted_friend_request": "Dodano gracza {user} do znajomych",
+          "accepted_friend_request": "Gracz {user} zaakceptował zaproszenie",
           "incoming_friend_request": "Otrzymano zaproszenie od {user} do znajomych",
-          "message": "Wiadomość"
+          "accepted_suggestion": "Zaakceptowana sugestia",
+          "rejected_suggestion": "Odrzucona sugestia",
+          "closed_mistake_report": "Zamknięte zgłoszenie błędu",
+          "incoming_game_request": "Otrzymano zaproszenie od {user} do gry"
         },
         "action": "Akcje",
         "reed-all": "Przeczytaj wszystkie"

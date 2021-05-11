@@ -67,15 +67,21 @@ export default {
   },
 
   methods: {
+    loadPage() {
+      this.$store.dispatch("GET_CATEGORIES", this.currentPage);
+    },
+
     previousPage() {
       if (this.currentPage > 1) {
-        this.$store.dispatch("GET_CATEGORIES", --this.currentPage);
+        this.currentPage--;
+        this.loadPage();
       }
     },
 
     nextPage() {
       if (this.currentPage < this.categories.pagination.total_pages) {
-        this.$store.dispatch("GET_CATEGORIES", ++this.currentPage);
+        this.currentPage++;
+        this.loadPage();
       }
     },
 
@@ -89,11 +95,11 @@ export default {
   },
 
   mounted() {
-    this.$store.dispatch("GET_CATEGORIES", this.currentPage);
+    this.loadPage();
   },
 
   unmounted() {
-    this.$store.dispatch("DISCARD_ALL_CATEGORIES");
+    this.$store.dispatch("DISCARD_CATEGORIES");
   },
 
   computed: {

@@ -47,7 +47,7 @@
                 <td class="px-2 sm:px-4 md:px-6 py-4">
                   <div class="flex items-center">
                     <div class="text-sm font-medium text-gray-900"
-                         v-text="$t(`pages.user.notification.text.${notification.type}`,{user:  getUserName(notification.data.data)})"
+                         v-text="getNotificationMessage(notification)"
                     />
                   </div>
                 </td>
@@ -99,8 +99,36 @@ export default {
   },
 
   methods: {
-    getUserName(user = {name: ''}) {
-      return user.name;
+    acceptedFriendMessage(data = {}) {
+      const name = data.data.name;
+      return this.$t('pages.user.notification.text.accepted_friend_request', {user: name});
+    },
+
+    incomingFriendMessage(data = {}) {
+      const name = data.data.user.name;
+      return this.$t('pages.user.notification.text.incoming_friend_request', {user: name});
+    },
+
+    incomingGameMessage(data = {}) {
+      const name = data.data.user.name;
+      return this.$t('pages.user.notification.text.incoming_game_request', {user: name});
+    },
+
+    getNotificationMessage(notification = {}) {
+      switch (notification.type) {
+        case 'accepted_friend_request': {
+          return this.acceptedFriendMessage(notification.data);
+        }
+        case 'incoming_friend_request': {
+          return this.incomingFriendMessage(notification.data);
+        }
+        case 'incoming_game_request': {
+          return this.incomingGameMessage(notification.data);
+        }
+        default: {
+          return this.$t(`pages.user.notification.text.${notification.type}`);
+        }
+      }
     },
 
     loadPage() {

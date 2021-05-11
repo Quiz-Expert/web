@@ -7,7 +7,7 @@ export default {
   GET_NOTIFICATION({commit}, page) {
     return new Promise((resolve, reject) => {
       commit('REQUEST');
-      return axios.get(`notifications?page=${page}`)
+      return axios.get(`notifications/unread?page=${page}`)
         .then(response => {
           const notifications = response.data;
           localStorage.setItem('NOTIFICATIONS', JSON.stringify(notifications));

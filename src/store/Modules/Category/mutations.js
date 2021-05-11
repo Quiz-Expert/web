@@ -4,6 +4,11 @@ export default {
     state.categories = data;
   },
 
+  ALL_CATEGORIES(state, data) {
+    state.status = 'success';
+    state.allCategories = data;
+  },
+
   CATEGORY_BY_ID(state, data) {
     state.status = 'success';
     state.categoryById = data;
@@ -14,14 +19,19 @@ export default {
     state.currentCategory = date;
   },
 
-  DISCARD_CATEGORIES(state) {
+  DISCARD_CATEGORY(state) {
     state.status = "success";
     state.currentCategory = {}
   },
 
-  DISCARD_ALL_CATEGORIES(state) {
+  DISCARD_CATEGORIES(state) {
     state.status = "success";
     state.categories = [];
+  },
+
+  DISCARD_ALL_CATEGORIES(state) {
+    state.status = "success";
+    state.allCategories = [];
   },
 
   DISCARD_CATEGORY_BY_ID(state) {
