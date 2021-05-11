@@ -27,7 +27,7 @@ http://localhost:8080
 
 ## Polecenia deweloperskie
 
-**Uruchomianie polecenia w kontenerze web (polecenie `*`)**
+**Uruchomianie polecenia w kontenerze  web (polecenie `*`)**
 ```
 docker-compose exec web *
 ```
