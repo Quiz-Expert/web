@@ -113,9 +113,5 @@ export default {
         });
     },
   },
-
-  unmounted() {
-    this.$store.dispatch("DISCARD_CATEGORY");
-  }
 }
 </script>
