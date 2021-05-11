@@ -1,0 +1,353 @@
+{
+  "name": "Quiz Expert",
+  "locale": {
+    "code": "pl",
+    "language": "Polski"
+  },
+  "pages": {
+    "not-found": {
+      "tittle": "Przepraszamy, nie mogliśmy znaleźć tej strony.",
+      "descriptions": "Ale nie martw się, na naszej stronie głównej znajdziesz wiele innych rzeczy.",
+      "back-to-homepage": "Powrót na stronę główną"
+    },
+    "dashboard": {
+      "navigation": {
+        "tittle": "Panel Administratora",
+        "overview": "Przegląd",
+        "users": "Użytkownicy",
+        "categories": "Kategorie",
+        "mistakes": "Błędy",
+        "questions": "Pytania",
+        "suggestions": "Propozycje"
+      },
+      "removal-modal": {
+        "cancel": "Anuluj",
+        "remove": "Usuń"
+      },
+      "categories-panel": {
+        "tittle": "Kategorie",
+        "icon": "Ikona",
+        "description": "Opis",
+        "actions": "Akcje",
+        "removal": {
+          "tittle": "Usuwanie kategorii",
+          "question": "Czy na pewno chcesz usunąć tą kategorie?"
+        },
+        "creating": {
+          "tittle": "Tworzenie kategorii",
+          "message": "Stworzono nową kategorie",
+          "name": "Nazwa",
+          "description": "Opis",
+          "photo": "Zdjęcie",
+          "change-photo": "Zmień zdjęcie",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        },
+        "edition": {
+          "tittle": "Edycja kategorii",
+          "message": "Zaktualizowano kategorie",
+          "name": "Nazwa",
+          "description": "Opis",
+          "photo": "Zdjęcie",
+          "change-photo": "Zmień zdjęcie",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        },
+        "delete": {
+          "message": "Usunięto kategorie"
+        }
+      },
+      "questions-panel": {
+        "tittle": "Pytania",
+        "category": "Kategoria",
+        "name": "Nazwa",
+        "actions": "Akcje",
+        "removal": {
+          "tittle": "Usuwanie pytania",
+          "message": "Usunięto pytanie",
+          "question": "Czy na pewno chcesz usunąć to pytanie?"
+        },
+        "creating": {
+          "tittle": "Tworzenie pytania",
+          "message": "Stworzono nowe pytanie",
+          "name": "Treść pytania",
+          "category": "Kategoria",
+          "answer-a": "Odpowiedź A",
+          "answer-b": "Odpowiedź B",
+          "answer-c": "Odpowiedź C",
+          "answer-d": "Odpowiedź D",
+          "good-answer": "Poprawna odpowiedź",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        },
+        "edition": {
+          "tittle": "Edycja pytania",
+          "message": "Zaktualizowano pytanie",
+          "name": "Treść pytania",
+          "category": "Kategoria",
+          "answer-a": "Odpowiedź A",
+          "answer-b": "Odpowiedź B",
+          "answer-c": "Odpowiedź C",
+          "answer-d": "Odpowiedź D",
+          "good-answer": "Poprawna odpowiedź",
+          "save": "Zapisz",
+          "back": "Do błędu",
+          "cancel": "Anuluj"
+        }
+      },
+      "mistakes-panel": {
+        "tittle": "Zgłoszone błędy",
+        "status": "Status",
+        "text": "Treść błędu",
+        "actions": "Akcje",
+        "editing": {
+          "tittle": "Widok błędu",
+          "message": "Zamknięto błąd",
+          "question": "Treść dotyczącego pytania",
+          "text": "Treść błedu",
+          "close": "Zamknij",
+          "move": "Do pytania",
+          "cancel": "Anuluj"
+        }
+      },
+      "suggestions-panel": {
+        "tittle": "Propozycje pytań",
+        "status": "Status",
+        "category": "Kategoria",
+        "name": "Nazwa",
+        "actions": "Akcje",
+        "removal": {
+          "tittle": "Usuwanie sugestii",
+          "message": "Zamknięto propozycje pytania",
+          "question": "Czy na pewno chcesz usunąć tą sugestie?"
+        },
+        "edition": {
+          "tittle": "Widok sugestii pytania",
+          "message": "Dodano propozycje pytania",
+          "name": "Treść pytania",
+          "answer-a": "Odpowiedź A",
+          "answer-b": "Odpowiedź B",
+          "answer-c": "Odpowiedź C",
+          "answer-d": "Odpowiedź D",
+          "good-answer": "Poprawna odpowiedź",
+          "accept": "Akceptuj",
+          "reject": "Odrzuć",
+          "cancel": "Anuluj"
+        }
+      },
+      "users-panel": {
+        "tittle": "Użytkownicy",
+        "name": "Nazwa",
+        "role": "Rola",
+        "actions": "Akcje",
+        "removal": {
+          "tittle": "Usuwanie użytkownika",
+          "question": "Czy na pewno chcesz usunąć tego użytkownika?"
+        },
+        "edition": {
+          "tittle": "Edycja użytkownika",
+          "name": "Nazwa",
+          "role": "Rola",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        }
+      }
+    },
+    "home": {
+      "navigation": {
+        "open": "Otwórz menu",
+        "close": "Zamknij menu",
+        "sign-in": "Zaloguj się",
+        "sign-up": "Zarejestruj się",
+        "question": "Nie masz konta?"
+      },
+      "introduction": {
+        "tittle": "Zagraj w quiz ze znajomymi!",
+        "description": "Wybierz kategorię, tryb gry, a następnie pokaż, co potrafisz"
+      },
+      "game-modes": {
+        "invitation": {
+          "tittle": "Format gry ze znajomym",
+          "description": "Wybierz kategorię a następnie wyślij wyzwanie znajomemu. "
+        },
+        "random": {
+          "tittle": "Dobieranie przeciwnika",
+          "description": "System dobiera przeciwnika do gracza z kolejki adekwatnej do kategorii."
+        },
+        "single": {
+          "tittle": "Format gry indywidualnej",
+          "description": "Gracz może zagrać w quiz w pojedynke. Nie musi zapraszać znajomych ani czekać w kolejce na dobranie losowego przeciwnika."
+        },
+        "correspondence": {
+          "tittle": "Format gry korespondencyjny",
+          "description": "Połączenie zasad gry ze znajomym z grą indywidualną. Gracz zaprasza znajomego do gry i rozgrywa quiz tak jakby grał samemu."
+        }
+      },
+      "footer": {
+        "community": {
+          "tittle": "Społeczność",
+          "github": "GitHub",
+          "facebook": "Facebook"
+        },
+        "technologies": {
+          "tittle": "Technologie",
+          "v3": "Vue 3",
+          "tailwindcss": "Tailwindcss"
+        },
+        "tools": {
+          "tittle": "Narzędzia",
+          "docker": "Docker",
+          "eslint": "ESLint",
+          "github": "GitHub"
+        },
+        "links": {
+          "tittle": "Linki",
+          "mobile": "Aplikacja mobilna",
+          "pc": "Aplikacja desktopowa"
+        }
+      }
+    },
+    "game": {
+      "mode-selection": {
+        "tittle": "Wybierz tryb gry",
+        "challenge-friend": "Wyzwij znajomego",
+        "random-opponent": "Losuj przeciwnika",
+        "play-alone": "Graj sam",
+        "suggestions": {
+          "tittle": "Sugestie pytań",
+          "question-name": "Treść pytania",
+          "answer-a": "Odpowiedź A",
+          "answer-b": "Odpowiedź B",
+          "answer-c": "Odpowiedź C",
+          "answer-d": "Odpowiedź D",
+          "good-answer": "Poprawna odpowiedź"
+        }
+      },
+      "final-result": {
+        "tittle":"Twój wynik:",
+        "play-again": "Zagraj ponownie",
+        "report-mistake":{
+          "tittle": "Zgłoś błąd w pytaniu",
+          "select-question":"W którym pytaniu znajduje się błąd?",
+          "comments-to-question": "Uwagi do pytania",
+          "describe-comments": "Opisz swoje uwagi ...",
+          "send": "Wyślij",
+          "cancel": "Anuluj"
+        }
+      }
+    },
+    "login": {
+      "tittle": "Zaloguj się do swojego konta",
+      "message": "Zalogano pomyślnie",
+      "email": {
+        "label": "Adres e-mail",
+        "description": "Wprowadź adres e-mail"
+      },
+      "password": {
+        "label": "Hasło",
+        "description": "Wprowadź hasło"
+      },
+      "remember-me": "Zapamiętaj mnie",
+      "forgot-password": "Nie pamiętasz hasła?",
+      "sign-in": "Zaloguj się",
+      "back-to-homepage": "Strona główna",
+      "back-to-register": "Nie masz konta?"
+    },
+    "register": {
+      "tittle": "Wprowadź swoje dane, aby się zarejestrować",
+      "message": "Zarejestrowano pomyślnie",
+      "name": {
+        "label": "Nazwa użytkownika",
+        "description": "Wprowadż nazwę użytkownika"
+      },
+      "nick": {
+        "label": "Nick użytkownika",
+        "description": "Wprowadż nick użytkownika"
+      },
+      "email": {
+        "label": "Adres e-mail",
+        "description": "Wprowadź adres e-mail"
+      },
+      "password": {
+        "label": "Hasło",
+        "description": "Wprowadź hasło"
+      },
+      "password-confirm": {
+        "label": "Potwierdź hasło",
+        "description": "Wprowadż ponownie hasło"
+      },
+      "sign-up": "Zarejestruj się",
+      "back-to-homepage": "Strona główna",
+      "back-to-login": "Posiadasz już konto?"
+    },
+    "user": {
+      "navigation": {
+        "categories": "Kategorie",
+        "invitations": "Zaproszenia",
+        "friends": "Znajomi",
+        "profile": "Profil",
+        "notifications": "Powiadomienia",
+        "open-user-menu": "Otwórz menu użytkownika",
+        "settings": "Ustawienia",
+        "dashboard": "Panel Administratora",
+        "sing-out": "Wyloguj się"
+      },
+      "select-categories": {
+        "tittle": "Wybierz kategorie"
+      },
+      "invitation-list": {
+        "tittle": "Lista zaproszeń",
+        "friend": {
+          "tittle": "Znajomi",
+          "name": "Nazwa gracz",
+          "accept-invitation": "Dodano gracza {user} do znajomych",
+          "reject-invitation": "Odrzuciłeś zaproszenie od {user}",
+          "action": "Akcje"
+        },
+        "game": {
+          "tittle": "Gra",
+          "name": "Nazwa gracz",
+          "action": "Akcje"
+        }
+      },
+      "notification": {
+        "tittle": "Lista powiadomień",
+        "text": {
+          "tittle": "Nazwa powiadomienia",
+          "accepted_friend_request": "Gracz {user} zaakceptował zaproszenie",
+          "incoming_friend_request": "Otrzymano zaproszenie od {user} do znajomych",
+          "accepted_suggestion": "Zaakceptowana sugestia",
+          "rejected_suggestion": "Odrzucona sugestia",
+          "closed_mistake_report": "Zamknięte zgłoszenie błędu",
+          "incoming_game_request": "Otrzymano zaproszenie od {user} do gry"
+        },
+        "action": "Akcje",
+        "reed-all": "Przeczytaj wszystkie"
+      },
+      "fiends-list": {
+        "tittle": "Lista znajomych",
+        "message": "Usunięto {user} z listy znajomych",
+        "nick": "Nick",
+        "name": "Nazwa",
+        "action": "Akcja"
+      },
+      "inviting-to-friends": {
+        "tittle": "Zaproś do znajomych",
+        "search": "Wyszukaj...",
+        "message": "Zaproszono użytkownika {user}"
+      },
+      "your-profile": {
+        "tittle": "Twój profil"
+      },
+      "settings": {
+        "tittle": "Ustawienia",
+        "account": "Konto",
+        "email": "Twój e-mail",
+        "personal-info": "Informacje personalne",
+        "name": "Twoja nazwa",
+        "change-password": "Zmień hasło",
+        "save-changes": "Zapisz zmiany"
+      }
+    }
+  }
+}
