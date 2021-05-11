@@ -70,7 +70,7 @@
                          v-text="$t('pages.dashboard.questions-panel.edition.category')"
                   />
                   <input id="category"
-                         :value="suggestionData.category_id"
+                         :value="suggestionCategory.name"
                          type="text"
                          name="category"
                          autocomplete="given-category"
@@ -195,6 +195,7 @@ export default {
     this.$store.dispatch("GET_SUGGESTION_BY_ID", this.suggestionId)
       .then(() => {
         this.suggestionData = this.suggestionById;
+        this.suggestionCategory = this.suggestionById.category;
       });
   },
 
@@ -235,7 +236,8 @@ export default {
 
   data() {
     return {
-      suggestionData: {}
+      suggestionData: {},
+      suggestionCategory: {}
     }
   }
 }
