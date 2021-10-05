@@ -10,7 +10,7 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.3.2",
     "axios": "^0.21.1",
-    "core-js": "^3.10.0",
+    "core-js": "^3.18.2",
     "pusher-js": "^7.0.3",
     "vue": "^3.0.0",
     "vue-lang-router": "^2.1.0",
